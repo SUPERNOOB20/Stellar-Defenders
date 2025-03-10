@@ -5,8 +5,7 @@ import os
 
 from screeninfo import get_monitors
 
-from collider_handler import check_colliders
-from collider_handler import check_colliders_init
+from collider_handler import check_colliders, check_colliders_init, set_game_resolution
 
 
 user_screen_width = get_monitors()[0].width
@@ -85,10 +84,10 @@ class Colliders_Colour:
 
         for t in self.triangles:
 
-                cv += 1
+            cv += 1
 
-                mouse_pos_check = check_colliders(t[0], t[1], t[2], self.center_vertices_plane_region[cv], mouse_pos)
-                result == True         # ... then the user is in this region! :D
+            if (check_colliders(t[0], t[1], t[2], self.center_vertices_plane_region[cv], mouse_pos)) == True:
+                result = True         # ... then the user is in this region! :D
         
         return result
 
@@ -107,6 +106,11 @@ y_t2 = [y_v0, y_v4, y_v5]
 y_cv0 = (1134, 348)
 y_cv1 = (1227, 179)
 y_cv2 = (1306, 292)
+
+
+# My game has a 1920 x 1080 resolution world map!
+set_game_resolution(1920, 1080)
+
 
 # center_vertex_plane_region = (bool, bool, bool)
 center_vertex_plane_region_0 = check_colliders_init(y_t0[0], y_t0[1], y_t0[2], y_cv0)
@@ -205,7 +209,7 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
             mouse_pos_y = mouse_pos[1]
 
             print("Is the player clicking on the Yellow region? ", yellow.is_user_on_colour(),
-                  "(mouse position is ", mouse_pos, " btw).")
+                  "(mouse position is ", mouse_pos, " btw).", "\n")
 
     screen.blit(bg_surface, (0, 0))
 
