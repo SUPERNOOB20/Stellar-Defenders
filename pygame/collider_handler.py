@@ -66,8 +66,6 @@ def check_colliders_init(v1, v2, v3, vA):   # Looks for the (bool, bool, bool) c
 
     for line in lines:
 
-        line_number += 1
-
         if type(line[0]) == str:     # if the line is a vertical one...
             line = (line[1] <  vA[1])
             vAC.append(line)
@@ -77,7 +75,7 @@ def check_colliders_init(v1, v2, v3, vA):   # Looks for the (bool, bool, bool) c
             
 
     
-    print("lines_combination (vAC) is: ", vAC)
+    # print("lines_combination (vAC) is: ", vAC)
     return vAC
 
 def check_colliders(v1, v2, v3, vAC, vC):   # vAC is the (bool, bool, bool) combination for vA
@@ -86,6 +84,8 @@ def check_colliders(v1, v2, v3, vAC, vC):   # vAC is the (bool, bool, bool) comb
     rescaled_vC_y = floor(vC[1] * game_height / user_screen_height)
 
     rescaled_vC = (rescaled_vC_x, rescaled_vC_y)
+
+    vCC = (False, False, False)
 
     if rescaled_vC_y != 0:                                  # WARNING: Collisions won't work if the player is on the left border of the screen! (when mouse_pos_x = 0, we get a vertical line, so basically infinite slope parameter and no closed formula... e.e)
         vCC = check_colliders_init(v1, v2, v3, rescaled_vC)          # Can be made a border case maybe but me is too lazy, cut me some slack... implement it yourself if needed :3                                                        
