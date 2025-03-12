@@ -7,6 +7,10 @@ from screeninfo import get_monitors
 
 from collider_handler import check_colliders, check_colliders_init, set_game_resolution
 
+import numpy as np
+from PIL import Image
+
+# import moviepy
 
 user_screen_width = get_monitors()[0].width
 user_screen_height = get_monitors()[0].height
@@ -21,11 +25,14 @@ is_on_fullscreen = True
 animation_timer_1 = 0
 # step_1 = 0
 step_acum_1 = 0
-
+flickering_animation_counter = 0
+is_flickering_ascending = True      # Could alternatively just save the immediately previous value for flickering_animation_counter anyway :p
 
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
+# clip = moviepy.VideoFileClip(f"{dir_path}/graphics/animations/yellow_flickering.mp4")
+# clip.preview()
 
 icon_surface = pygame.image.load(f"{dir_path}/graphics/icon.png").convert_alpha() 
 pygame.display.set_icon(icon_surface)
@@ -192,6 +199,70 @@ pygame.mixer.init()
 pygame.mixer.music.load(f"{dir_path}/audio/world_map.mp3")
 
 
+def animation_handler(tick_counter, colour: str):
+    
+    # if tick_counter < 250:
+        # screen.blit(yellow_flickering_surface, (0, 0))
+
+    if (seconds < 1.5):
+        title_animation_fadein(90)
+
+    elif ((seconds >= 1.5) & (seconds < 3)):
+        global step_acum_1
+        step_acum_1 = 255
+
+    elif ((seconds >= 3) & (seconds < 5)):
+        title_animation_fadeout(120)
+
+    elif ((seconds >= 5) & (seconds < 6)):
+        step_acum_1 = 0
+
+    elif ((seconds >= 6) & (seconds < 9)):
+        stellardefenders_surface.set_alpha(stellardefenders_alpha_value)       # Goes from 0 to 255 :3
+
+        if (seconds == 6):
+            print("OK!!!")
+            pygame.mixer.music.play(fade_ms = 1500)     # Fade-in of 90 frames (at 60fps) :3 
+
+        if (seconds < 7.5):
+            stellardefenders_animation_fadein(90)
+
+    elif (seconds >= 9):
+
+        if colour != "none":
+
+            global flickering_animation_counter
+            global is_flickering_ascending
+
+            if flickering_animation_counter == 54:               # It will now start going down through the list of frames!
+                is_flickering_ascending = False
+                
+            elif flickering_animation_counter == 0:
+                is_flickering_ascending = True
+
+            show_colour_flickering(colour, flickering_animation_counter)
+
+            if is_flickering_ascending == True:
+                flickering_animation_counter += 1
+            else:
+                flickering_animation_counter -= 1
+
+            return
+        
+    return
+
+def show_colour_flickering(colour: str, flickering_animation_counter):
+
+    path = f"{dir_path}/graphics/animations/blend modes/flickering/" + colour + f"/{flickering_animation_counter}.png"
+
+    # print("WHAT IS GOING ON: ", flickering_animation_counter)
+
+    colour_flickering_surface_raw = pygame.image.load(path).convert_alpha()
+    colour_flickering_surface = pygame.transform.scale(surface = colour_flickering_surface_raw, size = (user_screen_width, user_screen_height))
+
+    screen.blit(colour_flickering_surface, (0, 0))
+    return
+
 while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -202,14 +273,26 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
             if event.key == pygame.K_ESCAPE:    # processes the Escape event (The event that the key 'ESCAPE' is hit!)
                 exit_game = True
 
+        """
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = pygame.mouse.get_pos()
 
             mouse_pos_x = mouse_pos[0]
             mouse_pos_y = mouse_pos[1]
+        """
 
-            print("Is the player clicking on the Yellow region? ", yellow.is_user_on_colour(),
-                  "(mouse position is ", mouse_pos, " btw).", "\n")
+
+            # print("Is the player clicking on the Yellow region? ", yellow.is_user_on_colour(),
+              #     "(mouse position is ", mouse_pos, " btw).", "\n")
+            
+    mouse_pos = pygame.mouse.get_pos()
+
+    mouse_pos_x = mouse_pos[0]
+    mouse_pos_y = mouse_pos[1]    
+    
+    if yellow.is_user_on_colour() == True:
+        # print("HI I'M WORKING THANKS FOR CHECKING, OH YEAH BTW YOUR MOUSE POS CURRENTLY IS: ", mouse_pos)
+        animation_handler(tick_counter, "yellow")
 
     screen.blit(bg_surface, (0, 0))
 
@@ -237,43 +320,26 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
 
             is_on_fullscreen = False
 
-    # if tick_counter == 0:   # Runs only the first frame of the game
-        # title_animation_init(90, 150, 120)
-
-    if (seconds < 1.5):
-        title_animation_fadein(90)
-
-    elif ((seconds >= 1.5) & (seconds < 3)):
-        step_acum_1 = 255
-
-    elif ((seconds >= 3) & (seconds < 5)):
-        title_animation_fadeout(120)
-
-    elif ((seconds >= 5) & (seconds < 6)):
-        step_acum_1 = 0
-
-    elif ((seconds >= 6) & (seconds < 9)):
-        stellardefenders_surface.set_alpha(stellardefenders_alpha_value)       # Goes from 0 to 255 :3
-
-        if (seconds == 6):
-            print("OK!!!")
-            pygame.mixer.music.play(fade_ms = 1500)     # Fade-in of 90 frames (at 60fps) :3 
-
-        if (seconds < 7.5):
-            stellardefenders_animation_fadein(90)
 
     title_surface.set_alpha(title_alpha_value)       # Goes from 0 to 255 :3
+
+    animation_handler(tick_counter, "none")     # Think of it as a "timeline" in video editing software! :3
 
     if seconds < 9:
         tick_counter += 1
         seconds = tick_counter / 60
 
     """
-    mouse_pos = pygame.mouse.get_pos()
+    else:
 
-    mouse_pos_x = mouse_pos[0]
-    mouse_pos_y = mouse_pos[1]
+        path = f"{dir_path}/graphics/animations/blend modes/flickering/yellow/54.png"
+
+        colour_flickering_surface_raw = pygame.image.load(path).convert_alpha()
+        colour_flickering_surface = pygame.transform.scale(surface = colour_flickering_surface_raw, size = (user_screen_width, user_screen_height))
+
+        screen.blit(colour_flickering_surface, (0, 0))
     """
+
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_1]:
