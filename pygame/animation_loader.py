@@ -16,7 +16,7 @@ def load_and_rescale_EVERYTHING(dir_path):
     
 
     for frame in range(0, 55):
-        for colour in (["red", "orange", "yellow", "green", "blue", "purple"]):     # black will be added in the future, for the final boss... e.e
+        for colour in ("red", "orange", "yellow", "green", "blue", "purple"):     # black will be added in the future, for the final boss... e.e
             path = f"{dir_path}/graphics/animations/blend modes/flickering/" + colour + f"/{frame}.png"
 
             # print("Is it working? current frame being loaded: ", flickering_animation_counter)
@@ -31,7 +31,7 @@ def load_and_rescale_EVERYTHING(dir_path):
 
 def frame_blit(colour, number):
 
-    colour_factor = ((["red, orange, yellow, green, blue, purple"].index(colour)) + 1)
+    colour_factor = ((("red", "orange", "yellow", "green", "blue", "purple").index(colour)) + 1)
 
     index = colour_factor + number
 
