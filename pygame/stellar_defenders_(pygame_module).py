@@ -199,7 +199,7 @@ import animation_loader
 animation_loader.load_and_rescale_EVERYTHING(dir_path)
 
 import time
-time.sleep(4)
+# time.sleep(4)
 
 pygame.mixer.init()
 pygame.mixer.music.load(f"{dir_path}/audio/world_map.mp3")
@@ -257,6 +257,7 @@ def animation_handler(tick_counter, colour: str):
     return
 
 def show_colour_flickering(colour: str, flickering_animation_counter):
+    # time.sleep(0.2)
     return animation_loader.frame_blit(colour, flickering_animation_counter)
 
 def colour_handler():

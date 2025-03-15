@@ -14,10 +14,12 @@ def load_and_rescale_EVERYTHING(dir_path):
     user_screen_height = get_monitors()[0].height
 
     
-
-    for frame in range(0, 55):
-        for colour in ("red", "orange", "yellow", "green", "blue", "purple"):     # black will be added in the future, for the final boss... e.e
+    for colour in ("red", "orange", "yellow", "green", "blue", "purple"):     # black will be added in the future, for the final boss... e.e
+        for frame in range(0, 55):
+            
             path = f"{dir_path}/graphics/animations/blend modes/flickering/" + colour + f"/{frame}.png"
+
+            # print("COLOUR: ", colour)
 
             # print("Is it working? current frame being loaded: ", flickering_animation_counter)
 
@@ -27,15 +29,22 @@ def load_and_rescale_EVERYTHING(dir_path):
             global list_of_all_frames
             list_of_all_frames.append(colour_flickering_surface)
 
+    print("everything loaded n ready, captain!! We have a humongous", len(list_of_all_frames), "frames loaded right now :3 teehee~")
+    # print(list_of_all_frames)
+
     return
 
 def frame_blit(colour, number):
 
-    colour_factor = ((("red", "orange", "yellow", "green", "blue", "purple").index(colour)) + 1)
+    # print("\n", "current colour:", colour, "\n", "current number:", number, "\n")
 
-    index = colour_factor + number
+    colour_factor = (("red", "orange", "yellow", "green", "blue", "purple").index(colour))
+
+    index = colour_factor * 55 + number
 
     global list_of_all_frames
     screen.blit(list_of_all_frames[index], (0, 0))
+
+
 
     return
