@@ -7,11 +7,6 @@ from screeninfo import get_monitors
 
 from collider_handler import check_colliders, check_colliders_init, set_game_resolution
 
-import numpy as np
-from PIL import Image
-
-# import moviepy
-
 user_screen_width = get_monitors()[0].width
 user_screen_height = get_monitors()[0].height
 
