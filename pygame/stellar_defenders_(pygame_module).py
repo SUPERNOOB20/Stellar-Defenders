@@ -69,8 +69,8 @@ pygame.display.set_caption("Stellar Defenders")
 tick_counter = 0    # How many frames the game has been running for (1 tick = 1 frame)
 seconds = 0
 
-mouse_pos_x = 0
-mouse_pos_y = 0
+# mouse_pos_x = 0
+# mouse_pos_y = 0
 
 class Colliders_Colour:
     def __init__(self, vertices, triangles, center_vertices, center_vertices_plane_region):
@@ -92,6 +92,8 @@ class Colliders_Colour:
         for t in self.triangles:
 
             cv += 1
+
+            global mouse_pos
 
             if (check_colliders(t[0], t[1], t[2], self.center_vertices_plane_region[cv], mouse_pos)) == True:
                 result = True         # ... then the user is in this region! :D
@@ -192,6 +194,10 @@ def title_animation_fadeout(duration_in_frames):
 
     return
 
+
+import animation_loader
+animation_loader.load_and_rescale_EVERYTHING(dir_path)
+
 import time
 time.sleep(4)
 
@@ -221,7 +227,6 @@ def animation_handler(tick_counter, colour: str):
         stellardefenders_surface.set_alpha(stellardefenders_alpha_value)       # Goes from 0 to 255 :3
 
         if (seconds == 6):
-            print("OK!!!")
             pygame.mixer.music.play(fade_ms = 1500)     # Fade-in of 90 frames (at 60fps) :3 
 
         if (seconds < 7.5):
@@ -252,15 +257,32 @@ def animation_handler(tick_counter, colour: str):
     return
 
 def show_colour_flickering(colour: str, flickering_animation_counter):
+    return animation_loader.frame_blit(colour, flickering_animation_counter)
 
-    path = f"{dir_path}/graphics/animations/blend modes/flickering/" + colour + f"/{flickering_animation_counter}.png"
+def colour_handler():
 
-    # print("WHAT IS GOING ON: ", flickering_animation_counter)
+    global mouse_pos
+    mouse_pos = pygame.mouse.get_pos()
 
-    colour_flickering_surface_raw = pygame.image.load(path).convert_alpha()
-    colour_flickering_surface = pygame.transform.scale(surface = colour_flickering_surface_raw, size = (user_screen_width, user_screen_height))
-
-    screen.blit(colour_flickering_surface, (0, 0))
+    # mouse_pos_x = mouse_pos[0]
+    # mouse_pos_y = mouse_pos[1]    
+    
+    """
+    if red.is_user_on_colour():
+        animation_handler(tick_counter, "yellow")
+    if orange.is_user_on_colour():
+        animation_handler(tick_counter, "yellow")
+    """
+    if yellow.is_user_on_colour():
+        animation_handler(tick_counter, "yellow")
+    """
+    if green.is_user_on_colour():
+        animation_handler(tick_counter, "yellow")
+    if blue.is_user_on_colour():
+        animation_handler(tick_counter, "yellow")
+    if purple.is_user_on_colour():
+        animation_handler(tick_counter, "yellow")
+    """
     return
 
 while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
@@ -284,16 +306,7 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
 
             # print("Is the player clicking on the Yellow region? ", yellow.is_user_on_colour(),
               #     "(mouse position is ", mouse_pos, " btw).", "\n")
-            
-    mouse_pos = pygame.mouse.get_pos()
-
-    mouse_pos_x = mouse_pos[0]
-    mouse_pos_y = mouse_pos[1]    
-    
-    if yellow.is_user_on_colour() == True:
-        # print("HI I'M WORKING THANKS FOR CHECKING, OH YEAH BTW YOUR MOUSE POS CURRENTLY IS: ", mouse_pos)
-        animation_handler(tick_counter, "yellow")
-
+        
     screen.blit(bg_surface, (0, 0))
 
     screen.blit(title_surface, (title_x_pos, title_y_pos))
@@ -329,16 +342,8 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
         tick_counter += 1
         seconds = tick_counter / 60
 
-    """
     else:
-
-        path = f"{dir_path}/graphics/animations/blend modes/flickering/yellow/54.png"
-
-        colour_flickering_surface_raw = pygame.image.load(path).convert_alpha()
-        colour_flickering_surface = pygame.transform.scale(surface = colour_flickering_surface_raw, size = (user_screen_width, user_screen_height))
-
-        screen.blit(colour_flickering_surface, (0, 0))
-    """
+        colour_handler()
 
 
     keys = pygame.key.get_pressed()
