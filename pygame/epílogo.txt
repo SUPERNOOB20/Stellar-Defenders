@@ -1,5 +1,11 @@
-Q: Why did you make this game? Do you want to make videogames for a living?
-A: Not for a living, no...
+
+
+=====|  Stellar Defenders - Preguntas & Respuestas  |=====
+
+
+
+Pregunta: Why did you make this game? Do you want to make videogames for a living?
+Respuesta: Not for a living, no...
 I'm a Computer Science student with a passion for learning - I love reading math books and computer science books, and my
 dream is to get a PhD in Computer Science, and be a researcher in graph theory!!! :3
 I've always been pretty bad at the coding part of the career, tho... and just coding in general...
@@ -16,39 +22,55 @@ a comedy series of black and white mangas for Stellar Defenders, if you show eno
 
 
 
-Q: ¿Es esta una novela visual?
-A: Buena pregunta, buena pregunta... al principio elegí el formato de las novelas visuales nomás porque quería arrancar con algo sencillo:
+Pregunta: ¿Es esta una novela visual?
+Respuesta: Buena pregunta, buena pregunta... al principio elegí el formato de las novelas visuales nomás porque quería arrancar con algo sencillo:
 Python es muy lo mío, RenPy es uno de los motores gráficos más sencillos que existen, y, como diría el abuelo Jose, 2 + 2 es 4.
 Pero tampoco quería hacer un juego romántico o +18... así que esos terminaron siendo los pros y los contras: tuve que
 ceder en cierto punto ante clichés de novelas visuales a cambio de un entorno que me facilitara una bocha la parte de programar el juego ":3
 Al final, me terminé decantando por hacer la parte romántica en el postgame. No solo tendría más sentido hacerlo así, sino que además sería
 la forma que menos afectaría a mi juego ":3
 
-Q: ¿Por qué tal region tiene tal nombre? ¿De dónde salió el nombre "Irisium"?
-A: Este juego tiene un montón de simbolismo. También está inspirado en palabras del griego y del latín...
+Pregunta: ¿Por qué tal region tiene tal nombre? ¿De dónde salió el nombre "Irisium"?
+Respuesta: Este juego tiene un montón de simbolismo. También está inspirado en palabras del griego y del latín...
 Las regiones tienen pseudo-nombres en latín. Es decir, están derivados de los nombres en latín de sus colores correspondientes,
 pero los nombres en sí simplemente son inventados ":3
+En cuanto a Irisium, bueno... IRISium... donde toda la paleta de colores nace en las retinas del ser humano... ;3
 
-Q: What is each region inspired in?
-A: Aaaah... you got me there ><
-I would honestly prefer to leave it to your imagination, but uh...
+Pregunta: ¿En qué está inspirada cada región?
+Respuesta: Uhhhh... me atrapaste ><
+Sinceramente preferiria dejarlo a la imaginación, pero emmm...
+- Rojo: No sé "(o__o)
+- Naranja: Basada en la región donde habitaban los aimaras (comprendida entre las actuales Chile, Bolivia y Argentina).
+- Amarillo: Basado en las playas tropicales de Centroamérica.
+- Verde: nose, basado en el pasto :p quizás en una Savana africana...
+- Azul: Corea del Zul
+- Violeta: Traté de inspirarme en las bellísimas y arcaicas universidades de Cambridge, Oxford, Dublin... el Long Room...
+			... aunque eso solo en cuanto a la temática, claro "^^ canónicamente, en cambio, la región violeta, así como
+			también todo Irisium, debería ser la isla de Naxos :3
 
-Q: Why does X character have X name?
-A: Oh, ho-ho... interesting one. I honestly just parted from my base idea of the concepts of each region and character.
-Then I considered a bunch of names until I got to ones that matched the corresponding theme and didn't sound bad!
-- Phoebe, Cybele, Ariadne, and Rhea all come from greek mythology, if it wasn't already obvious...
-	* Something cool about Phoebe is that I intentionally chose it for the benefit of having a protagonist with an unisex name.
-I mean, it doesn't [i]need[/i] to be a unisex name, but when it comes to VNs it might be a good game design idea to "help the player relate to the protagonist".
-So here we are...
-- Hector comes from a joke from a video of an iconic chilean youtuber, German. Something something about a 3-meter-tall surfer with a huge D.
-I thought it did kinda match the Central American region and the beach theme, so I gave it a go! "^^
-- Amaru is just a name that matches his region's culture :3
-	* Chun Min-Min is similar on this note, but with the distinction that it's a fictional name - it's just "based"
-off of his region's typical names. I wanted something easy to remember, not a complex name. Surnames make for complex, hard to remember names...
-so I thought repeating the surname was a good idea in this regard - Min-Min is easy to remember!!! Hmmm... now that I think of it...
-maybe Chun Min was even easier to remember... or just Chun, in that matter.
-But then lowly vagrant employees would mock him as "Mr. C", and he is no Cock nor Chicken! (# > .<)
-- As for Noon... well... there's nothing hotter than noon, is there! (ha)
+
+
+Pregunta: ¿Por qué tal personaje tiene tal nombre?
+Respuesta: Uhhh... ejeje, interesante pregunta. Sinceramente tan solo partí de mi idea base de los conceptos de cada región y personaje.
+Después, pensé en varios nombres hasta llegar a los que mejor quedaran con sus respectivas temáticas y ¡los que menos mal sonaran! ":3
+
+- Phoebe, Cybele, Ariadne y Rhea todos vienen de la mitología griega, por si no fuera lo suficientemente obvio ya...
+	* Algo copado de Phoebe es que lo elegí a propósito para correr con la ventaja de tener una protagonista con nombre unisex.
+Corte, tampoco es como que sí o sí [i]tenga[/i] que tener un nombre unisex, pero cuando se trata de novelas visuales quizás
+sea una buena práctica "ayudar al jugador a identificarse con el protagonista" a la hora de diseñar los juegos. Así que acá andamos...
+
+- Hector es por un chiste de cierto video de un icónico youtuber chileno, Germán. Era aaaaalgo así como de un surfista que mide
+3 metros y la tiene re grande... por así decirlo ":3
+Sentí que maso iba bien con la temática de la playa y la región de Centroamérica, así que dije "bueno, ya fue" ajajajja ":3
+
+- Amaru es simplemente un nombre Aimara: combina con la cultura de su región :3
+	* Chun Min-Min es algo similar en este sentido, pero con la pequeña diferencia de que este sí que es un nombre ficticio:
+	La región azul es una región moderna, ¡y la modernidad trae consigo el uso de apellidos! Eso de "Min-Min" fue simplemente
+	porque... qué se yo... era más fácil de recordar ajajaja y además queda chistosito :p
+
+- En cuanto a Noon, bueno... Noon en inglés es mediodía. Y, ¿acaso hay algo más caluroso que el mediodía? Ejejejej :p
+
+
 
 Q: Any inspirations for characters?
 A: Yup! Even though they're just inspirations, sources of ideas for me, not models to copycat bit by bit!
@@ -58,10 +80,26 @@ Now then, this is super embarrassing for me and might come off as really cringe,
 - Cybele is inspired by Mila, an IRL friend of mine.
 - Chun Min-Min is inspired by Rosemarie. They're not that much alike, but they do have some things in common... ":3
 - Ariadne is inspired by myself, admittedly. Maybe a bit of my idealized, wannabe version of myself... (>. <)
+	...unless I get around to adding the astrology stuff for Ariadne. If I do, then I wouldn't relate to that.
+	But I don't have to, it's just a fictional character after all :p
 
+Pregunta: ¿Te inspiraste en algo para los personajes?
+Respuesta: ¡Sip! Igual son solo inspiraciones, me sirvieron como fuentes de ideas para mí, ¡no como modelos a imitar al más mínimo detalle!
+Bueno... son medio vergonzosas y quizás den bastante vergüenza ajena, pero... emmmm...
+- Noon está inspirado en Ghost Rider, en la interpretación de Nicolas Cage
+- Hector está inspirado en Braum Veraniego, de League of Legends.
+- Cybele está inspirada en Mila, una amiga mía de la vida real.
+- Chun Min-Min está inspirado en Rosemarie, también une buen amigue mío. Aunque no es como que se parezcan tanto tanto,
+	pero sí que tienen algunas cosas en común, la verdad... ":3
 
-- When it comes to Rhea, I wanted her to fit the cliché archetype of a Femme Fatale.
-Some inspirations for this... maybe Veronica from Phantom Rose,
-Evelyn from League of Legends, Jenova from Final Fantasy VII, and so on.
-The idea was to have a Empress who ruled over the stars. Something like a female Freezer from Dragon Ball Z,
-but with the symbolism of darkness and void - you know, the black outer space that fills it all :)
+- Ariadne está inspirada en mí misma, he de admitirlo. Capaz es algo así como una versión idealizada de mí misma... (>. <)
+	...a no ser que le termine agregando los chiches estos de astrología. Si se los termino agregando al juego, entonces
+	no me identificaría con ella en ese sentido.
+	Pero está bien, porque no es como que tenga por qué identificarme con ella tampoco. Es solo un personaje ficticio, después de todo :p
+
+- Sobre Rhea... quería hacer un personaje que encajara el arquetipo cliché de una Femme Fatale.
+Algunas fuentes que tomé como inspiración... quizás Verónica de Phantom Rose, Evelynn de League of Legends,
+Jenova de Final Fantasy VII, etc.
+Mi idea era tener una emperatriz que dominara las galaxias, las estrellas, los planetas... algo así 
+como una "Freezer mujer", de Dragon Ball Z, pero con el simbolismo de la oscuridad y las estrellas... o sea,
+el negro espacio exterior que llena todo el universo :)
