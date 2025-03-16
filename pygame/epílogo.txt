@@ -4,21 +4,24 @@
 
 
 
-Pregunta: Why did you make this game? Do you want to make videogames for a living?
-Respuesta: Not for a living, no...
-I'm a Computer Science student with a passion for learning - I love reading math books and computer science books, and my
-dream is to get a PhD in Computer Science, and be a researcher in graph theory!!! :3
-I've always been pretty bad at the coding part of the career, tho... and just coding in general...
-even if my passion is for research, I should learn to code real world things, too!
-So I took up Indie Development as a way to keep on learning... I want to learn Python, C++, Vulkan, maybe even Unreal Engine! Who knows... the possiblities are endless :"3
+Pregunta: ¿Por qué hiciste este juego? ¿Querés vivir de hacer videojuegos?
+Respuesta: Eeeeeeeeehhh nah, vivir de eso como tal no realmente, no...
+Soy una estudiante de Ciencias de la Computación y me apasiona aprender: ¡me encanta leer libros de Matemática y de Computación, y mi sueño
+es recibirme de Doctora en Computación y ser una investigadora en Teoría de Grafos! :3
+Aunque sinceramente siempre fui bastante mala en la carrera a la hora de programar, la verdad... bueno, y también soy mala programando en general...
+Aún si mi pasión es la investigación, ¡también debería aprender a programar cosas de verdad, de la vida real!
+Así que arranqué mi estudio indie como una forma de seguir aprendiendo... quiero aprender Python, C++, Blender, Vulkan... ¡capaz incluso Unreal Engine!
+Quién sabe... tengo infinidad de posibilidades a mi alcance ":3
 
-Do keep that in mind, though: most indie devs are people who want to make games, and learn coding for that purpose...
-...but I'm completely the opposite! I want to learn coding, and so I'm making games for that purpose!
+Tené en cuenta, sin embargo, que la mayoría de desarrolladores indie son gente que quiere hacer juegos, y para eso es que aprenden a programar...
+...pero ¡yo soy todo lo contrario° Quiero aprender a programar y ¡es con ese fin que hago juegos!
 
-That being said, I did grow fond of Stellar Defenders the more I worked on it...
+Habiendo dicho eso, sí es cierto que le fui tomando cariño a Stellar Defenders mientras más y más trabajaba en él...
 
-...I also enjoy drawing, painting, editing images, videos, translating, scanlating... maybe I can even make
-a comedy series of black and white mangas for Stellar Defenders, if you show enough support for the idea! "^-^
+...Y también tengo que admitir que me gusta dibujar, pintar, editar imágenes, editar videos, traducir, hacer scanlating...
+¡quizás hasta podría llegar a hacer mangas de comedia en blanco y negro sobre Stellar Defenders, si apoyan esta idea lo suficiente! "^-^
+
+
 
 
 
