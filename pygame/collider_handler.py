@@ -23,6 +23,8 @@
 from screeninfo import get_monitors
 from math import floor
 
+from geometry import Triangle, Vertex, Line
+
 user_screen_width = get_monitors()[0].width
 user_screen_height = get_monitors()[0].height
 
@@ -37,65 +39,85 @@ def set_game_resolution(width, height):
     game_height = height
     return
 
-def finds_line_equation(v1, v2):      # Extends the given line to fit the whole screen by finding its closed formula! So basically finds a and b so that line = a * x + b. Some odd dudes call it mx + b. Pay those no mind :p
+set_game_resolution(1920, 1080)
+print("game resolution is OK")
 
-    if v1[0] == v2[0]:
-        line_formula = (0, v1[1])                    # it's a horizontal line!
+def finds_line_equation(vertex_1: Vertex, vertex_2: Vertex):      # Extends the given line to fit the whole screen by finding its closed formula! So basically finds a and b so that line = a * x + b. Some odd dudes call it mx + b. Pay those no mind :p
 
-    elif v1[1] == v2[1]:
-        line_formula = ("vertical", v1[0])     # it's a vertical line... let's make a flag for it to separate this border case from the rest ":3
+    if vertex_1.y_coordinate() == vertex_2.y_coordinate():
+        line_formula = Line(0, vertex_1.y_coordinate())                    # it's a horizontal line!
+
+    elif vertex_1.x_coordinate() == vertex_2.x_coordinate():
+        line_formula = Line("vertical", vertex_1.x_coordinate())     # it's a vertical line... let's make a flag for it to separate this border case from the rest ":3
+        # in this case line_formula isn't the closed formula, so instead of line(a, b) here we have line("vertical", x_0), but oh well... ":3
+
 
     else:
-        a = (v2[1] - v1[1]) / (v2[0] - v1[0])
-        b = v2[1] - a * v2[0]             # do the math, it checks out :p   v2 and v1 should give the same result here btw              
+        a = (vertex_2.y_coordinate() - vertex_1.y_coordinate()) / (vertex_2.x_coordinate() - vertex_1.x_coordinate())
+        b = vertex_2.y_coordinate() - a * vertex_2.x_coordinate()             # do the math, it checks out :p  ///  vertex_2 and vertex_1 should give the same result here btw              
 
-        line_formula = (a, b)
+        line_formula = Line(a, b)
 
     return line_formula                   # It's a line! f(x) = a * x + b
 
 
-def check_colliders_init(v1, v2, v3, vA):   # Looks for the (bool, bool, bool) combination for vA
+def check_colliders_init(triangle: Triangle, vertex_A: Vertex):   # Looks for the (bool, bool, bool) combination for vA
 
-    line_1 = finds_line_equation(v1, v2)
-    line_2 = finds_line_equation(v2, v3)
-    line_3 = finds_line_equation(v3, v1)
+    line_1 = finds_line_equation(triangle.vertex_1(), triangle.vertex_2())
+    line_2 = finds_line_equation(triangle.vertex_2(), triangle.vertex_3())
+    line_3 = finds_line_equation(triangle.vertex_3(), triangle.vertex_1())
 
     lines = [line_1, line_2, line_3]
 
-    vAC = []
+    vertex_AC = []
 
     for line in lines:
 
-        if type(line[0]) == str:     # if the line is a vertical one...
-            line = (line[1] <  vA[1])
-            vAC.append(line)
+        if type(line.slope()) == str:     # if the line is a vertical one...
+            line = (line.ordinates() < vertex_A.x_coordinate())    # here, line.ordinates() is just the x value of the vertical line (sorry for notation abuse, coding is hard... e.e) 
+            vertex_AC.append(line)
         else:
-            line = (vA[1] <= line[0] * vA[0] + line[1])         # line[0] is a // line [1] is b // vA[0] is x_v // vA[1] is y_v
-            vAC.append(line)
+            line = (vertex_A.y_coordinate() <= line.slope() * vertex_A.x_coordinate() + line.ordinates())         # line[0] is a // line [1] is b // vA[0] is x_v // vA[1] is y_v
+            vertex_AC.append(line)
+            
+    # print("lines_combination (vertex_AC) is: ", vertex_AC)
+    return vertex_AC
+
+def check_colliders(triangle: Triangle, vertex_AC: list[bool], vertex_C: Vertex):   # vertex_AC is the [bool, bool, bool] combination for vertex_A
+
+    rescaled_vertex_C_x_coordinate = floor(vertex_C.x_coordinate() * game_width / user_screen_width)
+    rescaled_vertex_C_y_coordinate = floor(vertex_C.y_coordinate() * game_height / user_screen_height)
+
+    rescaled_vertex_C = Vertex(rescaled_vertex_C_x_coordinate, rescaled_vertex_C_y_coordinate)  # We have to rescale user input!!! Because their screen might not be the same as the game resolution!":3
+
+    # print("game_width =", game_width)
+    # print("game_height =", game_height)
+
+    vertex_CC = [False, False, False] # Initializes vertex_CC
+    
+    vertex_CC = check_colliders_init(triangle, rescaled_vertex_C)
+    
+
+    
+    """
+    if (vertex_C.x == ) and (vertex_C.y == []):
+        for vertex in triangle:
+            print("vertice_tal: ")
+            print(str(vertex.x), str(vertex.y))
+    """
             
 
+    return vertex_AC == vertex_CC   # vertex_CC is the combination calculated based on where the player/cursor is currently located at! :3
+
+
+"""
+def check_against_initialized_colliders(triangle: Triangle, bool_list: list[bool], vertex):
+    check_for_current_triangle = check_colliders(triangle, Vertex)
+    return
+"""
     
-    # print("lines_combination (vAC) is: ", vAC)
-    return vAC
 
-def check_colliders(v1, v2, v3, vAC, vC):   # vAC is the (bool, bool, bool) combination for vA
-
-    rescaled_vC_x = floor(vC[0] * game_width / user_screen_width)
-    rescaled_vC_y = floor(vC[1] * game_height / user_screen_height)
-
-    rescaled_vC = (rescaled_vC_x, rescaled_vC_y)
-
-    vCC = (False, False, False)
-
-    if rescaled_vC_y != 0:                                  # WARNING: Collisions won't work if the player is on the left border of the screen! (when mouse_pos_x = 0, we get a vertical line, so basically infinite slope parameter and no closed formula... e.e)
-        vCC = check_colliders_init(v1, v2, v3, rescaled_vC)          # Can be made a border case maybe but me is too lazy, cut me some slack... implement it yourself if needed :3                                                        
-    else:
-        print("ERROR OJO CUIDAO")
-        pass
-    
-    return vAC == vCC   #vCC is the combination calculated based on where the player/cursor is currently located at! :3
-
-
+"""
 if __name__ == "__main__":
 
     def tests_yellow():
@@ -111,3 +133,4 @@ if __name__ == "__main__":
 
 
     tests_yellow()
+"""

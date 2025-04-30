@@ -11,8 +11,7 @@ list_of_all_frames = []
 
 def load_and_rescale_EVERYTHING(dir_path):
     load_and_rescale_colours(dir_path)
-    load_and_rescale_background_animation(dir_path)
-
+        # pass: add more animations in here in the future if needed!
     return
 
 
@@ -59,9 +58,10 @@ def frame_blit(colour, number):
 
     return
 
-
+"""
 def load_and_rescale_background_animation(dir_path):
 
     pass
 
     return
+"""

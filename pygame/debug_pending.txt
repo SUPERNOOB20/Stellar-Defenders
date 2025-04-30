@@ -1,0 +1,4 @@
+yellow WRONG: (1157, 190)
+orange WRONG: (56, 510)
+
+orange: da falso positivo para el triángulo 5 (o_t5) (cv = 5)
