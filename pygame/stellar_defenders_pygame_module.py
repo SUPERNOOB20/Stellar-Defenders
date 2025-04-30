@@ -74,7 +74,7 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
         if __name__ == "__main__":
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
-                print("mouse_pos when you clicked:", mouse_pos)
+                # print("mouse_pos when you clicked:", mouse_pos)
 
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -135,7 +135,7 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
     else:
 
 
-        animation_handler(screen, tick_counter, colour = "none", game_state = 0)     # Think of it as a "timeline" in video editing software! :3
+        animation_handler(screen, tick_counter, colour = "none", game_state = 0, just_animating_colour = 0)     # Think of it as a "timeline" in video editing software! :3
 
 
         if seconds < 9:
