@@ -18,7 +18,7 @@ class Colliders_Colour:
 
     def is_user_on_colour(self, mouse_pos_vertex):
 
-        # result = False
+        result = False
 
         cv = -1
 
@@ -27,10 +27,11 @@ class Colliders_Colour:
             cv += 1
 
             if (check_colliders(t, self.center_vertices_plane_region[cv], mouse_pos_vertex)) == True:       # (Triangle, [bool, bool, bool], Vertex)
-                print("The problematic orange triangle is:", "o_t" + str(cv))
-                return True      # ... then the user is in this region! :D
+                # print("The problematic orange triangle is:", "o_t" + str(cv))
+                result = True        # ... then the user is in this region! :D
+                break
         
-        return False
+        return result
 
 # red = 0
 # orange = 0
