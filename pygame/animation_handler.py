@@ -246,12 +246,11 @@ def colour_handler(screen, tick_counter, mouse_pos, game_state):            # Ne
     
     # if colour_collider_handler.red.is_user_on_colour(mouse_pos):
         # animation_handler(screen, tick_counter, "red", game_state, just_animating_colour = 1)
-        # useless_temp_variable = 0
 
     if colour_collider_handler.orange.is_user_on_colour(mouse_pos):
         animation_handler(screen, tick_counter, "orange", game_state, just_animating_colour = 1)
-        play_clicking_SFX()
-        worldmap_fadeout()
+        # play_clicking_SFX()
+        # worldmap_fadeout()
         # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
         # print("you is on orange :3")
 
@@ -259,16 +258,14 @@ def colour_handler(screen, tick_counter, mouse_pos, game_state):            # Ne
         animation_handler(screen, tick_counter, "yellow", game_state, just_animating_colour = 1)
         # print("you is on yellow :3")
     
-    # elif colour_collider_handler.green.is_user_on_colour(mouse_pos):
-        # animation_handler(screen, tick_counter, "green", game_state, just_animating_colour = 1)
-        # useless_temp_variable = 0
+    elif colour_collider_handler.green.is_user_on_colour(mouse_pos):
+        animation_handler(screen, tick_counter, "green", game_state, just_animating_colour = 1)        
 
     # elif colour_collider_handler.blue.is_user_on_colour(mouse_pos):
         # animation_handler(screen, tick_counter, "blue", game_state, just_animating_colour = 1)
-        # useless_temp_variable = 0
-
+        
     # elif colour_collider_handler.purple.is_user_on_colour(mouse_pos):
         # animation_handler(screen, tick_counter, "purple", game_state, just_animating_colour = 1)
-        # useless_temp_variable = 0
+        
 
     return

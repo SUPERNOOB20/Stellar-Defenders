@@ -74,7 +74,7 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
         if __name__ == "__main__":
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
-                # print("mouse_pos when you clicked:", mouse_pos)
+                print("mouse_pos when you clicked:", mouse_pos)
 
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -150,6 +150,11 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
             mouse_pos_y = mouse_pos[1]
 
             mouse_pos_vertex = Vertex(mouse_pos_x, mouse_pos_y)
+
+
+
+
+            # mouse_pos_vertex = Vertex(1350, 300)
 
             colour_handler(screen, tick_counter, mouse_pos_vertex, game_state = 0)
 

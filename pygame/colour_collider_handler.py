@@ -51,8 +51,10 @@ o_v7 = Vertex(1048, 153)
 o_v8 = Vertex(1266, 134)
 o_v9 = Vertex(1212, 167)
 o_v10 = Vertex(1175, 302)
-o_v11 = Vertex(1115, 335)                   # !!!
-o_v12 = Vertex(1115, 421)                   # !!!
+# o_v11 = Vertex(1115, 335)                   # !!!
+# o_v12 = Vertex(1115, 421)                   # !!!
+o_v11 = Vertex(1116, 335)
+o_v12 = Vertex(1114, 421)
 o_v13 = Vertex(1039, 504)
 o_v14 = Vertex(897, 533)
 o_v15 = Vertex(899, 615)
@@ -142,46 +144,125 @@ orange = Colliders_Colour(orange_vertices, orange_triangles, orange_center_verti
 
 
 
-
+jut = 4     # Juts out the specified amount of pixels to attempt to avoid edge misalignments (remember that 3-hour pancake video? Well, that's where I got inspired from to implement this workaround :P).
+            # Side note: If this causes the player to "appearently" be on two regions at the same time, that's no biggie - my code is implemented in a way that avoids this :)
+            # Side note #2: Try not to jut a region into other regions, as this may hindrance user experience (i.e trying to point to a region but being directed towards a different one...)
 
 
 y_v0 = Vertex(1114, 421)
 y_v1 = Vertex(1116, 335)
-y_v2 = Vertex(1176, 303)
-y_v3 = Vertex(1213, 167)
-y_v4 = Vertex(1267, 135)
-y_v5 = Vertex(1495, 346)
+y_v2 = Vertex(1175, 302)
+
+temp3 = y_v2.x_coordinate()
+temp4 = y_v2.y_coordinate()
+
+y_v2.x_coord = temp3 - jut
+y_v2.y_coord = temp4 - jut
+
+y_v3 = Vertex(1212, 167)
+y_v4 = Vertex(1266, 134)
+y_v5 = Vertex(1495 + 3 * jut, 346)
+
+y_v6 = Vertex(1114 - 5 * jut, 421)
+y_v7 = Vertex(1266, 134 - 5 * jut)
+
 
 y_t0 = Triangle(y_v0, y_v1, y_v2)   # The triangle goes like this: t0 = [v0, v1, v2, v0]. Same reasoning behind all other triangles!
 y_t1 = Triangle(y_v2, y_v3, y_v4)
 y_t2 = Triangle(y_v0, y_v4, y_v5)
+y_t3 = Triangle(y_v5, y_v6, y_v7)
 
 y_cv0 = Vertex(1134, 348)
 y_cv1 = Vertex(1227, 179)
 y_cv2 = Vertex(1306, 292)
-
-
-# center_vertex_plane_region = (bool, bool, bool)
-
-
-# center_vertex_plane_region_0 = check_colliders_init((((y_t0.vertex_1()).x_coordinate()), ((y_t0.vertex_1()).y_coordinate())), (((y_t0.vertex_2()).x_coordinate()), ((y_t0.vertex_2()).y_coordinate())), (((y_t0.vertex_3()).x_coordinate()), ((y_t0.vertex_3()).y_coordinate())), ((y_cv0.x_coordinate()), (y_cv0.y_coordinate())))
-# center_vertex_plane_region_1 = check_colliders_init(y_t1.vertex_1(), y_t1.vertex_2(), y_t1.vertex_3(), y_cv1)
-# center_vertex_plane_region_2 = check_colliders_init(y_t2.vertex_1(), y_t2.vertex_2(), y_t2.vertex_3(), y_cv2)
+y_cv3 = Vertex(1306, 292)
 
 center_vertex_plane_region_y0 = check_colliders_init(y_t0, y_cv0)
 center_vertex_plane_region_y1 = check_colliders_init(y_t1, y_cv1)
 center_vertex_plane_region_y2 = check_colliders_init(y_t2, y_cv2)
+center_vertex_plane_region_y3 = check_colliders_init(y_t3, y_cv3)
 
 
-
-yellow_vertices = [y_v0, y_v1, y_v2, y_v3, y_v4, y_v5]
-yellow_triangles = [y_t0, y_t1, y_t2]
-yellow_center_vertices = [y_cv0, y_cv1, y_cv2]
-yellow_center_vertices_plane_region = [center_vertex_plane_region_y0, center_vertex_plane_region_y1, center_vertex_plane_region_y2]
+yellow_vertices = [y_v0, y_v1, y_v2, y_v3, y_v4, y_v5, y_v6, y_v7]
+yellow_triangles = [y_t0, y_t1, y_t2, y_t3]
+yellow_center_vertices = [y_cv0, y_cv1, y_cv2, y_cv3]
+yellow_center_vertices_plane_region = [center_vertex_plane_region_y0, center_vertex_plane_region_y1, center_vertex_plane_region_y2, center_vertex_plane_region_y3]
 
 yellow = Colliders_Colour(yellow_vertices, yellow_triangles, yellow_center_vertices, yellow_center_vertices_plane_region)
 
 
+
+
+
+
+g_v0 = Vertex(1039, 504)
+g_v1 = Vertex(1114, 421)
+g_v2 = Vertex(1495, 346)
+g_v3 = Vertex(1532 + jut, 532)
+g_v4 = Vertex(1600 + jut, 561)
+g_v5 = Vertex(1585 + jut, 612)
+g_v6 = Vertex(1622 + jut, 668)
+g_v7 = Vertex(1584, 678 + jut)
+g_v8 = Vertex(1478, 735 + jut)
+g_v9 = Vertex(1388 - (jut / 2), 731 + jut)
+g_v10 = Vertex(1333 - (jut / 2), 694 + jut)
+g_v11 = Vertex(1240, 714)
+g_v12 = Vertex(1157 - jut, 637 + jut)
+g_v13 = Vertex(1095, 620)
+g_v14 = Vertex(1093 - jut, 566)
+
+g_t0 = Triangle(g_v0, g_v1, g_v14)
+g_t1 = Triangle(g_v1, g_v2, g_v3)
+g_t2 = Triangle(g_v1, g_v3, g_v14)
+g_t3 = Triangle(g_v14, g_v3, g_v5)
+g_t4 = Triangle(g_v3, g_v4, g_v5)
+g_t5 = Triangle(g_v14, g_v5, g_v10)
+g_t6 = Triangle(g_v5, g_v8, g_v10)
+g_t7 = Triangle(g_v5, g_v7, g_v8)
+g_t8 = Triangle(g_v5, g_v6, g_v7)
+g_t9 = Triangle(g_v8, g_v9, g_v10)
+g_t10 = Triangle(g_v10, g_v11, g_v12)
+g_t11 = Triangle(g_v10, g_v12, g_v14)
+g_t12 = Triangle(g_v12, g_v13, g_v14)
+
+g_cv0 = Vertex(1078, 500)
+g_cv1 = Vertex(1384, 434)
+g_cv2 = Vertex(1250, 514)
+g_cv3 = Vertex(1444, 571)
+g_cv4 = Vertex(1577, 571)
+g_cv5 = Vertex(1342, 637)
+g_cv6 = Vertex(1473, 688)
+g_cv7 = Vertex(1558, 668)
+g_cv8 = Vertex(1600, 656)
+g_cv9 = Vertex(1391, 727)
+g_cv10 = Vertex(1245, 689)
+g_cv11 = Vertex(1173, 628)
+g_cv12 = Vertex(1112, 609)
+
+
+
+center_vertex_plane_region_g0 = check_colliders_init(g_t0, g_cv0)
+center_vertex_plane_region_g1 = check_colliders_init(g_t1, g_cv1)
+center_vertex_plane_region_g2 = check_colliders_init(g_t2, g_cv2)
+center_vertex_plane_region_g3 = check_colliders_init(g_t3, g_cv3)
+center_vertex_plane_region_g4 = check_colliders_init(g_t4, g_cv4)
+center_vertex_plane_region_g5 = check_colliders_init(g_t5, g_cv5)
+center_vertex_plane_region_g6 = check_colliders_init(g_t6, g_cv6)
+center_vertex_plane_region_g7 = check_colliders_init(g_t7, g_cv7)
+center_vertex_plane_region_g8 = check_colliders_init(g_t8, g_cv8)
+center_vertex_plane_region_g9 = check_colliders_init(g_t9, g_cv9)
+center_vertex_plane_region_g10 = check_colliders_init(g_t10, g_cv10)
+center_vertex_plane_region_g11 = check_colliders_init(g_t11, g_cv11)
+center_vertex_plane_region_g12 = check_colliders_init(g_t12, g_cv12)
+
+
+
+green_vertices = [g_v0, g_v1, g_v2, g_v3, g_v4, g_v5, g_v6, g_v7, g_v8, g_v9, g_v10, g_v11, g_v12, g_v13, g_v14]
+green_triangles = [g_t0, g_t1, g_t2, g_t3, g_t4, g_t5, g_t6, g_t7, g_t8, g_t9, g_t10, g_t11, g_t12]
+green_center_vertices = [g_cv0, g_cv1, g_cv2, g_cv3, g_cv4, g_cv5, g_cv6, g_cv7, g_cv8, g_cv9, g_cv10, g_cv11, g_cv12]
+green_center_vertices_plane_region = [center_vertex_plane_region_g0, center_vertex_plane_region_g1, center_vertex_plane_region_g2, center_vertex_plane_region_g3, center_vertex_plane_region_g4, center_vertex_plane_region_g5, center_vertex_plane_region_g6, center_vertex_plane_region_g7, center_vertex_plane_region_g8, center_vertex_plane_region_g9, center_vertex_plane_region_g10, center_vertex_plane_region_g11, center_vertex_plane_region_g12]
+
+green = Colliders_Colour(green_vertices, green_triangles, green_center_vertices, green_center_vertices_plane_region)
 
 
 
@@ -214,5 +295,17 @@ if __name__ == "__main__":
         vertex_to_test = Vertex(vertex[0], vertex[1])
         print(orange.is_user_on_colour(vertex_to_test))
         return
+    
+    def test_2(vertex):
+        vertex_to_test = Vertex(vertex[0], vertex[1])
+        print(green.is_user_on_colour(vertex_to_test))
+        return
+    def test_3(vertex):
+        vertex_to_test = Vertex(vertex[0], vertex[1])
+        print(yellow.is_user_on_colour(vertex_to_test))
+        return
 
-    test_1((1231, 455))
+    # test_1((1231, 455))
+    # test_2((1350, 300))
+    # test_3((1153,363))           # (821,242)
+    test_3((821,242))
