@@ -535,12 +535,12 @@ center_vertex_plane_region_r5 = check_colliders_init(r_t5, r_cv5)
 center_vertex_plane_region_r6 = check_colliders_init(r_t6, r_cv6)
 
 
-green_vertices = [r_v0, r_v1, r_v2, r_v3, r_v4, r_v5, r_v6, r_v7, r_v8]
-green_triangles = [r_t0, r_t1, r_t2, r_t3, r_t4, r_t5, r_t6]
+red_vertices = [r_v0, r_v1, r_v2, r_v3, r_v4, r_v5, r_v6, r_v7, r_v8]
+red_triangles = [r_t0, r_t1, r_t2, r_t3, r_t4, r_t5, r_t6]
 red_center_vertices = [r_cv0, r_cv1, r_cv2, r_cv3, r_cv4, r_cv5, r_cv6]
 red_center_vertices_plane_region = [center_vertex_plane_region_r0, center_vertex_plane_region_r1, center_vertex_plane_region_r2, center_vertex_plane_region_r3, center_vertex_plane_region_r4, center_vertex_plane_region_r5, center_vertex_plane_region_r6]
 
-red = Colliders_Colour(green_vertices, green_triangles, green_center_vertices, green_center_vertices_plane_region)
+red = Colliders_Colour(red_vertices, red_triangles, red_center_vertices, red_center_vertices_plane_region)
 
 
 
