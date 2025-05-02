@@ -40,7 +40,7 @@ def set_game_resolution(width, height):
     return
 
 set_game_resolution(1920, 1080)
-print("game resolution is OK")
+# print("game resolution is OK:", str(game_width) ++ "x" ++ str(game_height))
 
 def finds_line_equation(vertex_1: Vertex, vertex_2: Vertex):      # Extends the given line to fit the whole screen by finding its closed formula! So basically finds a and b so that line = a * x + b. Some odd dudes call it mx + b. Pay those no mind :p
 
@@ -96,16 +96,7 @@ def check_colliders(triangle: Triangle, vertex_AC: list[bool], vertex_C: Vertex)
     vertex_CC = [False, False, False] # Initializes vertex_CC
     
     vertex_CC = check_colliders_init(triangle, rescaled_vertex_C)
-    
 
-    
-    """
-    if (vertex_C.x == ) and (vertex_C.y == []):
-        for vertex in triangle:
-            print("vertice_tal: ")
-            print(str(vertex.x), str(vertex.y))
-    """
-            
 
     return vertex_AC == vertex_CC   # vertex_CC is the combination calculated based on where the player/cursor is currently located at! :3
 
