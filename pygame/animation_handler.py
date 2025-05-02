@@ -1,11 +1,11 @@
 from math import floor, ceil
 import animation_loader
-# from colour_collider_handler import Colliders_Colour, red, orange, yellow, green, blue, purple
 import colour_collider_handler
 import pygame
 import os
 from screeninfo import get_monitors
-# from stellar_defenders_pygame_module import screen
+
+import settings
 
 animation_timer_1 = 0
 animation_timer_2 = 0
@@ -20,6 +20,33 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 user_screen_width = get_monitors()[0].width
 user_screen_height = get_monitors()[0].height
+
+
+
+
+red_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/red/background.png").convert()
+red_bg_surface = pygame.transform.scale(surface = red_bg_surface_raw, size = (user_screen_width, user_screen_height))
+red_bg_surface.set_alpha(0)       # Goes from 0 to 255 :3
+
+orange_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/orange/background.png").convert()
+orange_bg_surface = pygame.transform.scale(surface = orange_bg_surface_raw, size = (user_screen_width, user_screen_height))
+orange_bg_surface.set_alpha(0)       # Goes from 0 to 255 :3
+
+yellow_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/yellow/background.png").convert()
+yellow_bg_surface = pygame.transform.scale(surface = yellow_bg_surface_raw, size = (user_screen_width, user_screen_height))
+yellow_bg_surface.set_alpha(0)       # Goes from 0 to 255 :3
+
+green_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/green/background.png").convert()
+green_bg_surface = pygame.transform.scale(surface = green_bg_surface_raw, size = (user_screen_width, user_screen_height))
+green_bg_surface.set_alpha(0)       # Goes from 0 to 255 :3
+
+blue_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/blue/background.png").convert()
+blue_bg_surface = pygame.transform.scale(surface = blue_bg_surface_raw, size = (user_screen_width, user_screen_height))
+blue_bg_surface.set_alpha(0)       # Goes from 0 to 255 :3
+
+purple_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/purple/background.png").convert()
+purple_bg_surface = pygame.transform.scale(surface = purple_bg_surface_raw, size = (user_screen_width, user_screen_height))
+purple_bg_surface.set_alpha(0)       # Goes from 0 to 255 :3
 
 
 bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/map_barebone_no_text.png").convert_alpha()
@@ -93,81 +120,88 @@ def title_animation_fadeout(duration_in_frames, tick_counter):
 
 # sea_timer = 0
 
-def animation_handler(screen, tick_counter, colour: str, game_state: int, just_animating_colour):
-    match game_state:
+def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
+    
+    match settings.game_state:
         case 0:
-            match just_animating_colour:
-                case 0:
-                    seconds = tick_counter / 60
+            seconds = tick_counter / 60
 
-                    # global sea_timer
-                    # if (sea_timer % 180:
-                    seas_animation(screen)
 
-                    # sea_timer += 1
+            if just_animating_colour == False:
+                
+                seas_animation()
 
-                    sea_rect.bottomleft = (- ceil(truncated_x_pos), (user_screen_height + floor(truncated_y_pos)))
-                    screen.blit(sea_surface, sea_rect)
+                sea_rect.bottomleft = (- ceil(truncated_x_pos), (user_screen_height + floor(truncated_y_pos)))
+                screen.blit(sea_surface, sea_rect)
 
 
 
-                    if (seconds) < 9:
+                if (seconds) < 9:
+                    screen.blit(bg_surface, (0, 0))
+                    screen.blit(title_surface, (title_x_pos, title_y_pos))
 
-                        screen.blit(bg_surface, (0, 0))
-                        screen.blit(title_surface, (title_x_pos, title_y_pos))
+                screen.blit(stellardefenders_surface, (0, 0))
+                title_surface.set_alpha(title_alpha_value)       # Goes from 0 to 255 :3
 
-                    screen.blit(stellardefenders_surface, (0, 0))
+                if (seconds < 1.5):
+                    title_animation_fadein(90)
 
-                    title_surface.set_alpha(title_alpha_value)       # Goes from 0 to 255 :3
+                elif ((seconds >= 1.5) & (seconds < 3)):
+                    global step_acum_1
+                    step_acum_1 = 255
 
-                    if (seconds < 1.5):
-                        title_animation_fadein(90)
+                elif ((seconds >= 3) & (seconds < 5)):
+                    title_animation_fadeout(120, tick_counter)
 
-                    elif ((seconds >= 1.5) & (seconds < 3)):
-                        global step_acum_1
-                        step_acum_1 = 255
+                elif ((seconds >= 5) & (seconds < 6)):
+                    step_acum_1 = 0
 
-                    elif ((seconds >= 3) & (seconds < 5)):
-                        title_animation_fadeout(120, tick_counter)
+                elif ((seconds >= 6) & ((seconds) < 9)):
+                    stellardefenders_surface.set_alpha(stellardefenders_alpha_value)       # Goes from 0 to 255 :3
 
-                    elif ((seconds >= 5) & (seconds < 6)):
-                        step_acum_1 = 0
+                    if (seconds == 6):
+                        pygame.mixer.music.play(loops = -1, fade_ms = 1500)     # Fade-in of 90 frames (at 60fps) :3 
 
-                    elif ((seconds >= 6) & (seconds < 9)):
-                        stellardefenders_surface.set_alpha(stellardefenders_alpha_value)       # Goes from 0 to 255 :3
-
-                        if (seconds == 6):
-                            pygame.mixer.music.play(loops = -1, fade_ms = 1500)     # Fade-in of 90 frames (at 60fps) :3 
-
-                        if (seconds < 7.5):
-                            stellardefenders_animation_fadein(90)
+                    if (seconds < 7.5):
+                        stellardefenders_animation_fadein(90)
                         
                     
-                case 1:
-                    # elif (seconds >= 9):
+            elif settings.colour_being_hovered_over_by_the_player != "none":
+                if settings.player_has_just_clicked == True:
+                    seconds = 727
+                    settings.game_state = 1     # With this implementation there will be a 1-frame delay here between the player clicking a region and the animations playing, but oh well... whatever ":3
+                    print("yay, game_state is 1")
 
-                        # if colour != "none":
+                global flickering_animation_counter
+                global is_flickering_ascending
 
-                    global flickering_animation_counter
-                    global is_flickering_ascending
+                if flickering_animation_counter == 54:               # It will now start going down through the list of frames!
+                    is_flickering_ascending = False
+                    
+                elif flickering_animation_counter == 0:
+                    is_flickering_ascending = True
 
-                    if flickering_animation_counter == 54:               # It will now start going down through the list of frames!
-                        is_flickering_ascending = False
-                        
-                    elif flickering_animation_counter == 0:
-                        is_flickering_ascending = True
+                show_colour_flickering(flickering_animation_counter)
 
-                    show_colour_flickering(colour, flickering_animation_counter)
+                if is_flickering_ascending == True:
+                    flickering_animation_counter += 1
+                else:
+                    flickering_animation_counter -= 1
 
-                    if is_flickering_ascending == True:
-                        flickering_animation_counter += 1
-                    else:
-                        flickering_animation_counter -= 1
-            
+            else:
+                print('how tf did u get here o_o warn the dev!!!! "^^')
+        
+
+
         case 1:
+            seconds = (tick_counter / 60) - 9       # Offsets the "local timer" to work more comfortably - it's like we're in a "sub-timeline" now :3
+            print("seconds after reaching game_state == 1:", seconds)
             print("play regional background anim lol")
+            worldmap_fadeout()
+            # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
+            play_colour_animation(screen)
         case _:
-            print("ERROR: Invalid game state:", game_state)
+            print("ERROR: Invalid game state:", settings.game_state)
             pygame.quit()
             exit()
 
@@ -192,7 +226,7 @@ seas_vertical_position = 0
 truncated_x_pos = 0
 truncated_y_pos = 0
 
-def seas_animation(screen):
+def seas_animation():
 
     global step_x
     global step_y
@@ -222,8 +256,8 @@ def seas_animation(screen):
 
     return
 
-def show_colour_flickering(colour: str, flickering_animation_counter):
-    return animation_loader.frame_blit(colour, flickering_animation_counter)
+def show_colour_flickering(flickering_animation_counter):
+    return animation_loader.frame_blit(flickering_animation_counter)
     
 def play_clicking_SFX():
     return
@@ -234,38 +268,72 @@ def play_ominous_SFX():
 def worldmap_fadeout():
     return
 
-def play_colour_animation(colour_background, colour_silhouettes, colour_title):
+def play_colour_animation(screen):
 
+    # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
     # screen.blit(colour_background)
+
+    index = (("red", "orange", "yellow", "green", "blue", "purple").index(settings.colour_being_hovered_over_by_the_player))
+    match index:
+        case 0:
+            screen.blit(red_bg_surface, (0, 0))
+        case 1:
+            screen.blit(orange_bg_surface, (0, 0))
+        case 2:
+            screen.blit(yellow_bg_surface, (0, 0))
+        case 3:
+            screen.blit(green_bg_surface, (0, 0))
+        case 4:
+            screen.blit(blue_bg_surface, (0, 0))
+        case 5:
+            screen.blit(purple_bg_surface, (0, 0))            
+        case _:
+            print("What?")
+
     play_ominous_SFX()
     return
 
 
 
-def colour_handler(screen, tick_counter, mouse_pos, game_state):            # Needs the tick counter to check for game state (whether the player is in the world map or not!).
+def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick counter to check for game state (whether the player is in the world map or not!).   // needs game state to check for postgame (3 possible scenarios: hasn't unlocked black // has unlocked black // is in postgame)
     
+    # if colour_collider_handler.black.is_user_on_colour(mouse_pos) & black_region_is_clickable = False:
+        # settings.colour_being_hovered_over_by_the_player = "black"
+        # animation_handler(screen, tick_counter, just_animating_colour = True)
+
     # if colour_collider_handler.red.is_user_on_colour(mouse_pos):
-        # animation_handler(screen, tick_counter, "red", game_state, just_animating_colour = 1)
+        # settings.colour_being_hovered_over_by_the_player = "red"
 
     if colour_collider_handler.orange.is_user_on_colour(mouse_pos):
-        animation_handler(screen, tick_counter, "orange", game_state, just_animating_colour = 1)
+        settings.colour_being_hovered_over_by_the_player = "orange"
+        animation_handler(screen, tick_counter, just_animating_colour = True)
+        
         # play_clicking_SFX()
         # worldmap_fadeout()
         # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
-        # print("you is on orange :3")
+        
 
     elif colour_collider_handler.yellow.is_user_on_colour(mouse_pos):
-        animation_handler(screen, tick_counter, "yellow", game_state, just_animating_colour = 1)
-        # print("you is on yellow :3")
+        settings.colour_being_hovered_over_by_the_player = "yellow"
+        animation_handler(screen, tick_counter, just_animating_colour = True)
     
     elif colour_collider_handler.green.is_user_on_colour(mouse_pos):
-        animation_handler(screen, tick_counter, "green", game_state, just_animating_colour = 1)        
+        settings.colour_being_hovered_over_by_the_player = "green"
+        animation_handler(screen, tick_counter, just_animating_colour = True)        
 
     # elif colour_collider_handler.blue.is_user_on_colour(mouse_pos):
-        # animation_handler(screen, tick_counter, "blue", game_state, just_animating_colour = 1)
-        
+        # settings.colour_being_hovered_over_by_the_player = "blue"
+        # animation_handler(screen, tick_counter, just_animating_colour = True)
+    
     # elif colour_collider_handler.purple.is_user_on_colour(mouse_pos):
-        # animation_handler(screen, tick_counter, "purple", game_state, just_animating_colour = 1)
+        # settings.colour_being_hovered_over_by_the_player = "purple"
+        # animation_handler(screen, tick_counter, just_animating_colour = True) 
         
+    elif settings.game_state == 0:
+        settings.colour_being_hovered_over_by_the_player = "none"
+
+    else:
+        print("what are you doing here?!?!? o_o")
+        print("game_state:", game_state)
 
     return

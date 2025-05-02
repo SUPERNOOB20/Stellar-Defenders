@@ -3,6 +3,8 @@ from screeninfo import get_monitors
 # import os
 import numpy as np
 
+import settings
+
 screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
 pygame.init()
@@ -49,9 +51,18 @@ def load_and_rescale_colours(dir_path):
     return
 
 
-def frame_blit(colour, number):
+def frame_blit(number):
 
-    index = (("red", "orange", "yellow", "green", "blue", "purple").index(colour))
+    # print(settings.colour_being_hovered_over_by_the_player)
+
+    if settings.colour_being_hovered_over_by_the_player == "none":
+        print('You should NOT be seeing this message ingame ":3')
+        return
+
+
+    index = (("red", "orange", "yellow", "green", "blue", "purple").index(settings.colour_being_hovered_over_by_the_player))
+
+    # print("index:", index)
 
     global list_of_all_frames
     screen.blit(list_of_all_frames[index][number], (0, 0))

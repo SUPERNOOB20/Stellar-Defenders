@@ -8,6 +8,8 @@ from screeninfo import get_monitors
 from animation_handler import animation_handler, colour_handler
 from geometry import Vertex
 
+import settings
+
 user_screen_width = get_monitors()[0].width
 user_screen_height = get_monitors()[0].height
 
@@ -71,10 +73,16 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
 
     for event in pygame.event.get():
 
+        """
         if __name__ == "__main__":
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
                 print("mouse_pos when you clicked:", mouse_pos)
+        """
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_pos = pygame.mouse.get_pos()
+            settings.player_has_just_clicked = True
 
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -106,68 +114,86 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
 
                 is_on_fullscreen = False
     
-    if tick_precounter == 0:
+    match settings.game_state:
+        case 0:
 
-        loading_screen_surface_raw = pygame.image.load(f"{dir_path}/graphics/loading_screen.png")
-        loading_screen_surface = pygame.transform.scale(surface = loading_screen_surface_raw, size = (user_screen_width, user_screen_height))
+            if tick_precounter == 0:
 
-        screen.blit(loading_screen_surface, (0, 0))
+                loading_screen_surface_raw = pygame.image.load(f"{dir_path}/graphics/loading_screen.png")
+                loading_screen_surface = pygame.transform.scale(surface = loading_screen_surface_raw, size = (user_screen_width, user_screen_height))
 
-        pygame.font.init()
-        my_font = pygame.font.SysFont('arial', 72)
+                screen.blit(loading_screen_surface, (0, 0))
 
-        text_surface = my_font.render('Loading...', True, (255, 0, 255))
+                pygame.font.init()
+                my_font = pygame.font.SysFont('arial', 72)
 
-
-        screen.blit(text_surface, ((user_screen_width * (7.5/10)), user_screen_height * (8.25/10)))
-
-        tick_precounter += 1
-
-    elif (tick_precounter == 1) & (seconds == 0):
-
-        import animation_loader
-        animation_loader.load_and_rescale_EVERYTHING(dir_path)
-
-        print("Bulky animations initialized succesfully :)")
-
-        tick_precounter += 1
-
-    else:
+                text_surface = my_font.render('Loading...', True, (255, 0, 255))
 
 
-        animation_handler(screen, tick_counter, colour = "none", game_state = 0, just_animating_colour = 0)     # Think of it as a "timeline" in video editing software! :3
+                screen.blit(text_surface, ((user_screen_width * (7.5/10)), user_screen_height * (8.25/10)))
+
+                tick_precounter += 1
+
+            elif (tick_precounter == 1) & (seconds == 0):
+
+                import animation_loader
+                animation_loader.load_and_rescale_EVERYTHING(dir_path)
+
+                print("Bulky animations initialized succesfully :)")
+
+                tick_precounter += 1
+
+            else:
 
 
-        if seconds < 9:
-            tick_counter += 1
-            seconds = tick_counter / 60
-
-        else:
-
-            mouse_pos = pygame.mouse.get_pos()
-
-            mouse_pos_x = mouse_pos[0]
-            mouse_pos_y = mouse_pos[1]
-
-            mouse_pos_vertex = Vertex(mouse_pos_x, mouse_pos_y)
+                animation_handler(screen, tick_counter, just_animating_colour = False)     # Think of it as a "timeline" in video editing software! :3
 
 
+                if seconds < 9:
+                    tick_counter += 1
+                    seconds = tick_counter / 60
+
+                else:
+
+                    mouse_pos = pygame.mouse.get_pos()
+
+                    mouse_pos_x = mouse_pos[0]
+                    mouse_pos_y = mouse_pos[1]
+
+                    mouse_pos_vertex = Vertex(mouse_pos_x, mouse_pos_y)
 
 
-            # mouse_pos_vertex = Vertex(1350, 300)
 
-            colour_handler(screen, tick_counter, mouse_pos_vertex, game_state = 0)
+                    #     vv    DEBUGGING    vv
+                    # mouse_pos_vertex = Vertex(570, 300)
+
+                    colour_handler(screen, tick_counter, mouse_pos_vertex)
 
 
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_1]:
-            screen.blit(colliders_surface, (0, 0))
-        elif keys[pygame.K_2]:
-            screen.blit(colliders_and_continent_surface, (0, 0))
+                keys = pygame.key.get_pressed()
+                if keys[pygame.K_1]:
+                    screen.blit(colliders_surface, (0, 0))
+                elif keys[pygame.K_2]:
+                    screen.blit(colliders_and_continent_surface, (0, 0))
+                    
+
+
+            # settings.colour_being_hovered_over_by_the_player = "none"            
             
-        
-    # print(tick_precounter)
-    # print(tick_counter)
+        case 1: 
+            # print("seconds:", seconds)
+            animation_handler(screen, tick_counter, just_animating_colour = False) 
+            
+            
+            
+            
+            tick_counter += 1
+               
+        case _:
+            pass
+    
+
+    settings.player_has_just_clicked = False
     
 
     Render_Text(str(int(clock.get_fps())), (255,0,0), (0,0))    # Show FPS

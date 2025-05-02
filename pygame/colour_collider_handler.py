@@ -1,6 +1,8 @@
 from collider_handler import check_colliders_init, check_colliders, set_game_resolution
 from geometry import Vertex, Triangle
 
+import settings
+
 # My game has a 1920 x 1080 resolution world map!
 set_game_resolution(1920, 1080)
 
@@ -149,18 +151,26 @@ jut = 4     # Juts out the specified amount of pixels to attempt to avoid edge m
             # Side note #2: Try not to jut a region into other regions, as this may hindrance user experience (i.e trying to point to a region but being directed towards a different one...)
 
 
-y_v0 = Vertex(1114, 421)
-y_v1 = Vertex(1116, 335)
-y_v2 = Vertex(1175, 302)
+# y_v0 = Vertex(1114, 421)
+# y_v1 = Vertex(1116, 335)
+# y_v2 = Vertex(1175, 302)
 
-temp3 = y_v2.x_coordinate()
-temp4 = y_v2.y_coordinate()
+y_v0 = o_v10
+y_v1 = o_v11
+y_v2 = o_v12
 
-y_v2.x_coord = temp3 - jut
-y_v2.y_coord = temp4 - jut
+# temp3 = y_v2.x_coordinate()
+# temp4 = y_v2.y_coordinate()
 
-y_v3 = Vertex(1212, 167)
-y_v4 = Vertex(1266, 134)
+# y_v2.x_coord = temp3 - jut
+# y_v2.y_coord = temp4 - jut
+
+# y_v3 = Vertex(1212, 167)
+# y_v4 = Vertex(1266, 134)
+
+y_v3 = o_v9
+y_v4 = o_v8
+
 y_v5 = Vertex(1495 + 3 * jut, 346)
 
 y_v6 = Vertex(1114 - 5 * jut, 421)
@@ -205,7 +215,7 @@ g_v6 = Vertex(1622 + jut, 668)
 g_v7 = Vertex(1584, 678 + jut)
 g_v8 = Vertex(1478, 735 + jut)
 g_v9 = Vertex(1388 - (jut / 2), 731 + jut)
-g_v10 = Vertex(1333 - (jut / 2), 694 + jut)
+g_v10 = Vertex(1333, 694)
 g_v11 = Vertex(1240, 714)
 g_v12 = Vertex(1157 - jut, 637 + jut)
 g_v13 = Vertex(1095, 620)
@@ -263,6 +273,43 @@ green_center_vertices = [g_cv0, g_cv1, g_cv2, g_cv3, g_cv4, g_cv5, g_cv6, g_cv7,
 green_center_vertices_plane_region = [center_vertex_plane_region_g0, center_vertex_plane_region_g1, center_vertex_plane_region_g2, center_vertex_plane_region_g3, center_vertex_plane_region_g4, center_vertex_plane_region_g5, center_vertex_plane_region_g6, center_vertex_plane_region_g7, center_vertex_plane_region_g8, center_vertex_plane_region_g9, center_vertex_plane_region_g10, center_vertex_plane_region_g11, center_vertex_plane_region_g12]
 
 green = Colliders_Colour(green_vertices, green_triangles, green_center_vertices, green_center_vertices_plane_region)
+
+
+
+
+b_v0 = Vertex(783, 634)
+b_v1 = Vertex(783, 634)
+b_v2 = Vertex(783, 634)
+b_v3 = Vertex(783, 634)
+b_v4 = Vertex(783, 634)
+b_v5 = Vertex(783, 634)
+b_v6 = Vertex(783, 634)
+b_v7 = Vertex(783, 634)
+b_v8 = Vertex(783, 634)
+b_v9 = Vertex(783, 634)
+b_v10 = Vertex(783, 634)
+b_v11 = Vertex(783, 634)
+b_v12 = Vertex(783, 634)
+b_v13 = Vertex(783, 634)
+b_v14 = Vertex(783, 634)
+b_v15 = Vertex(783, 634)
+b_v16 = Vertex(783, 634)
+b_v17 = Vertex(783, 634)
+b_v18 = Vertex(783, 634)
+b_v19 = Vertex(783, 634)
+b_v20 = Vertex(783, 634)
+b_v21 = Vertex(783, 634)
+b_v22 = Vertex(783, 634)
+b_v23 = Vertex(783, 634)
+b_v24 = Vertex(783, 634)
+b_v25 = Vertex(783, 634)
+b_v26 = Vertex(783, 634)
+b_v27 = Vertex(783, 634)
+b_v28 = Vertex(783, 634)
+b_v29 = Vertex(783, 634)
+
+
+
 
 
 
