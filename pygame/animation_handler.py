@@ -24,29 +24,61 @@ user_screen_height = get_monitors()[0].height
 
 
 
+red_alpha_value = 0
+yellow_alpha_value = 0
+orange_alpha_value = 0
+green_alpha_value = 0
+blue_alpha_value = 0
+purple_alpha_value = 0
+
+
 red_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/red/background.png").convert()
 red_bg_surface = pygame.transform.scale(surface = red_bg_surface_raw, size = (user_screen_width, user_screen_height))
-red_bg_surface.set_alpha(0)       # Goes from 0 to 255 :3
+red_bg_surface.set_alpha(red_alpha_value)       # Goes from 0 to 255 :3
 
 orange_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/orange/background.png").convert()
 orange_bg_surface = pygame.transform.scale(surface = orange_bg_surface_raw, size = (user_screen_width, user_screen_height))
-orange_bg_surface.set_alpha(0)       # Goes from 0 to 255 :3
+orange_bg_surface.set_alpha(orange_alpha_value)       # Goes from 0 to 255 :3
 
 yellow_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/yellow/background.png").convert()
 yellow_bg_surface = pygame.transform.scale(surface = yellow_bg_surface_raw, size = (user_screen_width, user_screen_height))
-yellow_bg_surface.set_alpha(0)       # Goes from 0 to 255 :3
+yellow_bg_surface.set_alpha(yellow_alpha_value)       # Goes from 0 to 255 :3
 
 green_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/green/background.png").convert()
 green_bg_surface = pygame.transform.scale(surface = green_bg_surface_raw, size = (user_screen_width, user_screen_height))
-green_bg_surface.set_alpha(0)       # Goes from 0 to 255 :3
+green_bg_surface.set_alpha(green_alpha_value)       # Goes from 0 to 255 :3
 
 blue_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/blue/background.png").convert()
 blue_bg_surface = pygame.transform.scale(surface = blue_bg_surface_raw, size = (user_screen_width, user_screen_height))
-blue_bg_surface.set_alpha(0)       # Goes from 0 to 255 :3
+blue_bg_surface.set_alpha(blue_alpha_value)       # Goes from 0 to 255 :3
 
 purple_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/purple/background.png").convert()
 purple_bg_surface = pygame.transform.scale(surface = purple_bg_surface_raw, size = (user_screen_width, user_screen_height))
-purple_bg_surface.set_alpha(0)       # Goes from 0 to 255 :3
+purple_bg_surface.set_alpha(purple_alpha_value)       # Goes from 0 to 255 :3
+
+red_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/red/background.png").convert()
+red_bg_surface = pygame.transform.scale(surface = red_bg_surface_raw, size = (user_screen_width, user_screen_height))
+red_bg_surface.set_alpha(red_alpha_value)       # Goes from 0 to 255 :3
+
+orange_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/orange/background.png").convert()
+orange_bg_surface = pygame.transform.scale(surface = orange_bg_surface_raw, size = (user_screen_width, user_screen_height))
+orange_bg_surface.set_alpha(orange_alpha_value)       # Goes from 0 to 255 :3
+
+yellow_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/yellow/background.png").convert()
+yellow_bg_surface = pygame.transform.scale(surface = yellow_bg_surface_raw, size = (user_screen_width, user_screen_height))
+yellow_bg_surface.set_alpha(yellow_alpha_value)       # Goes from 0 to 255 :3
+
+green_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/green/background.png").convert()
+green_bg_surface = pygame.transform.scale(surface = green_bg_surface_raw, size = (user_screen_width, user_screen_height))
+green_bg_surface.set_alpha(green_alpha_value)       # Goes from 0 to 255 :3
+
+blue_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/blue/background.png").convert()
+blue_bg_surface = pygame.transform.scale(surface = blue_bg_surface_raw, size = (user_screen_width, user_screen_height))
+blue_bg_surface.set_alpha(blue_alpha_value)       # Goes from 0 to 255 :3
+
+purple_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/purple/background.png").convert()
+purple_bg_surface = pygame.transform.scale(surface = purple_bg_surface_raw, size = (user_screen_width, user_screen_height))
+purple_bg_surface.set_alpha(purple_alpha_value)       # Goes from 0 to 255 :3
 
 
 bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/map_barebone_no_text.png").convert_alpha()
@@ -195,11 +227,17 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
 
         case 1:
             seconds = (tick_counter / 60) - 9       # Offsets the "local timer" to work more comfortably - it's like we're in a "sub-timeline" now :3
-            print("seconds after reaching game_state == 1:", seconds)
-            print("play regional background anim lol")
-            worldmap_fadeout()
-            # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
-            play_colour_animation(screen)
+            # print("play regional background anim lol")
+            if seconds == 0:
+                screenshot = pygame.Surface(screen.get_size())
+                screenshot.blit(screen, (0, 0))
+
+            if (seconds >= 0) & (tick_counter < 52) :   #  (255 / 5 = 51. That is, worldmap_fadeout() lasts for 51 frames :o)
+                worldmap_fadeout()
+            
+            else:
+                # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
+                play_colour_animation(screen, tick_counter)
         case _:
             print("ERROR: Invalid game state:", settings.game_state)
             pygame.quit()
@@ -265,10 +303,19 @@ def play_clicking_SFX():
 def play_ominous_SFX():
     return
 
+black_surface_alpha_value = 0
 def worldmap_fadeout():
+    black_surface_alpha_value += 5
+    # black_transition_RGBA = ()
+    black_surface = pygame.Surface((user_screen_width), (user_screen_height), pygame.SRCALPHA)
+    black_surface.fill((0, 0, 0, black_surface_alpha_value))
     return
 
-def play_colour_animation(screen):
+def play_colour_animation(screen, tick_counter):
+
+
+    seconds = tick_counter / 60
+
 
     # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
     # screen.blit(colour_background)
@@ -281,6 +328,15 @@ def play_colour_animation(screen):
             screen.blit(orange_bg_surface, (0, 0))
         case 2:
             screen.blit(yellow_bg_surface, (0, 0))
+
+            if (tick_counter > 52) & (tick_counter < 158):     # yellow_alpha_value < 105
+                yellow_alpha_value += 1
+                
+            # elif (tick_counter > ---) & (tick_counter < ...):
+                # yellow_title_alpha_value
+            
+
+
         case 3:
             screen.blit(green_bg_surface, (0, 0))
         case 4:
@@ -334,6 +390,6 @@ def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick
 
     else:
         print("what are you doing here?!?!? o_o")
-        print("game_state:", game_state)
+        print("game_state:", settings.game_state)
 
     return
