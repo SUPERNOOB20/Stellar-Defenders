@@ -1,6 +1,8 @@
 game_state = 0
 colour_being_hovered_over_by_the_player = "none"
 player_has_just_clicked = False
+dont_blit_text = False
+screenshot = "I will store screenshots here :3 uwu"
 
 has_completed_red_region = False
 has_completed_orange_region = False

@@ -150,6 +150,14 @@ title_x_pos = 130
 title_y_pos = user_screen_height / 2
 
 
+
+sfx_0 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/0.wav")
+sfx_1 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/1.wav")
+sfx_2 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/2.wav")
+
+
+
+
 def stellardefenders_animation_fadein(animation_duration_in_frames):
 
     step_1 = (255 / animation_duration_in_frames)
@@ -196,28 +204,38 @@ def title_animation_fadeout(duration_in_frames, tick_counter):
 
 # sea_timer = 0
 
+sea_bg_surface = pygame.Surface((user_screen_width, user_screen_height))
+sea_bg_surface.fill((36, 148, 159))       # Solid colour as background for the sea is #24949f :3
+
+
+
 def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
     
+    seconds = tick_counter / 60
+
     match settings.game_state:
         case 0:
-            seconds = tick_counter / 60
+
+            draw_solid_sea_colour(screen)
+            draw_animated_seas(screen)
 
 
             if just_animating_colour == False:
                 
-                seas_animation()
-
-                sea_rect.bottomleft = (- ceil(truncated_x_pos), (user_screen_height + floor(truncated_y_pos)))
-                screen.blit(sea_surface, sea_rect)
-
-
-
+                
                 if (seconds) < 9:
                     screen.blit(bg_surface, (0, 0))
                     screen.blit(title_surface, (title_x_pos, title_y_pos))
+                    screen.blit(stellardefenders_surface, (0, 0))
 
-                screen.blit(stellardefenders_surface, (0, 0))
+                    settings.dont_blit_text = True
+                
+                else:
+                    screen.blit(map_without_names_surface, (0, 0))
+
+
                 title_surface.set_alpha(title_alpha_value)       # Goes from 0 to 255 :3
+
 
                 if (seconds < 1.5):
                     title_animation_fadein(90)
@@ -240,16 +258,17 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
 
                     if (seconds < 7.5):
                         stellardefenders_animation_fadein(90)
-
-                else:
-                    screen.blit(region_names_surface, (0, 0))
                         
                     
             elif settings.colour_being_hovered_over_by_the_player != "none":
                 if settings.player_has_just_clicked == True:
-                    seconds = 727
+                    # seconds = 727
                     settings.game_state = 1     # With this implementation there will be a 1-frame delay here between the player clicking a region and the animations playing, but oh well... whatever ":3
-                    print("yay, game_state is 1")
+                    print('yay, game_state is 1')
+                    print('Taking a screenshot of the screen ("frame freeze")')
+                    settings.screenshot = pygame.Surface(screen.get_size())
+
+                screen.blit(map_without_names_surface, (0, 0))
 
                 global flickering_animation_counter
                 global is_flickering_ascending
@@ -267,7 +286,13 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
                 else:
                     flickering_animation_counter -= 1
 
-            screen.blit(region_names_surface, (0, 0))
+
+
+
+            if settings.dont_blit_text == False:
+                screen.blit(region_names_surface, (0, 0))
+
+            settings.dont_blit_text = False      # Resets the "dont_blit_text" flag in settings.py :p
                               
             # else:
                 # print('how tf did u get here o_o warn the dev!!!! "^^')
@@ -275,18 +300,32 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
 
 
         case 1:
-            seconds = (tick_counter / 60) - 9       # Offsets the "local timer" to work more comfortably - it's like we're in a "sub-timeline" now :3
+
+            settings.screenshot.blit(screen, (0, 0))
+
             # print("play regional background anim lol")
             if seconds == 0:
-                screenshot = pygame.Surface(screen.get_size())
-                screenshot.blit(screen, (0, 0))
+                print("we doin well, cap - can you see the screenshot...? :o")
+                # settings.screenshot = pygame.Surface(screen.get_size())
+                
 
-            if (seconds >= 0) & (tick_counter < 52) :   #  (255 / 5 = 51. That is, worldmap_fadeout() lasts for 51 frames :o)
-                worldmap_fadeout()
-            
+                pygame.mixer.music.fadeout(floor(102 * 16.666666))      # Fade out for as long as the world map is fading out (So, in this case: time = 102 frames :p)
+                
+
+            elif (seconds >= 0) & (tick_counter < 102) :   #  (255 / 5) * 2 = 51 * 2 = 102. That is, worldmap_fadeout() lasts for 102 frames :o)
+                worldmap_fadeout(tick_counter)
+
             else:
                 # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
+                play_ominous_SFX(tick_counter)
                 play_colour_animation(screen, tick_counter)
+
+
+            
+
+
+
+
         case _:
             print("ERROR: Invalid game state:", settings.game_state)
             pygame.quit()
@@ -294,12 +333,38 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
 
     # return
 
+
+
+
+
+def draw_solid_sea_colour(screen):
+    screen.blit(sea_bg_surface, (0, 0))       # Solid colour as background for the sea :3
+
+    return
+
+
+
+def draw_animated_seas(screen):
+
+    seas_animation()
+
+    sea_rect.bottomleft = (- ceil(truncated_x_pos), (user_screen_height + floor(truncated_y_pos)))
+    screen.blit(sea_surface, sea_rect)
+
+    return
+
+
+
+
+
+
+
+
 sea_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/map_sea_atlas.png").convert_alpha()
 sea_surface = pygame.transform.scale(surface = sea_surface_raw, size = (user_screen_width * 3, user_screen_height * 3))
 sea_rect = sea_surface.get_rect(bottomleft = (0, user_screen_height))
 
-# step_x = -16
-# step_y = 9
+
 
 slowdown = 5    # slowdown is a float that changes the speed of the sea animation. Write "slowdown = 1" for normal speed. The higher the slowdown, the faster the animation is. The lower the slowdown, the faster the animation is.
 
@@ -349,15 +414,34 @@ def show_colour_flickering(flickering_animation_counter):
 def play_clicking_SFX():
     return
 
-def play_ominous_SFX():
-    return
+def play_ominous_SFX(tick_counter):
+
+    match tick_counter:
+        case 98:
+            sfx_0.play()
+        case 391:
+            sfx_1.play()
+        case 435:
+            sfx_2.play()
+
+    # case _
+       #  pass
+
+    # return
+
 
 black_surface_alpha_value = 0
-def worldmap_fadeout():
-    black_surface_alpha_value += 5
+def worldmap_fadeout(tick_counter):
+
+    global black_surface_alpha_value
+
+    if is_even(tick_counter):
+        black_surface_alpha_value += 5    # Boo, 30fps animation... lmao
     # black_transition_RGBA = ()
-    black_surface = pygame.Surface((user_screen_width), (user_screen_height), pygame.SRCALPHA)
+    black_surface = pygame.Surface((user_screen_width, user_screen_height), pygame.SRCALPHA)
     black_surface.fill((0, 0, 0, black_surface_alpha_value))
+
+    black_surface.blit(black_surface, (0, 0))
     return
 
 def is_even(number):
@@ -366,8 +450,8 @@ def is_even(number):
 def play_colour_animation(screen, tick_counter):
 
 
-    # seconds = tick_counter / 60
-    seconds = (tick_counter / 60) - 9 
+    seconds = tick_counter / 60
+    # seconds = (tick_counter / 60) - 9 
 
 
     # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
@@ -382,10 +466,13 @@ def play_colour_animation(screen, tick_counter):
         case 2:
             screen.blit(yellow_bg_surface, (0, 0))
 
-            if (tick_counter > 52) & (tick_counter < 158):     # yellow_alpha_value < 105
+            global yellow_alpha_value
+            global yellow_title_alpha_value
+
+            if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
                 yellow_alpha_value += 1
                 
-            elif (tick_counter >= 248) & (tick_counter < 350):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+            elif (tick_counter >= 298) & (tick_counter < 400):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
                 if (is_even(tick_counter)):
                     yellow_title_alpha_value += 1
                 return
@@ -401,7 +488,7 @@ def play_colour_animation(screen, tick_counter):
         case _:
             print("What?")
 
-    play_ominous_SFX()
+
     return
 
 

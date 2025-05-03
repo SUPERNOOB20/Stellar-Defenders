@@ -1,4 +1,4 @@
-import pygame
+import pygame       # Imports pygame-ce
 from sys import exit
 from math import floor
 import os
@@ -59,7 +59,7 @@ seconds = 0
 # time.sleep(4)
 
 pygame.mixer.init()
-pygame.mixer.music.load(f"{dir_path}/audio/world_map.mp3")
+pygame.mixer.music.load(f"{dir_path}/audio/music/world_map.mp3")
 pygame.mixer.music.set_volume(0.25)
 
 def Render_Text(what, color, where):
@@ -184,11 +184,12 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
             # settings.colour_being_hovered_over_by_the_player = "none"            
             
         case 1: 
-            # print("seconds:", seconds)
+
+            if (seconds == 9):          # Resets the timeline when the player has just clicked on a region.
+                tick_counter = 0
+                seconds = 0
+            
             animation_handler(screen, tick_counter, just_animating_colour = False) 
-            
-            
-            
             
             tick_counter += 1
                
