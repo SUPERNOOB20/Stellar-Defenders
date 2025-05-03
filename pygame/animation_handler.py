@@ -87,6 +87,15 @@ bg_surface = pygame.transform.scale(surface = bg_surface_raw, size = (user_scree
 stellardefenders_surface_raw = pygame.image.load(f"{dir_path}/graphics/world_map.png").convert_alpha()
 stellardefenders_surface = pygame.transform.scale(surface = stellardefenders_surface_raw, size = (user_screen_width, user_screen_height))
 
+map_without_names_surface_raw = pygame.image.load(f"{dir_path}/graphics/map_without_region_names.png").convert_alpha()
+map_without_names_surface = pygame.transform.scale(surface = map_without_names_surface_raw, size = (user_screen_width, user_screen_height))
+
+region_names_surface_raw = pygame.image.load(f"{dir_path}/graphics/region_names_without_map.png").convert_alpha()
+region_names_surface = pygame.transform.scale(surface = region_names_surface_raw, size = (user_screen_width, user_screen_height))
+
+
+
+
 title_surface = pygame.image.load(f"{dir_path}/graphics/text.png").convert_alpha()
 
 title_surface.set_alpha(0)      # Goes from 0 to 255 :3
@@ -105,6 +114,7 @@ if user_screen_height < 1080 & user_screen_width < 1920:        # Detects users 
 
 title_x_pos = 130
 title_y_pos = user_screen_height / 2
+
 
 def stellardefenders_animation_fadein(animation_duration_in_frames):
 
@@ -196,6 +206,9 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
 
                     if (seconds < 7.5):
                         stellardefenders_animation_fadein(90)
+
+                else:
+                    screen.blit(region_names_surface, (0, 0))
                         
                     
             elif settings.colour_being_hovered_over_by_the_player != "none":
@@ -220,8 +233,10 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
                 else:
                     flickering_animation_counter -= 1
 
-            else:
-                print('how tf did u get here o_o warn the dev!!!! "^^')
+            screen.blit(region_names_surface, (0, 0))
+                              
+            # else:
+                # print('how tf did u get here o_o warn the dev!!!! "^^')
         
 
 
@@ -357,8 +372,9 @@ def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick
         # settings.colour_being_hovered_over_by_the_player = "black"
         # animation_handler(screen, tick_counter, just_animating_colour = True)
 
-    # if colour_collider_handler.red.is_user_on_colour(mouse_pos):
-        # settings.colour_being_hovered_over_by_the_player = "red"
+    if colour_collider_handler.red.is_user_on_colour(mouse_pos):
+        settings.colour_being_hovered_over_by_the_player = "red"
+        animation_handler(screen, tick_counter, just_animating_colour = True)
 
     if colour_collider_handler.orange.is_user_on_colour(mouse_pos):
         settings.colour_being_hovered_over_by_the_player = "orange"
@@ -377,13 +393,13 @@ def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick
         settings.colour_being_hovered_over_by_the_player = "green"
         animation_handler(screen, tick_counter, just_animating_colour = True)        
 
-    # elif colour_collider_handler.blue.is_user_on_colour(mouse_pos):
-        # settings.colour_being_hovered_over_by_the_player = "blue"
-        # animation_handler(screen, tick_counter, just_animating_colour = True)
+    elif colour_collider_handler.blue.is_user_on_colour(mouse_pos):
+        settings.colour_being_hovered_over_by_the_player = "blue"
+        animation_handler(screen, tick_counter, just_animating_colour = True)
     
-    # elif colour_collider_handler.purple.is_user_on_colour(mouse_pos):
-        # settings.colour_being_hovered_over_by_the_player = "purple"
-        # animation_handler(screen, tick_counter, just_animating_colour = True) 
+    elif colour_collider_handler.purple.is_user_on_colour(mouse_pos):
+        settings.colour_being_hovered_over_by_the_player = "purple"
+        animation_handler(screen, tick_counter, just_animating_colour = True) 
         
     elif settings.game_state == 0:
         settings.colour_being_hovered_over_by_the_player = "none"

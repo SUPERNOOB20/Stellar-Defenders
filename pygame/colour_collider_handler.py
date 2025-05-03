@@ -421,8 +421,10 @@ blue = Colliders_Colour(blue_vertices, blue_triangles, blue_center_vertices, blu
 
 
 p_v0 = Vertex(177, 645)
+# p_v0 = Vertex(176, 645)
 p_v1 = Vertex(206, 594)
 p_v2 = Vertex(267, 598)
+# p_v2 = Vertex(267, 596)
 p_v3 = Vertex(344, 539)
 p_v4 = o_v0
 p_v5 = o_v20
@@ -454,14 +456,14 @@ p_t12 = Triangle(p_v13, p_v14, p_v15)
 p_t13 = Triangle(p_v8, p_v9, p_v10)
 p_t14 = Triangle(p_v7, p_v8, p_v10)
 
-p_cv0 = Vertex(223, 678)
-p_cv1 = Vertex(308, 929)
-p_cv2 = Vertex(326, 663)
-p_cv3 = Vertex(328, 662)
-p_cv4 = Vertex(428, 600)
-p_cv5 = Vertex(526, 599)
-p_cv6 = Vertex(614, 558)
-p_cv7 = Vertex(611, 617)
+p_cv0 = Vertex(216, 609)
+p_cv1 = Vertex(223, 678)
+p_cv2 = Vertex(308, 929)
+p_cv3 = Vertex(328, 662) #
+p_cv4 = Vertex(428, 600) #
+p_cv5 = Vertex(526, 599) #
+p_cv6 = Vertex(614, 558) #
+p_cv7 = Vertex(611, 617) #
 p_cv8 = Vertex(646, 770)
 p_cv9 = Vertex(778 ,830)
 p_cv10 = Vertex(822, 893)
@@ -490,7 +492,7 @@ center_vertex_plane_region_p14 = check_colliders_init(p_t14, p_cv14)
 
 
 purple_vertices = [p_v0, p_v1, p_v2, p_v3, p_v4, p_v5, p_v6, p_v7, p_v8, p_v9, p_v10, p_v11, p_v12, p_v13, p_v14, p_v15, p_v16]
-purple_triangles = [p_t0, p_t1, b_t2, p_t3, p_t4, p_t5, p_t6, p_t7, p_t8, p_t9, p_t10, p_t11, p_t12, p_t13, p_t14]
+purple_triangles = [p_t0, p_t1, p_t2, p_t3, p_t4, p_t5, p_t6, p_t7, p_t8, p_t9, p_t10, p_t11, p_t12, p_t13, p_t14]
 purple_center_vertices = [p_cv0, p_cv1, p_cv2, p_cv3, p_cv4, p_cv5, p_cv6, p_cv7, p_cv8, p_cv9, p_cv10, p_cv11, p_cv12, p_cv13, p_cv14]
 purple_center_vertices_plane_region = [center_vertex_plane_region_p0, center_vertex_plane_region_p1, center_vertex_plane_region_p2, center_vertex_plane_region_p3, center_vertex_plane_region_p4, center_vertex_plane_region_p5, center_vertex_plane_region_p6, center_vertex_plane_region_p7, center_vertex_plane_region_p8, center_vertex_plane_region_p9, center_vertex_plane_region_p10, center_vertex_plane_region_p11, center_vertex_plane_region_p12, center_vertex_plane_region_p13, center_vertex_plane_region_p14]
 
@@ -582,18 +584,32 @@ if __name__ == "__main__":
         vertex_to_test = Vertex(vertex[0], vertex[1])
         print(yellow.is_user_on_colour(vertex_to_test))
         return
+    def test_4(vertex):
+        vertex_to_test = Vertex(vertex[0], vertex[1])
+        print(purple.is_user_on_colour(vertex_to_test))
+        return
 
-    # test_1((1231, 455))
-    # test_2((1350, 300))
-    # test_3((1153,363))           # (821,242)
 
     
-    #test_3((821,242))
+    test_4((50, 1300))      #   <--- Should be FALSE
+    test_4((100, 100))          #   <--- Should be FALSE
+    test_4((1000, 100))          #   <--- Should be FALSE
+
+    print("\n")
+
+    test_4((814, 100))          #   <--- Should be FALSE        ---     Combination: [False, False, False]
+    test_4((815, 100))          #   <--- Should be FALSE        ---     Combination: [False, True, True]
 
 
+    test_4(((947, 711)))    #   <--- Should be FALSE.   Problematic triangle: p_cv2
+    
+
+
+    """
     import time
 
     start_time = time.time()
     test_1((1000, 300))
     time.sleep(1)
     print("--- %s seconds ---" % (time.time() - start_time))
+    """

@@ -25,3 +25,14 @@ Reason #2: Organization
 Abstract data structures help you visualize stuff a lot
 easier, rather than a bunch of random variables
 scattered all over the place...
+
+
+Conclusion and roadmap:
+
+I want to use **numpy arrays** for the collider system in the future!
+The idea will be to replace [Vertex(x, y)] by [int, int];
+[Triangle(a, b, c)] by [int, int, int],... etc.
+
+(So basically just arrays of ints :3)
+
+This shouldn't be hard to implement but it isn't my focus right now "^^
