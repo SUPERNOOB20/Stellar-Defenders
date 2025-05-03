@@ -76,11 +76,12 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
         
         #       vv   DEBUGGING    vv
 
+        """
         if __name__ == "__main__":
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
                 print("mouse_pos when you clicked:", mouse_pos)
-
+        """
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = pygame.mouse.get_pos()
