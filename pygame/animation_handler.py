@@ -459,6 +459,18 @@ def worldmap_fadeout(tick_counter):
 def is_even(number):
     return (number % 2 == 0)
 
+
+
+
+
+# ---------------------------------------------------------------------------------
+# Rational number between 0 and 255.                                              |
+# Represents the alpha step between each frame :3 uwu                             |
+# Bigger number = more speed. Lower number = less speed!!! :]                     |
+bg_and_silhouettes_animation_speed = 2       #                                    |
+title_animation_speed = 2                    #                                    |
+# ---------------------------------------------------------------------------------
+
 def play_colour_animation(screen, tick_counter):
 
 
@@ -477,22 +489,28 @@ def play_colour_animation(screen, tick_counter):
             screen.blit(orange_bg_surface, (0, 0))
         case 2:
             
+            global bg_and_silhouettes_animation_speed
+            global title_animation_speed
+
             global yellow_alpha_value
             global yellow_title_alpha_value
 
-            if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
-                yellow_alpha_value += 1
+            # if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
+            if (tick_counter >= 102) & (yellow_alpha_value < 255 - ceil(bg_and_silhouettes_animation_speed)):
+                yellow_alpha_value += bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/bg_and_silhouettes_animation_speed))
                 
-            elif (tick_counter >= 298) & (tick_counter < 400):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
-                if (is_even(tick_counter)):
-                    yellow_title_alpha_value += 1
-            
-            if (tick_counter > 400):
-                pass                        # <--- debugging :3
+            # elif (tick_counter >= 298) & (tick_counter < 400):      
+            if (is_even(tick_counter)) & (yellow_title_alpha_value < 255 - ceil(title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                yellow_title_alpha_value += title_animation_speed                       # <--- Will finish in frame #(102 + (255/title_animation_speed))
 
             global yellow_bg_surface
             global yellow_silhouettes_surface
             global yellow_title_surface
+
+            yellow_bg_surface.set_alpha(yellow_alpha_value)
+            yellow_silhouettes_surface.set_alpha(yellow_alpha_value)
+            yellow_title_surface.set_alpha(yellow_title_alpha_value)
+
 
             screen.blit(yellow_bg_surface, (0, 0))
             screen.blit(yellow_silhouettes_surface, (0, 0))
