@@ -32,54 +32,88 @@ blue_alpha_value = 0
 purple_alpha_value = 0
 
 
-red_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/red/background.png").convert()
-red_bg_surface = pygame.transform.scale(surface = red_bg_surface_raw, size = (user_screen_width, user_screen_height))
-red_bg_surface.set_alpha(red_alpha_value)       # Goes from 0 to 255 :3
+red_title_alpha_value = 0
+yellow_title_alpha_value = 0
+orange_title_alpha_value = 0
+green_title_alpha_value = 0
+blue_title_alpha_value = 0
+purple_title_alpha_value = 0
 
-orange_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/orange/background.png").convert()
-orange_bg_surface = pygame.transform.scale(surface = orange_bg_surface_raw, size = (user_screen_width, user_screen_height))
-orange_bg_surface.set_alpha(orange_alpha_value)       # Goes from 0 to 255 :3
 
-yellow_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/yellow/background.png").convert()
-yellow_bg_surface = pygame.transform.scale(surface = yellow_bg_surface_raw, size = (user_screen_width, user_screen_height))
-yellow_bg_surface.set_alpha(yellow_alpha_value)       # Goes from 0 to 255 :3
-
-green_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/green/background.png").convert()
-green_bg_surface = pygame.transform.scale(surface = green_bg_surface_raw, size = (user_screen_width, user_screen_height))
-green_bg_surface.set_alpha(green_alpha_value)       # Goes from 0 to 255 :3
-
-blue_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/blue/background.png").convert()
-blue_bg_surface = pygame.transform.scale(surface = blue_bg_surface_raw, size = (user_screen_width, user_screen_height))
-blue_bg_surface.set_alpha(blue_alpha_value)       # Goes from 0 to 255 :3
-
-purple_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/purple/background.png").convert()
-purple_bg_surface = pygame.transform.scale(surface = purple_bg_surface_raw, size = (user_screen_width, user_screen_height))
-purple_bg_surface.set_alpha(purple_alpha_value)       # Goes from 0 to 255 :3
 
 red_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/red/background.png").convert()
 red_bg_surface = pygame.transform.scale(surface = red_bg_surface_raw, size = (user_screen_width, user_screen_height))
 red_bg_surface.set_alpha(red_alpha_value)       # Goes from 0 to 255 :3
 
+red_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/red/silhouettes.png").convert_alpha()
+red_silhouettes_surface = pygame.transform.scale(surface = red_silhouettes_surface_raw, size = (user_screen_width, user_screen_height))
+red_silhouettes_surface.set_alpha(red_alpha_value)       # Goes from 0 to 255 :3
+
+red_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/red/title.png").convert_alpha()
+red_title_surface = pygame.transform.scale(surface = red_title_surface_raw, size = (user_screen_width, user_screen_height))
+red_title_surface.set_alpha(red_title_alpha_value)       # Goes from 0 to 255 :3
+
 orange_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/orange/background.png").convert()
 orange_bg_surface = pygame.transform.scale(surface = orange_bg_surface_raw, size = (user_screen_width, user_screen_height))
 orange_bg_surface.set_alpha(orange_alpha_value)       # Goes from 0 to 255 :3
+
+orange_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/orange/silhouettes.png").convert_alpha()
+orange_silhouettes_surface = pygame.transform.scale(surface = orange_silhouettes_surface_raw, size = (user_screen_width, user_screen_height))
+orange_silhouettes_surface.set_alpha(orange_alpha_value)       # Goes from 0 to 255 :3
+
+orange_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/orange/background.png").convert_alpha()
+orange_title_surface = pygame.transform.scale(surface = orange_title_surface_raw, size = (user_screen_width, user_screen_height))
+orange_title_surface.set_alpha(orange_title_alpha_value)       # Goes from 0 to 255 :3
 
 yellow_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/yellow/background.png").convert()
 yellow_bg_surface = pygame.transform.scale(surface = yellow_bg_surface_raw, size = (user_screen_width, user_screen_height))
 yellow_bg_surface.set_alpha(yellow_alpha_value)       # Goes from 0 to 255 :3
 
+yellow_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/yellow/silhouettes.png").convert_alpha()
+yellow_silhouettes_surface = pygame.transform.scale(surface = yellow_silhouettes_surface_raw, size = (user_screen_width, user_screen_height))
+yellow_silhouettes_surface.set_alpha(yellow_alpha_value)       # Goes from 0 to 255 :3
+
+yellow_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/yellow/title.png").convert_alpha()
+yellow_title_surface = pygame.transform.scale(surface = yellow_title_surface_raw, size = (user_screen_width, user_screen_height))
+yellow_title_surface.set_alpha(yellow_title_alpha_value)       # Goes from 0 to 255 :3
+
 green_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/green/background.png").convert()
 green_bg_surface = pygame.transform.scale(surface = green_bg_surface_raw, size = (user_screen_width, user_screen_height))
 green_bg_surface.set_alpha(green_alpha_value)       # Goes from 0 to 255 :3
+
+green_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/green/background.png").convert_alpha()
+green_silhouettes_surface = pygame.transform.scale(surface = green_silhouettes_surface_raw, size = (user_screen_width, user_screen_height))
+green_silhouettes_surface.set_alpha(green_alpha_value)       # Goes from 0 to 255 :3
+
+green_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/green/title.png").convert_alpha()
+green_title_surface = pygame.transform.scale(surface = green_title_surface_raw, size = (user_screen_width, user_screen_height))
+green_title_surface.set_alpha(green_title_alpha_value)       # Goes from 0 to 255 :3
 
 blue_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/blue/background.png").convert()
 blue_bg_surface = pygame.transform.scale(surface = blue_bg_surface_raw, size = (user_screen_width, user_screen_height))
 blue_bg_surface.set_alpha(blue_alpha_value)       # Goes from 0 to 255 :3
 
+blue_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/blue/silhouettes.png").convert_alpha()
+blue_silhouettes_surface = pygame.transform.scale(surface = blue_silhouettes_surface_raw, size = (user_screen_width, user_screen_height))
+blue_silhouettes_surface.set_alpha(blue_alpha_value)       # Goes from 0 to 255 :3
+
+blue_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/blue/title.png").convert_alpha()
+blue_title_surface = pygame.transform.scale(surface = blue_title_surface_raw, size = (user_screen_width, user_screen_height))
+blue_title_surface.set_alpha(blue_title_alpha_value)       # Goes from 0 to 255 :3
+
 purple_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/purple/background.png").convert()
 purple_bg_surface = pygame.transform.scale(surface = purple_bg_surface_raw, size = (user_screen_width, user_screen_height))
 purple_bg_surface.set_alpha(purple_alpha_value)       # Goes from 0 to 255 :3
 
+purple_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/purple/silhouettes.png").convert_alpha()
+purple_silhouettes_surface = pygame.transform.scale(surface = purple_silhouettes_surface_raw, size = (user_screen_width, user_screen_height))
+purple_silhouettes_surface.set_alpha(purple_alpha_value)       # Goes from 0 to 255 :3
+
+purple_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/purple/title.png").convert_alpha()
+purple_title_surface = pygame.transform.scale(surface = purple_title_surface_raw, size = (user_screen_width, user_screen_height))
+purple_title_surface.set_alpha(purple_title_alpha_value)       # Goes from 0 to 255 :3
+
+##### Note: It is intended for bgs and silhouettes to share the same alpha value ---> {colour}_alpha_value.
 
 bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/map_barebone_no_text.png").convert_alpha()
 bg_surface = pygame.transform.scale(surface = bg_surface_raw, size = (user_screen_width, user_screen_height))
@@ -326,10 +360,14 @@ def worldmap_fadeout():
     black_surface.fill((0, 0, 0, black_surface_alpha_value))
     return
 
+def is_even(number):
+    return (number % 2 == 0)
+
 def play_colour_animation(screen, tick_counter):
 
 
-    seconds = tick_counter / 60
+    # seconds = tick_counter / 60
+    seconds = (tick_counter / 60) - 9 
 
 
     # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
@@ -347,8 +385,10 @@ def play_colour_animation(screen, tick_counter):
             if (tick_counter > 52) & (tick_counter < 158):     # yellow_alpha_value < 105
                 yellow_alpha_value += 1
                 
-            # elif (tick_counter > ---) & (tick_counter < ...):
-                # yellow_title_alpha_value
+            elif (tick_counter >= 248) & (tick_counter < 350):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                if (is_even(tick_counter)):
+                    yellow_title_alpha_value += 1
+                return
             
 
 

@@ -1,0 +1,26 @@
+My drawing process is faulty: I can 
+get around not needing to render the world map twice
+ON PAPER, but in practice I can't figure it out somehow...
+
+The idea is to:
+
+* before 9 seconds:
+- render world_map.png
+
+* from 9 seconds onwards:
+
+- render map_without_region_names.png
+- render regional animations (colour flickering function)
+- render region_names_without_map.png
+
+
+
+The problem is that right now for some reason I can't get
+around not rendering world_map.png at all times without
+the visual result being an undesired one...
+
+This issue has medium priority because,
+as you would expect, it tanks FPS considerably @.@
+
+But for now I think I'll keep going with the rest of the game and come
+back to this eventually "^^
