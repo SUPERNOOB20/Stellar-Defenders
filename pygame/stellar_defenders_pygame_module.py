@@ -195,14 +195,28 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
                
         case _:
             pass
+
+
+    if (
+        (settings.colour_being_hovered_over_by_the_player != "none") &
+        (settings.player_has_just_clicked == True) &
+        (settings.game_state == 1)
+        ):
+
+        # seconds = 727
+        print('yay, game_state is 1')
+        print('Taking a screenshot of the screen ("frame freeze")')
+        settings.screenshot = pygame.Surface(screen.get_size())         # Could also have used pygame.Surface(user_screen_width, user_screen_height)...
+        settings.screenshot.blit(screen, (0, 0))
     
+
+
+
 
     settings.player_has_just_clicked = False
     
-
     Render_Text(str(int(clock.get_fps())), (255,0,0), (0,0))    # Show FPS
     # print("FPS:", int(clock.get_fps()))
-
 
     pygame.display.flip()
     #pygame.display.update()

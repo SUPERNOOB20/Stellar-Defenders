@@ -265,8 +265,12 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
                     # seconds = 727
                     settings.game_state = 1     # With this implementation there will be a 1-frame delay here between the player clicking a region and the animations playing, but oh well... whatever ":3
                     print('yay, game_state is 1')
+
+                    """
                     print('Taking a screenshot of the screen ("frame freeze")')
-                    settings.screenshot = pygame.Surface(screen.get_size())
+                    settings.screenshot = pygame.Surface(screen.get_size())         # Could also have used pygame.Surface(user_screen_width, user_screen_height)...
+                    settings.screenshot.blit(screen, (0, 0))
+                    """
 
                 screen.blit(map_without_names_surface, (0, 0))
 
@@ -301,7 +305,7 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
 
         case 1:
 
-            settings.screenshot.blit(screen, (0, 0))
+            screen.blit(settings.screenshot, (0, 0))
 
             # print("play regional background anim lol")
             if seconds == 0:
@@ -313,7 +317,7 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
                 
 
             elif (seconds >= 0) & (tick_counter < 102) :   #  (255 / 5) * 2 = 51 * 2 = 102. That is, worldmap_fadeout() lasts for 102 frames :o)
-                worldmap_fadeout(tick_counter)
+                worldmap_fadeout(screen, tick_counter)
 
             else:
                 # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
@@ -417,11 +421,11 @@ def play_clicking_SFX():
 def play_ominous_SFX(tick_counter):
 
     match tick_counter:
-        case 98:
+        case 150:    # 102 + 48
             sfx_0.play()
-        case 391:
+        case 391:   # 102 + 341
             sfx_1.play()
-        case 435:
+        case 487:   # 102 + 385
             sfx_2.play()
 
     # case _
@@ -431,7 +435,7 @@ def play_ominous_SFX(tick_counter):
 
 
 black_surface_alpha_value = 0
-def worldmap_fadeout(tick_counter):
+def worldmap_fadeout(screen, tick_counter):
 
     global black_surface_alpha_value
 
@@ -441,8 +445,10 @@ def worldmap_fadeout(tick_counter):
     black_surface = pygame.Surface((user_screen_width, user_screen_height), pygame.SRCALPHA)
     black_surface.fill((0, 0, 0, black_surface_alpha_value))
 
-    black_surface.blit(black_surface, (0, 0))
+    screen.blit(black_surface, (0, 0))
+
     return
+
 
 def is_even(number):
     return (number % 2 == 0)
@@ -464,8 +470,7 @@ def play_colour_animation(screen, tick_counter):
         case 1:
             screen.blit(orange_bg_surface, (0, 0))
         case 2:
-            screen.blit(yellow_bg_surface, (0, 0))
-
+            
             global yellow_alpha_value
             global yellow_title_alpha_value
 
@@ -475,10 +480,15 @@ def play_colour_animation(screen, tick_counter):
             elif (tick_counter >= 298) & (tick_counter < 400):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
                 if (is_even(tick_counter)):
                     yellow_title_alpha_value += 1
-                return
             
+            global yellow_bg_surface
+            global yellow_silhouettes_surface
+            global yellow_title_surface
 
-
+            screen.blit(yellow_bg_surface, (0, 0))
+            screen.blit(yellow_silhouettes_surface, (0, 0))
+            screen.blit(yellow_title_surface, (0, 0))
+            
         case 3:
             screen.blit(green_bg_surface, (0, 0))
         case 4:
