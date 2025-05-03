@@ -307,6 +307,11 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
 
             screen.blit(settings.screenshot, (0, 0))
 
+            global black_surface_alpha_value
+            if black_surface_alpha_value >= 250:
+                pass
+
+
             # print("play regional background anim lol")
             if seconds == 0:
                 print("we doin well, cap - can you see the screenshot...? :o")
@@ -316,10 +321,12 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
                 pygame.mixer.music.fadeout(floor(102 * 16.666666))      # Fade out for as long as the world map is fading out (So, in this case: time = 102 frames :p)
                 
 
-            elif (seconds >= 0) & (tick_counter < 102) :   #  (255 / 5) * 2 = 51 * 2 = 102. That is, worldmap_fadeout() lasts for 102 frames :o)
-                worldmap_fadeout(screen, tick_counter)
+            if (seconds >= 0) & (tick_counter < 102) :   #  (255 / 5) * 2 = 51 * 2 = 102. That is, worldmap_fadeout() lasts for 102 frames :o)
+                worldmap_fadeout(tick_counter)
 
-            else:
+            screen.blit(black_surface, (0, 0))
+
+            if (tick_counter >= 102):
                 # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
                 play_ominous_SFX(tick_counter)
                 play_colour_animation(screen, tick_counter)
@@ -435,17 +442,16 @@ def play_ominous_SFX(tick_counter):
 
 
 black_surface_alpha_value = 0
-def worldmap_fadeout(screen, tick_counter):
+black_surface = pygame.Surface((user_screen_width, user_screen_height), pygame.SRCALPHA)
+def worldmap_fadeout(tick_counter):
 
     global black_surface_alpha_value
+    global black_surface
 
     if is_even(tick_counter):
         black_surface_alpha_value += 5    # Boo, 30fps animation... lmao
     # black_transition_RGBA = ()
-    black_surface = pygame.Surface((user_screen_width, user_screen_height), pygame.SRCALPHA)
     black_surface.fill((0, 0, 0, black_surface_alpha_value))
-
-    screen.blit(black_surface, (0, 0))
 
     return
 
@@ -481,6 +487,9 @@ def play_colour_animation(screen, tick_counter):
                 if (is_even(tick_counter)):
                     yellow_title_alpha_value += 1
             
+            if (tick_counter > 400):
+                pass                        # <--- debugging :3
+
             global yellow_bg_surface
             global yellow_silhouettes_surface
             global yellow_title_surface

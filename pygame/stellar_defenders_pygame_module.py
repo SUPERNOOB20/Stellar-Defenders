@@ -210,7 +210,8 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
         settings.screenshot.blit(screen, (0, 0))
     
 
-
+    # if tick_counter == 1000:        # Debugging time...! @.@
+        # pass
 
 
     settings.player_has_just_clicked = False
