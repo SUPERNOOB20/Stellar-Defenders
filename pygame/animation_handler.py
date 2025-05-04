@@ -41,12 +41,15 @@ purple_title_alpha_value = 0
 
 
 
+
+silhouette_radio = 3 / 8        # (intended width, intended height) == (screen width / (3 / 8), screen_width)
+
 red_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/red/background.png").convert()
 red_bg_surface = pygame.transform.scale(surface = red_bg_surface_raw, size = (user_screen_width, user_screen_height))
 red_bg_surface.set_alpha(red_alpha_value)       # Goes from 0 to 255 :3
 
 red_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/red/silhouettes.png").convert_alpha()
-red_silhouettes_surface = pygame.transform.scale(surface = red_silhouettes_surface_raw, size = (user_screen_width, user_screen_height))
+red_silhouettes_surface = pygame.transform.scale(surface = red_silhouettes_surface_raw, size = (user_screen_width / silhouette_radio, user_screen_width))
 red_silhouettes_surface.set_alpha(red_alpha_value)       # Goes from 0 to 255 :3
 
 red_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/red/title.png").convert_alpha()
@@ -58,7 +61,7 @@ orange_bg_surface = pygame.transform.scale(surface = orange_bg_surface_raw, size
 orange_bg_surface.set_alpha(orange_alpha_value)       # Goes from 0 to 255 :3
 
 orange_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/orange/silhouettes.png").convert_alpha()
-orange_silhouettes_surface = pygame.transform.scale(surface = orange_silhouettes_surface_raw, size = (user_screen_width, user_screen_height))
+orange_silhouettes_surface = pygame.transform.scale(surface = orange_silhouettes_surface_raw, size = (user_screen_width / silhouette_radio, user_screen_width))
 orange_silhouettes_surface.set_alpha(orange_alpha_value)       # Goes from 0 to 255 :3
 
 orange_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/orange/background.png").convert_alpha()
@@ -70,7 +73,7 @@ yellow_bg_surface = pygame.transform.scale(surface = yellow_bg_surface_raw, size
 yellow_bg_surface.set_alpha(yellow_alpha_value)       # Goes from 0 to 255 :3
 
 yellow_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/yellow/silhouettes.png").convert_alpha()
-yellow_silhouettes_surface = pygame.transform.scale(surface = yellow_silhouettes_surface_raw, size = (user_screen_width, user_screen_height))
+yellow_silhouettes_surface = pygame.transform.scale(surface = yellow_silhouettes_surface_raw, size = (user_screen_width / silhouette_radio, user_screen_width))
 yellow_silhouettes_surface.set_alpha(yellow_alpha_value)       # Goes from 0 to 255 :3
 
 yellow_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/yellow/title.png").convert_alpha()
@@ -78,11 +81,11 @@ yellow_title_surface = pygame.transform.scale(surface = yellow_title_surface_raw
 yellow_title_surface.set_alpha(yellow_title_alpha_value)       # Goes from 0 to 255 :3
 
 green_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/green/background.png").convert()
-green_bg_surface = pygame.transform.scale(surface = green_bg_surface_raw, size = (user_screen_width, user_screen_height))
+green_bg_surface = pygame.transform.scale(surface = green_bg_surface_raw, size = (user_screen_height, user_screen_height))
 green_bg_surface.set_alpha(green_alpha_value)       # Goes from 0 to 255 :3
 
 green_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/green/background.png").convert_alpha()
-green_silhouettes_surface = pygame.transform.scale(surface = green_silhouettes_surface_raw, size = (user_screen_width, user_screen_height))
+green_silhouettes_surface = pygame.transform.scale(surface = green_silhouettes_surface_raw, size = (user_screen_width / silhouette_radio, user_screen_width))
 green_silhouettes_surface.set_alpha(green_alpha_value)       # Goes from 0 to 255 :3
 
 green_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/green/title.png").convert_alpha()
@@ -94,7 +97,7 @@ blue_bg_surface = pygame.transform.scale(surface = blue_bg_surface_raw, size = (
 blue_bg_surface.set_alpha(blue_alpha_value)       # Goes from 0 to 255 :3
 
 blue_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/blue/silhouettes.png").convert_alpha()
-blue_silhouettes_surface = pygame.transform.scale(surface = blue_silhouettes_surface_raw, size = (user_screen_width, user_screen_height))
+blue_silhouettes_surface = pygame.transform.scale(surface = blue_silhouettes_surface_raw, size = (user_screen_width / silhouette_radio, user_screen_width))
 blue_silhouettes_surface.set_alpha(blue_alpha_value)       # Goes from 0 to 255 :3
 
 blue_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/blue/title.png").convert_alpha()
@@ -106,7 +109,7 @@ purple_bg_surface = pygame.transform.scale(surface = purple_bg_surface_raw, size
 purple_bg_surface.set_alpha(purple_alpha_value)       # Goes from 0 to 255 :3
 
 purple_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/purple/silhouettes.png").convert_alpha()
-purple_silhouettes_surface = pygame.transform.scale(surface = purple_silhouettes_surface_raw, size = (user_screen_width, user_screen_height))
+purple_silhouettes_surface = pygame.transform.scale(surface = purple_silhouettes_surface_raw, size = (user_screen_width / silhouette_radio, user_screen_width))
 purple_silhouettes_surface.set_alpha(purple_alpha_value)       # Goes from 0 to 255 :3
 
 purple_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/purple/title.png").convert_alpha()
@@ -151,9 +154,19 @@ title_y_pos = user_screen_height / 2
 
 
 
+
+silhouette_x_pos = 0
+silhouette_y_pos = 0
+
+
+
+
+
+
 sfx_0 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/0.wav")
 sfx_1 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/1.wav")
 sfx_2 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/2.wav")
+sfx_3 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/3.wav")
 
 
 
@@ -201,6 +214,11 @@ def title_animation_fadeout(duration_in_frames, tick_counter):
         title_x_pos += 1
 
     return
+
+
+black_surface_alpha_value = 0           # To be used later on in worldmap_fadeout() and fadeout_to_renpy()
+black_surface = pygame.Surface((user_screen_width, user_screen_height), pygame.SRCALPHA)
+
 
 # sea_timer = 0
 
@@ -262,15 +280,11 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
                     
             elif settings.colour_being_hovered_over_by_the_player != "none":
                 if settings.player_has_just_clicked == True:
-                    # seconds = 727
+                    # seconds = 727     # <--- whatever number you put in here, it should reset to 0 anyway :3 (debugging strategy lol)
                     settings.game_state = 1     # With this implementation there will be a 1-frame delay here between the player clicking a region and the animations playing, but oh well... whatever ":3
-                    print('yay, game_state is 1')
+                    #print('yay, game_state is 1')
 
-                    """
-                    print('Taking a screenshot of the screen ("frame freeze")')
-                    settings.screenshot = pygame.Surface(screen.get_size())         # Could also have used pygame.Surface(user_screen_width, user_screen_height)...
-                    settings.screenshot.blit(screen, (0, 0))
-                    """
+                    
 
                 screen.blit(map_without_names_surface, (0, 0))
 
@@ -307,26 +321,28 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
 
             screen.blit(settings.screenshot, (0, 0))
 
-            global black_surface_alpha_value
-            if black_surface_alpha_value >= 250:
-                pass
+            # global black_surface_alpha_value
+            # if black_surface_alpha_value >= 250:
+                # pass
 
 
             # print("play regional background anim lol")
             if seconds == 0:
-                print("we doin well, cap - can you see the screenshot...? :o")
-                # settings.screenshot = pygame.Surface(screen.get_size())
-                
-
+                play_clicking_SFX()
                 pygame.mixer.music.fadeout(floor(102 * 16.666666))      # Fade out for as long as the world map is fading out (So, in this case: time = 102 frames :p)
                 
 
             if (seconds >= 0) & (tick_counter < 102) :   #  (255 / 5) * 2 = 51 * 2 = 102. That is, worldmap_fadeout() lasts for 102 frames :o)
                 worldmap_fadeout(tick_counter)
 
+            global black_surface
             screen.blit(black_surface, (0, 0))
 
+
             if (tick_counter >= 102):
+                if tick_counter == 102:
+                    global black_surface_alpha_value
+                    black_surface_alpha_value = 0
                 # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
                 play_ominous_SFX(tick_counter)
                 play_colour_animation(screen, tick_counter)
@@ -419,19 +435,34 @@ def seas_animation():
 
     return
 
+
+
 def show_colour_flickering(flickering_animation_counter):
     return animation_loader.frame_blit(flickering_animation_counter)
-    
+
+
+
 def play_clicking_SFX():
+
+    sfx_3.play()
+    sfx_0.set_volume(settings.sfx_volume)
+
+
     return
+
+
 
 def play_ominous_SFX(tick_counter):
 
     match tick_counter:
         case 150:    # 102 + 48
             sfx_0.play()
+            sfx_0.set_volume(settings.sfx_volume)
+
         case 391:   # 102 + 341
             sfx_1.play()
+            sfx_1.set_volume(settings.sfx_volume)
+
         case 487:   # 102 + 385
             sfx_2.play()
 
@@ -441,8 +472,7 @@ def play_ominous_SFX(tick_counter):
     # return
 
 
-black_surface_alpha_value = 0
-black_surface = pygame.Surface((user_screen_width, user_screen_height), pygame.SRCALPHA)
+
 def worldmap_fadeout(tick_counter):
 
     global black_surface_alpha_value
@@ -452,7 +482,7 @@ def worldmap_fadeout(tick_counter):
         black_surface_alpha_value += 5    # Boo, 30fps animation... lmao
     # black_transition_RGBA = ()
     black_surface.fill((0, 0, 0, black_surface_alpha_value))
-
+    
     return
 
 
@@ -464,11 +494,15 @@ def is_even(number):
 
 
 # ---------------------------------------------------------------------------------
+#                                                                                 |
 # Rational number between 0 and 255.                                              |
 # Represents the alpha step between each frame :3 uwu                             |
 # Bigger number = more speed. Lower number = less speed!!! :]                     |
+#                                                                                 |
+#                                                                                 |
 bg_and_silhouettes_animation_speed = 2       #                                    |
 title_animation_speed = 2                    #                                    |
+#                                                                                 |                                    
 # ---------------------------------------------------------------------------------
 
 def play_colour_animation(screen, tick_counter):
@@ -481,12 +515,89 @@ def play_colour_animation(screen, tick_counter):
     # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
     # screen.blit(colour_background)
 
+
+    
+
+
     index = (("red", "orange", "yellow", "green", "blue", "purple").index(settings.colour_being_hovered_over_by_the_player))
     match index:
         case 0:
+            
+            global bg_and_silhouettes_animation_speed
+            global title_animation_speed
+
+            global red_alpha_value
+            global red_title_alpha_value
+
+            # if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
+            if (tick_counter >= 102) & (red_alpha_value < 255 - ceil(bg_and_silhouettes_animation_speed)):
+                red_alpha_value += bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/bg_and_silhouettes_animation_speed))
+                
+            # elif (tick_counter >= 298) & (tick_counter < 400):      
+            if (is_even(tick_counter)) & (red_title_alpha_value < 255 - ceil(title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                red_title_alpha_value += title_animation_speed                       # <--- Will finish in frame #(102 + (255/title_animation_speed))
+
+            global red_bg_surface
+            global red_silhouettes_surface
+            global red_title_surface
+
+            
+            red_bg_surface.set_alpha(red_alpha_value)
+            red_silhouettes_surface.set_alpha(red_alpha_value)
+            red_title_surface.set_alpha(red_title_alpha_value)
+
+            
+            global silhouette_x_pos
+            global silhouette_y_pos
+
+            # It will look more natural if I don't start it at (0, 0), right? :p
+            silhouette_x_pos -= 9
+            silhouette_y_pos -= 3
+
             screen.blit(red_bg_surface, (0, 0))
+            screen.blit(red_silhouettes_surface, (silhouette_x_pos, silhouette_y_pos))
+            screen.blit(red_title_surface, (0, 0))
+
+
+
         case 1:
+            
+            global bg_and_silhouettes_animation_speed
+            global title_animation_speed
+
+            global orange_alpha_value
+            global orange_title_alpha_value
+
+            # if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
+            if (tick_counter >= 102) & (orange_alpha_value < 255 - ceil(bg_and_silhouettes_animation_speed)):
+                orange_alpha_value += bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/bg_and_silhouettes_animation_speed))
+                
+            # elif (tick_counter >= 298) & (tick_counter < 400):      
+            if (is_even(tick_counter)) & (orange_title_alpha_value < 255 - ceil(title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                orange_title_alpha_value += title_animation_speed                       # <--- Will finish in frame #(102 + (255/title_animation_speed))
+
+            global orange_bg_surface
+            global orange_silhouettes_surface
+            global orange_title_surface
+
+            
+            orange_bg_surface.set_alpha(orange_alpha_value)
+            orange_silhouettes_surface.set_alpha(orange_alpha_value)
+            orange_title_surface.set_alpha(orange_title_alpha_value)
+
+            
+            global silhouette_x_pos
+            global silhouette_y_pos
+
+            # It will look more natural if I don't start it at (0, 0), right? :p
+            silhouette_x_pos -= 9
+            silhouette_y_pos -= 3
+
             screen.blit(orange_bg_surface, (0, 0))
+            screen.blit(orange_silhouettes_surface, (silhouette_x_pos, silhouette_y_pos))
+            screen.blit(orange_title_surface, (0, 0))
+
+
         case 2:
             
             global bg_and_silhouettes_animation_speed
@@ -507,26 +618,170 @@ def play_colour_animation(screen, tick_counter):
             global yellow_silhouettes_surface
             global yellow_title_surface
 
+            
             yellow_bg_surface.set_alpha(yellow_alpha_value)
             yellow_silhouettes_surface.set_alpha(yellow_alpha_value)
             yellow_title_surface.set_alpha(yellow_title_alpha_value)
 
+            
+            global silhouette_x_pos
+            global silhouette_y_pos
+
+            # It will look more natural if I don't start it at (0, 0), right? :p
+            silhouette_x_pos -= 9
+            silhouette_y_pos -= 3
 
             screen.blit(yellow_bg_surface, (0, 0))
-            screen.blit(yellow_silhouettes_surface, (0, 0))
+            screen.blit(yellow_silhouettes_surface, (silhouette_x_pos, silhouette_y_pos))
             screen.blit(yellow_title_surface, (0, 0))
-            
+
+
         case 3:
+                        
+            global bg_and_silhouettes_animation_speed
+            global title_animation_speed
+
+            global green_alpha_value
+            global green_title_alpha_value
+
+            # if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
+            if (tick_counter >= 102) & (green_alpha_value < 255 - ceil(bg_and_silhouettes_animation_speed)):
+                green_alpha_value += bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/bg_and_silhouettes_animation_speed))
+                
+            # elif (tick_counter >= 298) & (tick_counter < 400):      
+            if (is_even(tick_counter)) & (green_title_alpha_value < 255 - ceil(title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                green_title_alpha_value += title_animation_speed                       # <--- Will finish in frame #(102 + (255/title_animation_speed))
+
+            global green_bg_surface
+            global green_silhouettes_surface
+            global green_title_surface
+
+            
+            green_bg_surface.set_alpha(green_alpha_value)
+            green_silhouettes_surface.set_alpha(green_alpha_value)
+            green_title_surface.set_alpha(green_title_alpha_value)
+
+            
+            global silhouette_x_pos
+            global silhouette_y_pos
+
+            # It will look more natural if I don't start it at (0, 0), right? :p
+            silhouette_x_pos -= 9
+            silhouette_y_pos -= 3
+
             screen.blit(green_bg_surface, (0, 0))
+            screen.blit(green_silhouettes_surface, (silhouette_x_pos, silhouette_y_pos))
+            screen.blit(green_title_surface, (0, 0))
+
+
+
         case 4:
+                        
+            global bg_and_silhouettes_animation_speed
+            global title_animation_speed
+
+            global blue_alpha_value
+            global blue_title_alpha_value
+
+            # if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
+            if (tick_counter >= 102) & (blue_alpha_value < 255 - ceil(bg_and_silhouettes_animation_speed)):
+                blue_alpha_value += bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/bg_and_silhouettes_animation_speed))
+                
+            # elif (tick_counter >= 298) & (tick_counter < 400):      
+            if (is_even(tick_counter)) & (blue_title_alpha_value < 255 - ceil(title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                blue_title_alpha_value += title_animation_speed                       # <--- Will finish in frame #(102 + (255/title_animation_speed))
+
+            global blue_bg_surface
+            global blue_silhouettes_surface
+            global blue_title_surface
+
+            
+            blue_bg_surface.set_alpha(blue_alpha_value)
+            blue_silhouettes_surface.set_alpha(blue_alpha_value)
+            blue_title_surface.set_alpha(blue_title_alpha_value)
+
+            
+            global silhouette_x_pos
+            global silhouette_y_pos
+
+            # It will look more natural if I don't start it at (0, 0), right? :p
+            silhouette_x_pos -= 9
+            silhouette_y_pos -= 3
+
             screen.blit(blue_bg_surface, (0, 0))
+            screen.blit(blue_silhouettes_surface, (silhouette_x_pos, silhouette_y_pos))
+            screen.blit(blue_title_surface, (0, 0))
+
+
+
         case 5:
-            screen.blit(purple_bg_surface, (0, 0))            
+                        
+            global bg_and_silhouettes_animation_speed
+            global title_animation_speed
+
+            global purple_alpha_value
+            global purple_title_alpha_value
+
+            # if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
+            if (tick_counter >= 102) & (purple_alpha_value < 255 - ceil(bg_and_silhouettes_animation_speed)):
+                purple_alpha_value += bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/bg_and_silhouettes_animation_speed))
+                
+            # elif (tick_counter >= 298) & (tick_counter < 400):      
+            if (is_even(tick_counter)) & (purple_title_alpha_value < 255 - ceil(title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                purple_title_alpha_value += title_animation_speed                       # <--- Will finish in frame #(102 + (255/title_animation_speed))
+
+            global purple_bg_surface
+            global purple_silhouettes_surface
+            global purple_title_surface
+
+            
+            purple_bg_surface.set_alpha(purple_alpha_value)
+            purple_silhouettes_surface.set_alpha(purple_alpha_value)
+            purple_title_surface.set_alpha(purple_title_alpha_value)
+
+            
+            global silhouette_x_pos
+            global silhouette_y_pos
+
+            # It will look more natural if I don't start it at (0, 0), right? :p
+            silhouette_x_pos -= 9
+            silhouette_y_pos -= 3
+
+            screen.blit(purple_bg_surface, (0, 0))
+            screen.blit(purple_silhouettes_surface, (silhouette_x_pos, silhouette_y_pos))
+            screen.blit(purple_title_surface, (0, 0))
+
+
+
         case _:
             print("What?")
 
+    if (tick_counter >= 443):
+        fadeout_to_renpy(screen, tick_counter)
 
     return
+
+
+
+def fadeout_to_renpy(screen, tick_counter):
+
+    alpha_step = 1.47398843931
+
+    global black_surface
+    global black_surface_alpha_value            # "alpha_acum" :P
+
+    new_alpha = ceil(black_surface_alpha_value + alpha_step)
+
+    if (new_alpha < 255):
+        black_surface_alpha_value += alpha_step     # "alpha_acum" :P
+
+    black_surface.fill((0, 0, 0, black_surface_alpha_value))    
+    screen.blit(black_surface, (0, 0))
+
+
+    return
+
+
 
 
 
@@ -543,9 +798,7 @@ def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick
     if colour_collider_handler.orange.is_user_on_colour(mouse_pos):
         settings.colour_being_hovered_over_by_the_player = "orange"
         animation_handler(screen, tick_counter, just_animating_colour = True)
-        
-        # play_clicking_SFX()
-        # worldmap_fadeout()
+
         # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
         
 

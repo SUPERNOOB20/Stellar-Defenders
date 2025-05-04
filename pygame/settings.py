@@ -1,3 +1,5 @@
+# vv       INTERNAL SETTINGS - PLEASEEEEE NO TOUCHY D:         vv
+
 game_state = 0
 colour_being_hovered_over_by_the_player = "none"
 player_has_just_clicked = False
@@ -21,5 +23,11 @@ has_completed_green_postgame = False
 has_completed_blue_postgame = False
 has_completed_purple_postgame = False
 
-show_fps = False
-# fullscreen = False
+
+
+# vv       user experience / adjustable settings - Change to your heart's content :3 (no invalid values pls or I cry)         vv
+
+sfx_volume = 0.4        # between 0.000 and 1.000 plsss
+
+show_fps = True
+# fullscreen = True         # Pro tip: Press F11 to switch between Fullscreen and Windowed mode! :3

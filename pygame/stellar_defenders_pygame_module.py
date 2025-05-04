@@ -203,21 +203,18 @@ while True:     # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
         (settings.game_state == 1)
         ):
 
-        # seconds = 727
-        print('yay, game_state is 1')
-        print('Taking a screenshot of the screen ("frame freeze")')
+        # seconds = 727     # <--- whatever number you put in here, it should reset to 0 anyway :3 (debugging strategy lol)
+        # print('yay, game_state is 1')
+        # print('Taking a screenshot of the screen ("frame freeze")')
         settings.screenshot = pygame.Surface(screen.get_size())         # Could also have used pygame.Surface(user_screen_width, user_screen_height)...
         settings.screenshot.blit(screen, (0, 0))
-    
-
-    # if tick_counter == 1000:        # Debugging time...! @.@
-        # pass
 
 
     settings.player_has_just_clicked = False
     
-    Render_Text(str(int(clock.get_fps())), (255,0,0), (0,0))    # Show FPS
-    # print("FPS:", int(clock.get_fps()))
+    if settings.show_fps == True:
+        Render_Text(str(int(clock.get_fps())), (255,0,0), (0,0))    # Show FPS
+        # print("FPS:", int(clock.get_fps()))
 
     pygame.display.flip()
     #pygame.display.update()
