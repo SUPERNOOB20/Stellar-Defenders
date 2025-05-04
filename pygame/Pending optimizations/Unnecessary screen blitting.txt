@@ -1,0 +1,6 @@
+The game goes very slow for me after game_state == 1 (15 - 20fps).
+
+I suspect I might be drawing unnecesary surfaces
+(After the fadeout to black is complete, I should only be drawing 3 surfaces!!!).
+
+I have yet to debug this in the future (soontm... "^^)
