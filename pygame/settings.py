@@ -6,6 +6,25 @@ player_has_just_clicked = False
 dont_blit_text = False
 screenshot = "I will store screenshots here :3 uwu"
 
+# ---------------------------------------------------------------------------------
+#                                                                                 |
+# Rational number between 0 and 255.                                              |
+# Represents the alpha step between each frame :3 uwu                             |
+# Bigger number = more speed. Lower number = less speed!!! :]                     |
+#                                                                                 |
+#                                                                                 |
+bg_and_silhouettes_animation_speed = 2       #                                    |
+title_animation_speed = 2                    #                                    |
+#                                                                                 |                                    
+# ---------------------------------------------------------------------------------
+
+silhouette_x_pos = 0
+silhouette_y_pos = 0
+
+
+
+#    vv     Game progress settings     vv
+
 has_completed_red_region = False
 has_completed_orange_region = False
 has_completed_yellow_region = False

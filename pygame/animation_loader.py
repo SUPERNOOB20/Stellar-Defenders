@@ -29,11 +29,11 @@ def load_and_rescale_colours(dir_path):
 
     
     global list_of_all_frames
-    list_of_all_frames = np.full((6, 55), colour_flickering_dummy_surf)
+    list_of_all_frames = np.full((7, 55), colour_flickering_dummy_surf)
     
     colour_index = -1
 
-    for colour in ("red", "orange", "yellow", "green", "blue", "purple"):     # black will be added in the future, for the final boss... e.e
+    for colour in ("red", "orange", "yellow", "green", "blue", "purple", "black"):     # black will be added in the future, for the final boss... e.e
 
         colour_index += 1
 
@@ -59,8 +59,8 @@ def frame_blit(number):
         print('You should NOT be seeing this message ingame ":3')
         return
 
-
-    index = (("red", "orange", "yellow", "green", "blue", "purple").index(settings.colour_being_hovered_over_by_the_player))
+    # print("Problematic colour:", settings.colour_being_hovered_over_by_the_player)
+    index = (("red", "orange", "yellow", "green", "blue", "purple", "black").index(settings.colour_being_hovered_over_by_the_player))
 
     # print("index:", index)
 

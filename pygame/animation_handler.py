@@ -155,18 +155,17 @@ title_y_pos = user_screen_height / 2
 
 
 
-silhouette_x_pos = 0
-silhouette_y_pos = 0
-
-
-
-
-
 
 sfx_0 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/0.wav")
 sfx_1 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/1.wav")
 sfx_2 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/2.wav")
 sfx_3 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/3.wav")
+sfx_4 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/4.wav")
+
+
+
+
+
 
 
 
@@ -340,12 +339,17 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
 
 
             if (tick_counter >= 102):
+                
                 if tick_counter == 102:
                     global black_surface_alpha_value
                     black_surface_alpha_value = 0
-                # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
-                play_ominous_SFX(tick_counter)
-                play_colour_animation(screen, tick_counter)
+                
+                    if settings.colour_being_hovered_over_by_the_player == "black":
+                        play_extremely_ominous_SFX()
+
+                elif (not (settings.colour_being_hovered_over_by_the_player == "black")):
+                    play_ominous_SFX(tick_counter)
+                    play_colour_animation(screen, tick_counter)        # play_colour_animation("colour/background", "colour/silhouettes", "colour/title")
 
 
             
@@ -465,11 +469,16 @@ def play_ominous_SFX(tick_counter):
 
         case 487:   # 102 + 385
             sfx_2.play()
+            sfx_2.set_volume(settings.sfx_volume)
 
-    # case _
-       #  pass
 
-    # return
+def play_extremely_ominous_SFX():
+
+    sfx_4.play()
+    sfx_4.set_volume(settings.sfx_volume)
+
+
+    return
 
 
 
@@ -493,17 +502,7 @@ def is_even(number):
 
 
 
-# ---------------------------------------------------------------------------------
-#                                                                                 |
-# Rational number between 0 and 255.                                              |
-# Represents the alpha step between each frame :3 uwu                             |
-# Bigger number = more speed. Lower number = less speed!!! :]                     |
-#                                                                                 |
-#                                                                                 |
-bg_and_silhouettes_animation_speed = 2       #                                    |
-title_animation_speed = 2                    #                                    |
-#                                                                                 |                                    
-# ---------------------------------------------------------------------------------
+
 
 def play_colour_animation(screen, tick_counter):
 
@@ -519,23 +518,20 @@ def play_colour_animation(screen, tick_counter):
     
 
 
-    index = (("red", "orange", "yellow", "green", "blue", "purple").index(settings.colour_being_hovered_over_by_the_player))
+    index = (("red", "orange", "yellow", "green", "blue", "purple", "black").index(settings.colour_being_hovered_over_by_the_player))
     match index:
         case 0:
-            
-            global bg_and_silhouettes_animation_speed
-            global title_animation_speed
 
             global red_alpha_value
             global red_title_alpha_value
 
             # if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
-            if (tick_counter >= 102) & (red_alpha_value < 255 - ceil(bg_and_silhouettes_animation_speed)):
-                red_alpha_value += bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/bg_and_silhouettes_animation_speed))
+            if (tick_counter >= 102) & (red_alpha_value < 255 - ceil(settings.bg_and_silhouettes_animation_speed)):
+                red_alpha_value += settings.bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/settings.bg_and_silhouettes_animation_speed))
                 
             # elif (tick_counter >= 298) & (tick_counter < 400):      
-            if (is_even(tick_counter)) & (red_title_alpha_value < 255 - ceil(title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
-                red_title_alpha_value += title_animation_speed                       # <--- Will finish in frame #(102 + (255/title_animation_speed))
+            if (is_even(tick_counter)) & (red_title_alpha_value < 255 - ceil(settings.title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                red_title_alpha_value += settings.title_animation_speed                       # <--- Will finish in frame #(102 + (255/settings.title_animation_speed))
 
             global red_bg_surface
             global red_silhouettes_surface
@@ -546,35 +542,30 @@ def play_colour_animation(screen, tick_counter):
             red_silhouettes_surface.set_alpha(red_alpha_value)
             red_title_surface.set_alpha(red_title_alpha_value)
 
-            
-            global silhouette_x_pos
-            global silhouette_y_pos
+
 
             # It will look more natural if I don't start it at (0, 0), right? :p
-            silhouette_x_pos -= 9
-            silhouette_y_pos -= 3
+            settings.silhouette_x_pos -= 9
+            settings.silhouette_y_pos -= 3
 
             screen.blit(red_bg_surface, (0, 0))
-            screen.blit(red_silhouettes_surface, (silhouette_x_pos, silhouette_y_pos))
+            screen.blit(red_silhouettes_surface, (settings.silhouette_x_pos, settings.silhouette_y_pos))
             screen.blit(red_title_surface, (0, 0))
 
 
 
         case 1:
-            
-            global bg_and_silhouettes_animation_speed
-            global title_animation_speed
 
             global orange_alpha_value
             global orange_title_alpha_value
 
             # if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
-            if (tick_counter >= 102) & (orange_alpha_value < 255 - ceil(bg_and_silhouettes_animation_speed)):
-                orange_alpha_value += bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/bg_and_silhouettes_animation_speed))
+            if (tick_counter >= 102) & (orange_alpha_value < 255 - ceil(settings.bg_and_silhouettes_animation_speed)):
+                orange_alpha_value += settings.bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/settings.bg_and_silhouettes_animation_speed))
                 
             # elif (tick_counter >= 298) & (tick_counter < 400):      
-            if (is_even(tick_counter)) & (orange_title_alpha_value < 255 - ceil(title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
-                orange_title_alpha_value += title_animation_speed                       # <--- Will finish in frame #(102 + (255/title_animation_speed))
+            if (is_even(tick_counter)) & (orange_title_alpha_value < 255 - ceil(settings.title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                orange_title_alpha_value += settings.title_animation_speed                       # <--- Will finish in frame #(102 + (255/settings.title_animation_speed))
 
             global orange_bg_surface
             global orange_silhouettes_surface
@@ -585,34 +576,29 @@ def play_colour_animation(screen, tick_counter):
             orange_silhouettes_surface.set_alpha(orange_alpha_value)
             orange_title_surface.set_alpha(orange_title_alpha_value)
 
-            
-            global silhouette_x_pos
-            global silhouette_y_pos
+
 
             # It will look more natural if I don't start it at (0, 0), right? :p
-            silhouette_x_pos -= 9
-            silhouette_y_pos -= 3
+            settings.silhouette_x_pos -= 9
+            settings.silhouette_y_pos -= 3
 
             screen.blit(orange_bg_surface, (0, 0))
-            screen.blit(orange_silhouettes_surface, (silhouette_x_pos, silhouette_y_pos))
+            screen.blit(orange_silhouettes_surface, (settings.silhouette_x_pos, settings.silhouette_y_pos))
             screen.blit(orange_title_surface, (0, 0))
 
 
         case 2:
-            
-            global bg_and_silhouettes_animation_speed
-            global title_animation_speed
 
             global yellow_alpha_value
             global yellow_title_alpha_value
 
             # if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
-            if (tick_counter >= 102) & (yellow_alpha_value < 255 - ceil(bg_and_silhouettes_animation_speed)):
-                yellow_alpha_value += bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/bg_and_silhouettes_animation_speed))
+            if (tick_counter >= 102) & (yellow_alpha_value < 255 - ceil(settings.bg_and_silhouettes_animation_speed)):
+                yellow_alpha_value += settings.bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/settings.bg_and_silhouettes_animation_speed))
                 
             # elif (tick_counter >= 298) & (tick_counter < 400):      
-            if (is_even(tick_counter)) & (yellow_title_alpha_value < 255 - ceil(title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
-                yellow_title_alpha_value += title_animation_speed                       # <--- Will finish in frame #(102 + (255/title_animation_speed))
+            if (is_even(tick_counter)) & (yellow_title_alpha_value < 255 - ceil(settings.title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                yellow_title_alpha_value += settings.title_animation_speed                       # <--- Will finish in frame #(102 + (255/settings.title_animation_speed))
 
             global yellow_bg_surface
             global yellow_silhouettes_surface
@@ -623,34 +609,30 @@ def play_colour_animation(screen, tick_counter):
             yellow_silhouettes_surface.set_alpha(yellow_alpha_value)
             yellow_title_surface.set_alpha(yellow_title_alpha_value)
 
-            
-            global silhouette_x_pos
-            global silhouette_y_pos
+
+
 
             # It will look more natural if I don't start it at (0, 0), right? :p
-            silhouette_x_pos -= 9
-            silhouette_y_pos -= 3
+            settings.silhouette_x_pos -= 9
+            settings.silhouette_y_pos -= 3
 
             screen.blit(yellow_bg_surface, (0, 0))
-            screen.blit(yellow_silhouettes_surface, (silhouette_x_pos, silhouette_y_pos))
+            screen.blit(yellow_silhouettes_surface, (settings.silhouette_x_pos, settings.silhouette_y_pos))
             screen.blit(yellow_title_surface, (0, 0))
 
 
         case 3:
-                        
-            global bg_and_silhouettes_animation_speed
-            global title_animation_speed
 
             global green_alpha_value
             global green_title_alpha_value
 
             # if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
-            if (tick_counter >= 102) & (green_alpha_value < 255 - ceil(bg_and_silhouettes_animation_speed)):
-                green_alpha_value += bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/bg_and_silhouettes_animation_speed))
+            if (tick_counter >= 102) & (green_alpha_value < 255 - ceil(settings.bg_and_silhouettes_animation_speed)):
+                green_alpha_value += settings.bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/settings.bg_and_silhouettes_animation_speed))
                 
             # elif (tick_counter >= 298) & (tick_counter < 400):      
-            if (is_even(tick_counter)) & (green_title_alpha_value < 255 - ceil(title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
-                green_title_alpha_value += title_animation_speed                       # <--- Will finish in frame #(102 + (255/title_animation_speed))
+            if (is_even(tick_counter)) & (green_title_alpha_value < 255 - ceil(settings.title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                green_title_alpha_value += settings.title_animation_speed                       # <--- Will finish in frame #(102 + (255/settings.title_animation_speed))
 
             global green_bg_surface
             global green_silhouettes_surface
@@ -661,35 +643,30 @@ def play_colour_animation(screen, tick_counter):
             green_silhouettes_surface.set_alpha(green_alpha_value)
             green_title_surface.set_alpha(green_title_alpha_value)
 
-            
-            global silhouette_x_pos
-            global silhouette_y_pos
+
 
             # It will look more natural if I don't start it at (0, 0), right? :p
-            silhouette_x_pos -= 9
-            silhouette_y_pos -= 3
+            settings.silhouette_x_pos -= 9
+            settings.silhouette_y_pos -= 3
 
             screen.blit(green_bg_surface, (0, 0))
-            screen.blit(green_silhouettes_surface, (silhouette_x_pos, silhouette_y_pos))
+            screen.blit(green_silhouettes_surface, (settings.silhouette_x_pos, settings.silhouette_y_pos))
             screen.blit(green_title_surface, (0, 0))
 
 
 
         case 4:
-                        
-            global bg_and_silhouettes_animation_speed
-            global title_animation_speed
 
             global blue_alpha_value
             global blue_title_alpha_value
 
             # if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
-            if (tick_counter >= 102) & (blue_alpha_value < 255 - ceil(bg_and_silhouettes_animation_speed)):
-                blue_alpha_value += bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/bg_and_silhouettes_animation_speed))
+            if (tick_counter >= 102) & (blue_alpha_value < 255 - ceil(settings.bg_and_silhouettes_animation_speed)):
+                blue_alpha_value += settings.bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/settings.bg_and_silhouettes_animation_speed))
                 
             # elif (tick_counter >= 298) & (tick_counter < 400):      
-            if (is_even(tick_counter)) & (blue_title_alpha_value < 255 - ceil(title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
-                blue_title_alpha_value += title_animation_speed                       # <--- Will finish in frame #(102 + (255/title_animation_speed))
+            if (is_even(tick_counter)) & (blue_title_alpha_value < 255 - ceil(settings.title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                blue_title_alpha_value += settings.title_animation_speed                       # <--- Will finish in frame #(102 + (255/settings.title_animation_speed))
 
             global blue_bg_surface
             global blue_silhouettes_surface
@@ -700,35 +677,30 @@ def play_colour_animation(screen, tick_counter):
             blue_silhouettes_surface.set_alpha(blue_alpha_value)
             blue_title_surface.set_alpha(blue_title_alpha_value)
 
-            
-            global silhouette_x_pos
-            global silhouette_y_pos
+
 
             # It will look more natural if I don't start it at (0, 0), right? :p
-            silhouette_x_pos -= 9
-            silhouette_y_pos -= 3
+            settings.silhouette_x_pos -= 9
+            settings.silhouette_y_pos -= 3
 
             screen.blit(blue_bg_surface, (0, 0))
-            screen.blit(blue_silhouettes_surface, (silhouette_x_pos, silhouette_y_pos))
+            screen.blit(blue_silhouettes_surface, (settings.silhouette_x_pos, settings.ilhouette_y_pos))
             screen.blit(blue_title_surface, (0, 0))
 
 
 
         case 5:
-                        
-            global bg_and_silhouettes_animation_speed
-            global title_animation_speed
 
             global purple_alpha_value
             global purple_title_alpha_value
 
             # if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
-            if (tick_counter >= 102) & (purple_alpha_value < 255 - ceil(bg_and_silhouettes_animation_speed)):
-                purple_alpha_value += bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/bg_and_silhouettes_animation_speed))
+            if (tick_counter >= 102) & (purple_alpha_value < 255 - ceil(settings.bg_and_silhouettes_animation_speed)):
+                purple_alpha_value += settings.bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/settings.bg_and_silhouettes_animation_speed))
                 
             # elif (tick_counter >= 298) & (tick_counter < 400):      
-            if (is_even(tick_counter)) & (purple_title_alpha_value < 255 - ceil(title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
-                purple_title_alpha_value += title_animation_speed                       # <--- Will finish in frame #(102 + (255/title_animation_speed))
+            if (is_even(tick_counter)) & (purple_title_alpha_value < 255 - ceil(settings.title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                purple_title_alpha_value += settings.title_animation_speed                       # <--- Will finish in frame #(102 + (255/settings.title_animation_speed))
 
             global purple_bg_surface
             global purple_silhouettes_surface
@@ -740,21 +712,20 @@ def play_colour_animation(screen, tick_counter):
             purple_title_surface.set_alpha(purple_title_alpha_value)
 
             
-            global silhouette_x_pos
-            global silhouette_y_pos
 
             # It will look more natural if I don't start it at (0, 0), right? :p
-            silhouette_x_pos -= 9
-            silhouette_y_pos -= 3
+            settings.silhouette_x_pos -= 9
+            settings.silhouette_y_pos -= 3
 
             screen.blit(purple_bg_surface, (0, 0))
-            screen.blit(purple_silhouettes_surface, (silhouette_x_pos, silhouette_y_pos))
+            screen.blit(purple_silhouettes_surface, (settings.silhouette_x_pos, settings.silhouette_y_pos))
             screen.blit(purple_title_surface, (0, 0))
 
 
 
-        case _:
+        case _:     # Maybe case for black to be implemented in the future, if needed?
             print("What?")
+            pass
 
     if (tick_counter >= 443):
         fadeout_to_renpy(screen)
@@ -784,17 +755,19 @@ def fadeout_to_renpy(screen):
 
 
 
+def scale_rectangle_to_screen_size(rectangle: pygame.Rect):
 
-black_region_hitbox = pygame.Rect(448, 440, 764, 277)       # I am setting the black hitbox as a simple rectangle between vertices (448, 440) and (1212, 717)
-
-def scale_rectangle_to_screen_size(rectangle):
-
-    vertical_scaling_factor = user_screen_height / rectangle.top()
-    horizontal_scaling_factor = user_screen_width / rectangle.left()
+    vertical_scaling_factor = user_screen_height / rectangle.top
+    horizontal_scaling_factor = user_screen_width / rectangle.left
 
     new_rectangle = rectangle.scale_by(horizontal_scaling_factor, vertical_scaling_factor)
 
     return new_rectangle
+
+
+black_region_hitbox = pygame.Rect(448, 440, 764, 277)       # I am setting the black hitbox as a simple rectangle between vertices (448, 440) and (1212, 717)
+black_region_hitbox = scale_rectangle_to_screen_size(black_region_hitbox)
+
 
 def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick counter to check for game state (whether the player is in the world map or not!).   // needs game state to check for postgame (3 possible scenarios: hasn't unlocked black // has unlocked black // is in postgame)
 
@@ -810,7 +783,9 @@ def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick
 
     global black_region_hitbox
     
-    if (black_region_hitbox.collidepoint(mouse_pos) & (settings.black_region_is_available == False) & (settings.has_completed_back_region) == False):
+    mouse_pos_tuple = ((mouse_pos.x_coordinate(), mouse_pos.y_coordinate()))      # Converts mouse_pos from type "Vertex" to type "tuple".
+
+    if (black_region_hitbox.collidepoint(mouse_pos_tuple) & (settings.black_region_is_available == False) & (settings.has_completed_black_region) == False):
         settings.colour_being_hovered_over_by_the_player = "black"
         animation_handler(screen, tick_counter, just_animating_colour = True)
 
