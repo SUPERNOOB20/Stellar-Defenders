@@ -684,7 +684,7 @@ def play_colour_animation(screen, tick_counter):
             settings.silhouette_y_pos -= 3
 
             screen.blit(blue_bg_surface, (0, 0))
-            screen.blit(blue_silhouettes_surface, (settings.silhouette_x_pos, settings.ilhouette_y_pos))
+            screen.blit(blue_silhouettes_surface, (settings.silhouette_x_pos, settings.silhouette_y_pos))
             screen.blit(blue_title_surface, (0, 0))
 
 
@@ -757,10 +757,27 @@ def fadeout_to_renpy(screen):
 
 def scale_rectangle_to_screen_size(rectangle: pygame.Rect):
 
-    vertical_scaling_factor = user_screen_height / rectangle.top
-    horizontal_scaling_factor = user_screen_width / rectangle.left
+    print("rectangle left should be 448:", rectangle.left)
+    print("rectangle top should be 440:", rectangle.top)
+    print("rectangle.height:", rectangle.height)
+    print("rectangle.width:", rectangle.width)
 
-    new_rectangle = rectangle.scale_by(horizontal_scaling_factor, vertical_scaling_factor)
+
+    # horizontal_scaling_factor = user_screen_width / rectangle.left
+    # vertical_scaling_factor = user_screen_height / rectangle.top
+
+    horizontal_scaling_factor = user_screen_width / 1920            # My game is 1920x1080 native resolution.
+    vertical_scaling_factor = user_screen_height / 1080             # My game is 1920x1080 native resolution.
+
+
+    new_left = rectangle.left * horizontal_scaling_factor
+    new_top = rectangle.top * vertical_scaling_factor
+    new_width = rectangle.width * horizontal_scaling_factor
+    new_height = rectangle.height * vertical_scaling_factor
+
+    # new_rectangle = rectangle.scale_by(horizontal_scaling_factor, vertical_scaling_factor)
+    new_rectangle = pygame.Rect(new_left, new_top, new_width, new_height)
+
 
     return new_rectangle
 
@@ -781,18 +798,6 @@ def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick
 
 
 
-    global black_region_hitbox
-    
-    mouse_pos_tuple = ((mouse_pos.x_coordinate(), mouse_pos.y_coordinate()))      # Converts mouse_pos from type "Vertex" to type "tuple".
-
-    if (black_region_hitbox.collidepoint(mouse_pos_tuple) & (settings.black_region_is_available == False) & (settings.has_completed_black_region) == False):
-        settings.colour_being_hovered_over_by_the_player = "black"
-        animation_handler(screen, tick_counter, just_animating_colour = True)
-
-
-
-
-
 # Logic for colours other than black is as follows:
 # For example, for the red region:
 # You can go there if:
@@ -800,30 +805,44 @@ def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick
 # OR
 ##### postgame has been unlocked but not finished
 
-    if (colour_collider_handler.red.is_user_on_colour(mouse_pos) & (not settings.has_completed_red_region) & (red_postgame_is_available)):        # if red region is unvisited OR postgame has been unlocked but not finished
+
+    global black_region_hitbox
+    
+    mouse_pos_tuple = ((mouse_pos.x_coordinate(), mouse_pos.y_coordinate()))      # Converts mouse_pos from type "Vertex" to type "tuple".
+
+    # print("black_region_hitbox.collidepoint(mouse_pos_tuple):", black_region_hitbox.collidepoint(mouse_pos_tuple))
+
+    if ((black_region_hitbox.collidepoint(mouse_pos_tuple)) & (settings.black_region_is_available) & (not (settings.has_completed_black_region))):
+        # print("mouse_pos:", mouse_pos_tuple)
+        # print("black_region_hitbox:", (black_region_hitbox.left, black_region_hitbox.top, black_region_hitbox.width, black_region_hitbox.height))
+
+        settings.colour_being_hovered_over_by_the_player = "black"
+        animation_handler(screen, tick_counter, just_animating_colour = True)
+
+    elif ((colour_collider_handler.red.is_user_on_colour(mouse_pos)) & ((not settings.has_completed_red_region) | (red_postgame_is_available))):        # if red region is unvisited OR postgame has been unlocked but not finished
         settings.colour_being_hovered_over_by_the_player = "red"
         animation_handler(screen, tick_counter, just_animating_colour = True)
 
-    if (colour_collider_handler.orange.is_user_on_colour(mouse_pos) & (not settings.has_completed_orange_region) & (orange_postgame_is_available)):
+    elif ((colour_collider_handler.orange.is_user_on_colour(mouse_pos)) & ((not settings.has_completed_orange_region) | (orange_postgame_is_available))):
         settings.colour_being_hovered_over_by_the_player = "orange"
         animation_handler(screen, tick_counter, just_animating_colour = True)
 
         # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
         
 
-    elif (colour_collider_handler.yellow.is_user_on_colour(mouse_pos) & (not settings.has_completed_yellow_region) & (yellow_postgame_is_available)):
+    elif ((colour_collider_handler.yellow.is_user_on_colour(mouse_pos)) & ((not settings.has_completed_yellow_region) | (yellow_postgame_is_available))):
         settings.colour_being_hovered_over_by_the_player = "yellow"
         animation_handler(screen, tick_counter, just_animating_colour = True)
     
-    elif (colour_collider_handler.green.is_user_on_colour(mouse_pos) & (not settings.has_completed_green_region) & (green_postgame_is_available)):
+    elif ((colour_collider_handler.green.is_user_on_colour(mouse_pos)) & ((not settings.has_completed_green_region) | (green_postgame_is_available))):
         settings.colour_being_hovered_over_by_the_player = "green"
         animation_handler(screen, tick_counter, just_animating_colour = True)        
 
-    elif (colour_collider_handler.blue.is_user_on_colour(mouse_pos) & (not settings.has_completed_blue_region) & (blue_postgame_is_available)):
+    elif ((colour_collider_handler.blue.is_user_on_colour(mouse_pos)) & ((not settings.has_completed_blue_region) | (blue_postgame_is_available))):
         settings.colour_being_hovered_over_by_the_player = "blue"
         animation_handler(screen, tick_counter, just_animating_colour = True)
     
-    elif (colour_collider_handler.purple.is_user_on_colour(mouse_pos) & (not settings.has_completed_purple_region) & (purple_postgame_is_available)):
+    elif ((colour_collider_handler.purple.is_user_on_colour(mouse_pos)) & ((not settings.has_completed_purple_region) | (purple_postgame_is_available))):
         settings.colour_being_hovered_over_by_the_player = "purple"
         animation_handler(screen, tick_counter, just_animating_colour = True) 
         

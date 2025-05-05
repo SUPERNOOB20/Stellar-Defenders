@@ -32,7 +32,7 @@ has_completed_green_region = False
 has_completed_blue_region = False
 has_completed_purple_region = False
 
-black_region_is_available = False
+black_region_is_available = True        # <--- True for debugging (Should be "False" in new save files).
 has_completed_black_region = False
 
 has_completed_red_postgame = False
