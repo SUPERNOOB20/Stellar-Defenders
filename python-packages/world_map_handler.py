@@ -3,6 +3,9 @@ from sys import exit
 from math import floor
 import os
 
+current_dir = os.getcwd()
+print("HOLA ES MUY IMPORTANTE QUE ESTO SEA CORRECTO:", current_dir)
+
 from screeninfo import get_monitors
 
 from animation_handler import animation_handler, colour_handler

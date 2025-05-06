@@ -124,18 +124,20 @@ label start:
         
         # line_0 = file[0]
         
-        line_0 = "ola"
+        colour_picked_by_the_player = "ola"
 
         dummy_counter = 0
         for line in file:
             if (dummy_counter == 0):
-                line_0 = line
+                colour_picked_by_the_player = line
                 dummy_counter += 1
 
 
         
         
-        # print(line_0)
+        # print(colour_picked_by_the_player)
+        
+        colour_picked_by_the_player.replace("\r\n", "")
         
 
 
@@ -144,10 +146,12 @@ label start:
     # p "let's see... you picked region [current_colour], is that correct? (^-^)"
     # p "let's see... you picked region [file], is that correct?"
     # p "haha nahhh jk... it's [line_0], isn't it? (^-^)"
-    p "You have entered the [line_0] region... right? (^-^)"
+    # p "You have entered the [line_0] region... right? (^-^)"
+    p "You have entered the [colour_picked_by_the_player] region... right? (^-^)"
     p "if not... weeeeeell... you might wanna warn SUPERNOOB :p"
-    p "alright, end of the demo"
-    p "see you around! Now get outta here :p"
+    p "alright, let's send you there...!"
+    # p "alright, end of the demo"
+    # p "see you around! Now get outta here :p"
 
 
 
@@ -155,22 +159,61 @@ label start:
 
 #     renpy.full_restart()
     
+jump(colour_picked_by_the_player)
 
 
-
-
-
-
-
-
-
-
-label red_region:
+label red:
     "This is the red region :p"
 
+    p "let's say you've completed this region, or whatever."
 
+    p "you'll be going back to the worldmap now :) magic!"
 
-label purple_region:
+    python:
+        subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
+
+label orange:
+    "This is the orange region :p"
+
+    p "let's say you've completed this region, or whatever."
+
+    p "you'll be going back to the worldmap now :) magic!"
+
+    python:
+        subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
+
+label yellow:
+    "This is the yellow region :p"
+
+    p "let's say you've completed this region, or whatever."
+
+    p "you'll be going back to the worldmap now :) magic!"
+
+    python:
+        subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
+
+label green:
+    "This is the green region :p"
+
+    p "let's say you've completed this region, or whatever."
+
+    p "you'll be going back to the worldmap now :) magic!"
+
+    python:
+        subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
+
+label blue:
+    "This is the blue region :p"
+
+    p "let's say you've completed this region, or whatever."
+
+    p "you'll be going back to the worldmap now :) magic!"
+
+    python:
+        subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
+
+label purple:
+    "This is the purple region :p"
 
     menu talking_to_ariadne:
         "What is it?"
@@ -239,14 +282,23 @@ label purple_region:
 
     p "you'll be going back to the worldmap now :) magic!"
 
-    # python:
-
-        # import subprocess
-        # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/pygame")
+    python:
+        subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
 
     # This ends the game.
 
     "End of the demo. Thank you so much for playing!"
     "Bye byeeee, see you around :3)/"
+
+
+label black:
+    "This is the black region :O"
+
+    p "let's say you've completed this region, or whatever."
+
+    p "you'll be going back to the worldmap now :) magic!"
+
+    python:
+        subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
 
     return

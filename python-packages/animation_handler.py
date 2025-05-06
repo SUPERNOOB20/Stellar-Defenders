@@ -281,8 +281,10 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
                 if settings.player_has_just_clicked == True:
                     # seconds = 727     # <--- whatever number you put in here, it should reset to 0 anyway :3 (debugging strategy lol)
                     
-                    from region_warper import set_warp_to
-                    set_warp_to(settings.colour_being_hovered_over_by_the_player)
+                    import region_warper
+
+                    print("COLOUR THAT WILL GET PRINTED TO NEXUS.TXT:", settings.colour_being_hovered_over_by_the_player)
+                    region_warper.set_warp_to(settings.colour_being_hovered_over_by_the_player)
 
                     settings.game_state = 1     # With this implementation there will be a 1-frame delay here between the player clicking a region and the animations playing, but oh well... whatever ":3
                     #print('yay, game_state is 1')
@@ -341,6 +343,9 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
             global black_surface
             screen.blit(black_surface, (0, 0))
 
+            fadeout_start = 443
+            fadeout_finish = 443 + 173      # The fadeout lasts for 173 frames (I think... lol "^^)
+            some_overhead = 2
 
             if (tick_counter >= 102):
                 
@@ -355,9 +360,7 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
                     play_ominous_SFX(tick_counter)
                     play_colour_animation(screen, tick_counter)        # play_colour_animation("colour/background", "colour/silhouettes", "colour/title")
                     
-                    fadeout_start = 443
-                    fadeout_finish = 443 + 173      # The fadeout lasts for 173 frames (I think... lol "^^)
-                    some_overhead = 2
+                    ######
 
                     if (tick_counter >= fadeout_start):       
                         fadeout_to_renpy(screen)
@@ -365,7 +368,7 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
                 else:
                     print("is this line of code even reachable...? I am interested in knowing this (lol).")
 
-                if (tick_counter > fadeout_start + fadeout_finish + some_overhead):
+                if (tick_counter > (fadeout_finish + some_overhead)):
                     # settings.warp_to_renpy_region = settings.colour_being_hovered_over_by_the_player
                     pygame.exit()
             

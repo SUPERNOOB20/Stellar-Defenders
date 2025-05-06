@@ -9,7 +9,7 @@ def set_warp_to(colour_string):
 
     change_specified_line_in_a_txt_file("nexus.txt", 0, colour_string)
 
-    # print("yay :3")
+    print("yay :3")
 
     return
 
@@ -19,7 +19,7 @@ def set_warp_to(colour_string):
 def change_specified_line_in_a_txt_file(filename, line_number, text):
     file = open(filename, "r", encoding = "utf-8")
     lines = file.readlines()
-    lines[line_number] = text + "\n"
+    lines[line_number] = text
     file.close()
 
     file = open(filename, "w", encoding = "utf-8")
@@ -41,7 +41,7 @@ def change_specified_line_in_a_txt_file(filename, line_number, text):
 
 
 
-"""
+
 def number_of_lines(file):
 
     file = open("nexus.txt", "r", encoding = "utf-8")
@@ -52,7 +52,7 @@ def number_of_lines(file):
         line_counter += 1
         
     return line_counter
-"""
 
 
-# set_warp_to("testt")
+
+set_warp_to("testt")
