@@ -344,7 +344,7 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
             screen.blit(black_surface, (0, 0))
 
             fadeout_start = 443
-            fadeout_finish = 443 + 173      # The fadeout lasts for 173 frames (I think... lol "^^)
+            fadeout_finish = 173      # The fadeout lasts for 173 frames (I think... lol "^^)
             some_overhead = 2
 
             if (tick_counter >= 102):
