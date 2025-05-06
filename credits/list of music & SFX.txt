@@ -1,0 +1,35 @@
+LIST OF Music:
+
+RenPy main menu: Opening History Unveiled (From FE7 Premium OST)
+
+
+Red:
+Orange:
+Yellow:
+Green:
+Purple:
+
+Black: xi - Halcyon
+
+
+
+Red_minigame: Strike (From FE7 Premium OST)
+Orange_minigame:
+Yellow_minigame:
+Green_minigame: Together we Ride! (From FE7)
+Blue_minigame: Aquellex - Wanderflux
+Purple_minigame:
+
+
+
+
+LIST OF SFX:
+
+From Fire Emblem 7:
+(https://www.sounds-resource.com/game_boy_advance/fireemblemtheblazingblade/sound/8833/)
+
+
+0.wav = song096.wav
+1.wav = song097.wav
+2.wav = song098.wav
+3.wav = song912.wav
