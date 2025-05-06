@@ -6,12 +6,12 @@ init python:
     renpy_boot_path = os.getcwd()
 
 
-    world_map_handler_directory = "/Stellar Defenders/game/pygame/"
-    os.chdir(renpy_boot_path + world_map_handler_directory)
+    # world_map_handler_directory = "/Stellar Defenders/game/pygame/"
+    # os.chdir(renpy_boot_path + world_map_handler_directory)
 
-    main_module_directory = os.getcwd()
+    # main_module_directory = os.getcwd()
     import world_map_handler
-    os.chdir(renpy_boot_path)
+    # os.chdir(renpy_boot_path)
 
     # python_boot_path = f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe"
 
@@ -90,11 +90,10 @@ label start:
 
     python:
 
-    
-    # p "Did you know? world_map_handler.py should be located in [main_module_directory] :p"
-
         start_world_map()
 
+
+        # vv Leaving this bit of code here just in case I need it at some point and forget the syntax lol sorryyyy "^^
         # import subprocess
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/pygame")
 
