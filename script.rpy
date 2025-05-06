@@ -159,7 +159,7 @@ label start:
 
 #     renpy.full_restart()
     
-jump(colour_picked_by_the_player)
+jump colour_picked_by_the_player
 
 
 label red:
