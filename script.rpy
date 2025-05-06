@@ -5,23 +5,15 @@ init python:
     import os
     renpy_boot_path = os.getcwd()
 
-    # boot_path_str = str(os.getcwd())
-    python_boot_path = f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe"
+    # python_boot_path = f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe"
 
-    import subprocess
-    subprocess.run(f"{python_boot_path} animation_init.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-scripts/intro_animation")
+    # import subprocess
+    # subprocess.run(f"{python_boot_path} animation_init.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-scripts/intro_animation")
 
 
 
 label splashscreen:
-
-    # $ renpy.movie_cutscene('intro.mp4')
-    # $ renpy.movie_cutscene('intro.m2v')
-    # $ renpy.movie_cutscene('intro.avi')
-
-    
-
-
+    # put some sick ass white fadeout here, heh :3
     return
 
 
@@ -61,11 +53,13 @@ label start:
 
     # These display lines of dialogue.
 
-    p "You've created a new Ren'Py game."
+    # p "You've created a new Ren'Py game."
 
-    p "Once you add a story, pictures, and music, you can release it to the world!"
+    # p "Once you add a story, pictures, and music, you can release it to the world!"
 
-#     p "[boot_path_str]"
+    # p "This is the directory RenPy is importing from ---> " + "[renpy_boot_path]"
+
+    p "[renpy_boot_path]"
 
     # python:
         # import subprocess
@@ -75,9 +69,44 @@ label start:
             # pass
             # hi = "hello!"
 
-    p ":o"
+    "Once upon a time..."
+    "...a very handsome individual was fated to save the world..."
+    p "...and uhhh..."
+    p 'oh! H-hi there "^^'
 
     stop music
+
+    p "Welcome to the demo!"
+    p "Let's test some stuff and see if it works properly, shall we? ^-^"
+    p "I will take you to the world map now :3"
+
+    python:
+
+        world_map_handler_directory = "/Stellar Defenders/game/pygame/"
+        os.chdir(renpy_boot_path + world_map_handler_directory)
+
+        main_module_directory = os.getcwd()
+    
+    p "Did you know? world_map_handler.py should be located in [main_module_directory] :p"
+
+    python:
+
+        import world_map_handler
+        os.chdir(renpy_boot_path)
+
+        start_world_map()
+
+        # import subprocess
+        # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/pygame")
+
+    "you have finished the world map... ha"
+
+label red_region:
+    "This is the red region :p"
+
+
+
+label purple_region:
 
     menu talking_to_ariadne:
         "What is it?"
@@ -146,11 +175,14 @@ label start:
 
     p "you'll be going back to the worldmap now :) magic!"
 
-    python:
+    # python:
 
-        import subprocess
-        subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe stellar_defenders_pygame_module.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/pygame")
+        # import subprocess
+        # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/pygame")
 
     # This ends the game.
+
+    "End of the demo. Thank you so much for playing!"
+    "Bye byeeee, see you around :3)/"
 
     return

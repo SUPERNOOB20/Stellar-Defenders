@@ -23,6 +23,16 @@ silhouette_y_pos = 0
 
 
 
+
+warp_to_renpy_region = "none"
+
+
+
+
+
+
+
+
 #    vv     Game progress settings     vv
 
 has_completed_red_region = False

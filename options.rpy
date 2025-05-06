@@ -30,6 +30,31 @@ define config.version = "0.0.4"
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+★★★ Credits :3 ★★★ \n
+
+
+★ Assets: \n
+    * Sick af ice cube image: https://www.icemill.com/store/p/ice-cube-8rylb \n
+    * Music: \n
+        ** Refer to "list of music & SFX.txt" \n
+
+
+★ Technical help: \n
+    * CharlieFuu69  - https://x.com/CharlieFuu69 \n
+    * Romelai28     - https://x.com/Romelai28 \n
+	
+
+★ Emotional support and heartfelt thanks: \n
+    * Quetza \n
+    * Pepe G. \n
+    * D.M.L \n
+    * Kat \n
+    * Fofín \n
+    * Agus \n
+    * ...various frens... \n
+
+    * ...and you \n
+    * ...for playing Stellar Defenders :3 \n\n\n
 """)
 
 

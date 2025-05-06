@@ -350,8 +350,16 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
                 elif (not (settings.colour_being_hovered_over_by_the_player == "black")):
                     play_ominous_SFX(tick_counter)
                     play_colour_animation(screen, tick_counter)        # play_colour_animation("colour/background", "colour/silhouettes", "colour/title")
+                    
+                    fadeout_start = 443
+                    fadeout_finish = 443 + 173      # The fadeout lasts for 173 frames (I think... lol "^^)
+                    some_overhead = 2
 
+                    if (tick_counter >= fadeout_start):       
+                        fadeout_to_renpy(screen)
 
+                    if (tick_counter > fadeout_start + fadeout_finish + some_overhead):
+                        pygame.exit()
             
 
 
@@ -530,8 +538,8 @@ def play_colour_animation(screen, tick_counter):
                 red_alpha_value += settings.bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/settings.bg_and_silhouettes_animation_speed))
                 
             # elif (tick_counter >= 298) & (tick_counter < 400):      
-            if (is_even(tick_counter)) & (red_title_alpha_value < 255 - ceil(settings.title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
-                red_title_alpha_value += settings.title_animation_speed                       # <--- Will finish in frame #(102 + (255/settings.title_animation_speed))
+            if (red_title_alpha_value < 255 - ceil(settings.title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                red_title_alpha_value += floor(settings.title_animation_speed / 2)                       # <--- Will finish in frame #(102 + (255/settings.title_animation_speed))
 
             global red_bg_surface
             global red_silhouettes_surface
@@ -560,8 +568,8 @@ def play_colour_animation(screen, tick_counter):
             global orange_title_alpha_value
 
             # if (tick_counter >= 102) & (tick_counter < 208):     # We start after worldmap_fadeout(), and we end when yellow_alpha_value = 104
-            if (tick_counter >= 102) & (orange_alpha_value < 255 - ceil(settings.bg_and_silhouettes_animation_speed)):
-                orange_alpha_value += settings.bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/settings.bg_and_silhouettes_animation_speed))
+            if (orange_alpha_value < 255 - ceil(settings.bg_and_silhouettes_animation_speed)):
+                orange_alpha_value += floor(settings.bg_and_silhouettes_animation_speed / 2)               # <--- Will finish in frame #(102 + (255/settings.bg_and_silhouettes_animation_speed))
                 
             # elif (tick_counter >= 298) & (tick_counter < 400):      
             if (is_even(tick_counter)) & (orange_title_alpha_value < 255 - ceil(settings.title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
@@ -597,8 +605,8 @@ def play_colour_animation(screen, tick_counter):
                 yellow_alpha_value += settings.bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/settings.bg_and_silhouettes_animation_speed))
                 
             # elif (tick_counter >= 298) & (tick_counter < 400):      
-            if (is_even(tick_counter)) & (yellow_title_alpha_value < 255 - ceil(settings.title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
-                yellow_title_alpha_value += settings.title_animation_speed                       # <--- Will finish in frame #(102 + (255/settings.title_animation_speed))
+            if (yellow_title_alpha_value < 255 - ceil(settings.title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                yellow_title_alpha_value += floor(settings.title_animation_speed / 2)                       # <--- Will finish in frame #(102 + (255/settings.title_animation_speed))
 
             global yellow_bg_surface
             global yellow_silhouettes_surface
@@ -631,8 +639,8 @@ def play_colour_animation(screen, tick_counter):
                 green_alpha_value += settings.bg_and_silhouettes_animation_speed                # <--- Will finish in frame #(102 + (255/settings.bg_and_silhouettes_animation_speed))
                 
             # elif (tick_counter >= 298) & (tick_counter < 400):      
-            if (is_even(tick_counter)) & (green_title_alpha_value < 255 - ceil(settings.title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
-                green_title_alpha_value += settings.title_animation_speed                       # <--- Will finish in frame #(102 + (255/settings.title_animation_speed))
+            if (green_title_alpha_value < 255 - ceil(settings.title_animation_speed)):      # For an animation of 102 ticks, we can increase the opacity of the title by 1 every 2 ticks :P
+                green_title_alpha_value += floor(settings.title_animation_speed / 2)                       # <--- Will finish in frame #(102 + (255/settings.title_animation_speed))
 
             global green_bg_surface
             global green_silhouettes_surface
@@ -727,14 +735,11 @@ def play_colour_animation(screen, tick_counter):
             print("What?")
             pass
 
-    if (tick_counter >= 443):
-        fadeout_to_renpy(screen)
-
     return
 
 
 
-def fadeout_to_renpy(screen):
+def fadeout_to_renpy(screen):       # Lasts for 173 frames (I think... lol)
 
     alpha_step = 1.47398843931
 
