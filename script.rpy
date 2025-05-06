@@ -8,6 +8,9 @@ init python:
     import settings
     print(settings.game_state)
 
+    from region_warper import change_specified_line_in_a_txt_file
+
+
     # world_map_handler_directory = "/Stellar Defenders/game/pygame/"
     # os.chdir(renpy_boot_path + world_map_handler_directory)
 
@@ -170,6 +173,9 @@ label red:
     p "you'll be going back to the worldmap now :) magic!"
 
     python:
+        file = ("nexus.txt")
+        change_specified_line_in_a_txt_file("nexus.txt", 1, 1)
+
         subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
 
 label orange:
@@ -180,6 +186,9 @@ label orange:
     p "you'll be going back to the worldmap now :) magic!"
 
     python:
+        file = ("nexus.txt")
+        change_specified_line_in_a_txt_file("nexus.txt", 2, 1)
+
         subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
 
 label yellow:
@@ -190,6 +199,9 @@ label yellow:
     p "you'll be going back to the worldmap now :) magic!"
 
     python:
+        file = ("nexus.txt")
+        change_specified_line_in_a_txt_file("nexus.txt", 3, 1)
+
         subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
 
 label green:
@@ -200,6 +212,9 @@ label green:
     p "you'll be going back to the worldmap now :) magic!"
 
     python:
+        file = ("nexus.txt")
+        change_specified_line_in_a_txt_file("nexus.txt", 4, 1)
+
         subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
 
 label blue:
@@ -210,6 +225,9 @@ label blue:
     p "you'll be going back to the worldmap now :) magic!"
 
     python:
+        file = ("nexus.txt")
+        change_specified_line_in_a_txt_file("nexus.txt", 5, 1)
+
         subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
 
 label purple:
@@ -283,6 +301,9 @@ label purple:
     p "you'll be going back to the worldmap now :) magic!"
 
     python:
+        file = ("nexus.txt")
+        change_specified_line_in_a_txt_file("nexus.txt", 6, 1)
+
         subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
 
     # This ends the game.
@@ -299,6 +320,9 @@ label black:
     p "you'll be going back to the worldmap now :) magic!"
 
     python:
+        file = ("nexus.txt")
+        change_specified_line_in_a_txt_file("nexus.txt", 7, 1)
+
         subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
 
     return

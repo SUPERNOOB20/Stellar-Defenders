@@ -42,7 +42,7 @@ has_completed_green_region = False
 has_completed_blue_region = False
 has_completed_purple_region = False
 
-black_region_is_available = True        # <--- True for debugging (Should be "False" in new save files).
+black_region_is_available = False        # <--- Switch to True when debugging (Should, of course, be "False" in new save files).
 has_completed_black_region = False
 
 has_completed_red_postgame = False
@@ -56,7 +56,8 @@ has_completed_purple_postgame = False
 
 # vv       user experience / adjustable settings - Change to your heart's content :3 (no invalid values pls or I cry)         vv
 
-sfx_volume = 0.4        # between 0.000 and 1.000 plsss
+sfx_volume = 0.4000        # between 0.000 and 1.000 plsss
+bgm_volume = 1.0000
 
 show_fps = True
 # fullscreen = True         # Pro tip: Press F11 to switch between Fullscreen and Windowed mode! :3

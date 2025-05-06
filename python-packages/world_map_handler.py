@@ -7,14 +7,19 @@ current_dir = os.getcwd()
 print("HOLA ES MUY IMPORTANTE QUE ESTO SEA CORRECTO:", current_dir)
 
 from screeninfo import get_monitors
+user_screen_width = get_monitors()[0].width
+user_screen_height = get_monitors()[0].height
 
 from animation_handler import animation_handler, colour_handler
 from geometry import Vertex
 
 import settings
+from settings_init import initialize_region_progress
+initialize_region_progress()
 
-user_screen_width = get_monitors()[0].width
-user_screen_height = get_monitors()[0].height
+
+
+
 
 pygame.init()
 
@@ -63,7 +68,7 @@ seconds = 0
 
 pygame.mixer.init()
 pygame.mixer.music.load(f"{dir_path}/audio/music/world_map.mp3")
-pygame.mixer.music.set_volume(0.25)
+pygame.mixer.music.set_volume(settings.bgm_volume)
 
 def Render_Text(what, color, where):
     font = pygame.font.SysFont('arial', 30)

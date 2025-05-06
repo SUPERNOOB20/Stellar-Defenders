@@ -45,5 +45,5 @@ Ln 14) Purple_postgame
 
 
 And this is stuff that will get added in the future:
-Ln 15) SFX volume (<--- sound effects)
-Ln 16) BGM volume (<--- background music)
+Ln 15) SFX volume (<--- sound effects, between 0.0000 and 1.0000)
+Ln 16) BGM volume (<--- background music, between 0.0000 and 1.0000)
