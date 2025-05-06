@@ -1,10 +1,10 @@
-current day of working in my games (indie dev): DAY #26 (May 5th, 2025)
+current day of working in my games (indie dev): DAY #28 (May 7th, 2025)
 
 
 some milestones:
 
 Day #9: 400 lines of code o.o (between main script and collider handler, maybe???)
-
+Day #28: 1392 lines of code (o  . o!)
 
 
 Logbook:
@@ -83,3 +83,5 @@ Day #26 (May 5th):		- Fixing game logic...
 			- Read a lot of articles on stuff like Python, pygame, alpha compositing, profilers... etc. (reading computer science stuff is important to improve your coding skills through the enrichment of your understanding of computers and coding! ":3)
 			- Fighting with RenPy: trying to get the subprocesses running properly... (made it work BUT only with absolute paths :c)
 			- Fighting with RenPy: IT WORKS WITH RELATIVE PATHS NOW YESSSS (check attached image!!!) <--- Learnt to display "f-strings" in RenPy :3
+Day #27 (May 6th):		- Implemented saving system (just for the first region so far though OOF)
+Day #28 (May 7th):		- My SAVING SYSTEM IS FULLY FLEDGED NOW (* postgame not included tho x_x)
