@@ -1,0 +1,40 @@
+Q: Is this a VN?
+A: Good question, good question... I initially just chose VN format cuz I wanted to start with something easy - python was quite my field, RenPy is one
+of the easiest engines ever, and 2 + 2 is 4.
+But I also didn't want to make a +18 or romantic game... so that kinda set the tradeoff: I had to give in to VN cliches to some extent in exchange for
+an environment that would make the coding part way easier ":3
+Eventually I deciding on making the romantic part in postgame. That would not only make the most sense, but also affect my game the least :3
+
+Q: Why does X region have X name? Where did "Irisium" come from...??
+A: This game has a lot of symbolism. Also inspiration from greek and latin...
+Regions have a pseudo-latin name. That is, they are based off of latin names for their corresponding colours, but are actually made up, fictional names... ":3
+As for Irisium, well... IRISium... where all colours are born in human retinae... ;3
+
+Q: What is each region inspired in?
+A: Aaaah... you got me there ><
+I would honestly prefer to leave it to your imagination, but uh...
+- Red: I don't know "o_o
+- Orange: Aymaran region (Modern Chile-Bolivia-Argentina)
+- Yellow: Central American's tropical beaches
+- Green: green (lol). An african savannah maybe...
+- Blue: South Korea
+- Purple: I tried to inspire myself in the beautiful, archaic colleges of Cambridge, Oxford, Dublin... the Long Room...
+	    ... but that's only for the theme "^^. Canonically, on the other hand... the region, as well as all of Irisium, should be the real world Naxos :3
+
+Q: Why does X character have X name?
+A: Oh, ho-ho... interesting one. I honestly just parted from my base idea of the concepts of each region and character.
+Then I considered a bunch of names until I got to ones that matched the corresponding theme and didn't sound bad!
+- Phoebe, Cybele, Ariadne, and Rhea all come from greek mythology, if it wasn't already obvious...
+	* Something cool about Phoebe is that I intentionally chose it for the benefit of having a protagonist with an unisex name.
+I mean, it doesn't [i]need[/i] to be a unisex name, but when it comes to VNs it might be a good game design idea to "help the player relate to the protagonist".
+So here we are...
+- Hector comes from a joke from a video of an iconic chilean youtuber, German. Something something about a 3-meter-tall surfer with a huge D.
+I thought it did kinda match the Central American region and the beach theme, so I gave it a go! "^^
+- Amaru is just a name that matches his region's culture :3
+	* Chun Min-Min is similar on this note, but with the distinction that it's a pseudo name - a fictional name that is just "based"
+off of his region's typical names. I wanted something easy to remember, not a complex name. Surnames make for complex, hard to remember names...
+so I thought repeating the surname was a good idea in this regard - Min-Min is easy to remember!!! Hmmm... now that I think of it...
+maybe Chun Min was even easier to remember... or just Chun, in that matter.
+But then lowly vagrant employees would mock him as "Mr. C", and he is no Cock nor Chicken! (# > .<)
+so maybe plain Chun Min-Min suits him best, after all... (endless cycle @_@)
+- As for Noon... well... there's nothing hotter than noon, is there! (ha)
