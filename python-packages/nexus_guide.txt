@@ -1,0 +1,49 @@
+Q: What is The Nexus?
+A: "nexus.txt" is just a plain text file, akin to "settings" files
+in other games, such as JSON, .cfg, or .ini files.
+
+Q: What purpose does The Nexus fulfill?
+A: My game contains two main components:
+world_map_handler.py and the RenPy project.
+
+These two components are not compatible one another.
+They need a way to communicate between themselves...
+
+The Nexus stores persistent game data for these two components
+to be able to share data with each other - hence, why it's called
+The Nexus :)
+
+Q: Can I tinker with The Nexus?
+A: Only if you know what you're doing - it's akin to meddling with your
+own save files, after all. If you lose your game progress for touching
+things in wrong ways, I won't hold any responsibility for that :p
+
+Q: Give me a tour around The Nexus!
+A: okie :3
+
+This is your Nexus map so you can know where everything lies:
+
+Ln 1) CURRENT_REGION
+When you click a region in the world map, the very first line
+of The Nexus will contain the name of said region.
+Possible values: "red", "orange",..., "black", "NONE".
+
+Ln 2 - 14) COMPLETED GAME REGIONS
+Ln 2) Red
+Ln 3) Orange
+Ln 4) Yellow
+Ln 5) Green
+Ln 6) Blue
+Ln 7) Purple
+Ln 8) Black
+Ln 9) Red_postgame
+Ln 10) Orange_postgame
+Ln 11) Yellow_postgame
+Ln 12) Green_postgame
+Ln 13) Blue_postgame
+Ln 14) Purple_postgame
+
+
+And this is stuff that will get added in the future:
+Ln 15) SFX volume (<--- sound effects)
+Ln 16) BGM volume (<--- background music)

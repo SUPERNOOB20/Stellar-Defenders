@@ -5,6 +5,8 @@ init python:
     import os
     renpy_boot_path = os.getcwd()
 
+    import settings
+    print(settings.game_state)
 
     # world_map_handler_directory = "/Stellar Defenders/game/pygame/"
     # os.chdir(renpy_boot_path + world_map_handler_directory)
@@ -24,7 +26,10 @@ init python:
     python_boot_path = f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe"
 
     import subprocess
-    subprocess.run(f"{python_boot_path} animation_init.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-scripts/intro_animation")
+
+    DETACHED_PROCESS = 0x00000008
+
+    subprocess.run(f"{python_boot_path} animation_init.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-scripts/intro_animation", creationflags = DETACHED_PROCESS)
 
 
 
@@ -104,9 +109,61 @@ label start:
 
         
         import subprocess
-        subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/pygame")
+        subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
 
-    "you have finished the world map... ha"
+
+        renpy_normal_path = os.getcwd()
+
+
+
+
+
+
+        # file = renpy.open_file(fn = "nexus.txt", directory = f"{renpy_boot_path}/Stellar Defenders/game/python-packages/nexus.txt")
+        file = renpy.open_file(fn = 'nexus.txt', encoding = "utf-8", directory = "/python-packages/")
+        
+        # line_0 = file[0]
+        
+        line_0 = "ola"
+
+        dummy_counter = 0
+        for line in file:
+            if (dummy_counter == 0):
+                line_0 = line
+                dummy_counter += 1
+
+
+        
+        
+        # print(line_0)
+        
+
+
+
+    p "you have finished the world map... ha"
+    # p "let's see... you picked region [current_colour], is that correct? (^-^)"
+    # p "let's see... you picked region [file], is that correct?"
+    # p "haha nahhh jk... it's [line_0], isn't it? (^-^)"
+    p "You have entered the [line_0] region... right? (^-^)"
+    p "if not... weeeeeell... you might wanna warn SUPERNOOB :p"
+    p "alright, end of the demo"
+    p "see you around! Now get outta here :p"
+
+
+
+    return
+
+#     renpy.full_restart()
+    
+
+
+
+
+
+
+
+
+
 
 label red_region:
     "This is the red region :p"
