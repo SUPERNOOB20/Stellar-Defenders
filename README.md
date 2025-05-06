@@ -14,8 +14,11 @@ IF you run
 
 ## **For non technical users**
 **You can try a build in https://github.com/SUPERNOOB20/Stellar-Defenders/releases/latest**
-
-
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 # COMPATIBLITY
 Right now I have yet to figure out how to compile my python scripts (haven't been able to pull that off successfully yet...). Since we're still in alpha, that's fine. However, keep in mind that as of now to run my game you will need:
 
