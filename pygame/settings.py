@@ -25,7 +25,7 @@ silhouette_y_pos = 0
 
 
 warp_to_renpy_region = "none"
-
+attempt_to_keep_the_game_running = True
 
 
 

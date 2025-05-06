@@ -10,13 +10,21 @@ init python:
     # os.chdir(renpy_boot_path + world_map_handler_directory)
 
     # main_module_directory = os.getcwd()
-    import world_map_handler
+    
+    
+    
+    # from world_map_handler import start_world_map
+    # import world_map_handler
+    
+    
+    
+    
     # os.chdir(renpy_boot_path)
 
-    # python_boot_path = f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe"
+    python_boot_path = f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe"
 
-    # import subprocess
-    # subprocess.run(f"{python_boot_path} animation_init.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-scripts/intro_animation")
+    import subprocess
+    subprocess.run(f"{python_boot_path} animation_init.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-scripts/intro_animation")
 
 
 
@@ -90,12 +98,13 @@ label start:
 
     python:
 
-        start_world_map()
+        # vv Leaving this bit of code here just in case I need it at some point lol sorryyyy "^^
+        # world_map_handler.start_world_map()
 
 
-        # vv Leaving this bit of code here just in case I need it at some point and forget the syntax lol sorryyyy "^^
-        # import subprocess
-        # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/pygame")
+        
+        import subprocess
+        subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python312/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/pygame")
 
     "you have finished the world map... ha"
 
