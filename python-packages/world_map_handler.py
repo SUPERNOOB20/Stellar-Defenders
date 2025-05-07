@@ -1,10 +1,9 @@
+# IMPORTANT: RENPY INITIALIZES THIS FROM FOLDER /python-packages/ ---> KEEP THIS IN MIND WHEN HANDLING OS STUFF
+
 import pygame       # Imports pygame-ce
 from sys import exit
 from math import floor
 import os
-
-current_dir = os.getcwd()
-print("HOLA ES MUY IMPORTANTE QUE ESTO SEA CORRECTO:", current_dir)
 
 from screeninfo import get_monitors
 user_screen_width = get_monitors()[0].width
@@ -36,14 +35,14 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 # clip = moviepy.VideoFileClip(f"{dir_path}/graphics/animations/yellow_flickering.mp4")
 # clip.preview()
 
-icon_surface = pygame.image.load(f"{dir_path}/graphics/icon.png").convert_alpha() 
+icon_surface = pygame.image.load("graphics/icon.png").convert_alpha() 
 pygame.display.set_icon(icon_surface)
 
 
-title_surface = pygame.image.load(f"{dir_path}/graphics/text.png").convert_alpha()
-stellardefenders_surface_raw = pygame.image.load(f"{dir_path}/graphics/world_map.png").convert_alpha()
-colliders_surface_raw = pygame.image.load(f"{dir_path}/graphics/colliders.png").convert_alpha()
-colliders_and_continent_surface_raw = pygame.image.load(f"{dir_path}/graphics/colliders_and_continent.png").convert_alpha()
+title_surface = pygame.image.load("graphics/text.png").convert_alpha()
+stellardefenders_surface_raw = pygame.image.load("graphics/world_map.png").convert_alpha()
+colliders_surface_raw = pygame.image.load("graphics/colliders.png").convert_alpha()
+colliders_and_continent_surface_raw = pygame.image.load("graphics/colliders_and_continent.png").convert_alpha()
 
 stellardefenders_surface = pygame.transform.scale(surface = stellardefenders_surface_raw, size = (user_screen_width, user_screen_height))
 colliders_surface = pygame.transform.scale(surface = colliders_surface_raw, size = (user_screen_width, user_screen_height))
@@ -67,13 +66,17 @@ seconds = 0
 # time.sleep(4)
 
 pygame.mixer.init()
-pygame.mixer.music.load(f"{dir_path}/audio/music/world_map.mp3")
+pygame.mixer.music.load("audio/music/world_map.mp3")
 pygame.mixer.music.set_volume(settings.bgm_volume)
 
 def Render_Text(what, color, where):
     font = pygame.font.SysFont('arial', 30)
     text = font.render(what, 1, pygame.Color(color))
     screen.blit(text, where)
+
+    return
+
+
 
 while True:                                                    # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
 # while settings.attempt_to_keep_the_game_running:                 # EVERYTHING INSIDE THIS LOOP IS IN THE EVENT LOOP
@@ -131,7 +134,7 @@ while True:                                                    # EVERYTHING INSI
 
             if tick_precounter == 0:
 
-                loading_screen_surface_raw = pygame.image.load(f"{dir_path}/graphics/loading_screen.png")
+                loading_screen_surface_raw = pygame.image.load("graphics/loading_screen.png")
                 loading_screen_surface = pygame.transform.scale(surface = loading_screen_surface_raw, size = (user_screen_width, user_screen_height))
 
                 screen.blit(loading_screen_surface, (0, 0))

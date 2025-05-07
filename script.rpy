@@ -85,14 +85,6 @@ label start:
 
     p "[renpy_boot_path]"
 
-    # python:
-        # import subprocess
-
-        # subprocess.run(r"C:/Users/Claudia/AppData/Local/Programs/Python/Python313/python.exe aux_script.py", cwd = r"D:/non_OS/RenPy/Projects/Stellar Defenders/game")
-        # while(True):
-            # pass
-            # hi = "hello!"
-
     "Once upon a time..."
     "...a very handsome individual was fated to save the world..."
     p "...and uhhh..."
@@ -156,13 +148,12 @@ label start:
     # p "alright, end of the demo"
     # p "see you around! Now get outta here :p"
 
-
+    jump colour_picked_by_the_player
 
     return
 
 #     renpy.full_restart()
-    
-jump colour_picked_by_the_player
+
 
 
 label red:

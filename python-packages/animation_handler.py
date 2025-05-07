@@ -16,7 +16,7 @@ is_flickering_ascending = True      # Could alternatively just save the immediat
 
 
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
+# dir_path = os.path.dirname(os.path.realpath(__file__))
 
 user_screen_width = get_monitors()[0].width
 user_screen_height = get_monitors()[0].height
@@ -44,96 +44,96 @@ purple_title_alpha_value = 0
 
 silhouette_radio = 3 / 8        # (intended width, intended height) == (screen width / (3 / 8), screen_width)
 
-red_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/red/background.png").convert()
+red_bg_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/red/background.png").convert()
 red_bg_surface = pygame.transform.scale(surface = red_bg_surface_raw, size = (user_screen_width, user_screen_height))
 red_bg_surface.set_alpha(red_alpha_value)       # Goes from 0 to 255 :3
 
-red_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/red/silhouettes.png").convert_alpha()
+red_silhouettes_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/red/silhouettes.png").convert_alpha()
 red_silhouettes_surface = pygame.transform.scale(surface = red_silhouettes_surface_raw, size = (user_screen_width / silhouette_radio, user_screen_width))
 red_silhouettes_surface.set_alpha(red_alpha_value)       # Goes from 0 to 255 :3
 
-red_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/red/title.png").convert_alpha()
+red_title_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/red/title.png").convert_alpha()
 red_title_surface = pygame.transform.scale(surface = red_title_surface_raw, size = (user_screen_width, user_screen_height))
 red_title_surface.set_alpha(red_title_alpha_value)       # Goes from 0 to 255 :3
 
-orange_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/orange/background.png").convert()
+orange_bg_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/orange/background.png").convert()
 orange_bg_surface = pygame.transform.scale(surface = orange_bg_surface_raw, size = (user_screen_width, user_screen_height))
 orange_bg_surface.set_alpha(orange_alpha_value)       # Goes from 0 to 255 :3
 
-orange_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/orange/silhouettes.png").convert_alpha()
+orange_silhouettes_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/orange/silhouettes.png").convert_alpha()
 orange_silhouettes_surface = pygame.transform.scale(surface = orange_silhouettes_surface_raw, size = (user_screen_width / silhouette_radio, user_screen_width))
 orange_silhouettes_surface.set_alpha(orange_alpha_value)       # Goes from 0 to 255 :3
 
-orange_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/orange/background.png").convert_alpha()
+orange_title_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/orange/background.png").convert_alpha()
 orange_title_surface = pygame.transform.scale(surface = orange_title_surface_raw, size = (user_screen_width, user_screen_height))
 orange_title_surface.set_alpha(orange_title_alpha_value)       # Goes from 0 to 255 :3
 
-yellow_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/yellow/background.png").convert()
+yellow_bg_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/yellow/background.png").convert()
 yellow_bg_surface = pygame.transform.scale(surface = yellow_bg_surface_raw, size = (user_screen_width, user_screen_height))
 yellow_bg_surface.set_alpha(yellow_alpha_value)       # Goes from 0 to 255 :3
 
-yellow_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/yellow/silhouettes.png").convert_alpha()
+yellow_silhouettes_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/yellow/silhouettes.png").convert_alpha()
 yellow_silhouettes_surface = pygame.transform.scale(surface = yellow_silhouettes_surface_raw, size = (user_screen_width / silhouette_radio, user_screen_width))
 yellow_silhouettes_surface.set_alpha(yellow_alpha_value)       # Goes from 0 to 255 :3
 
-yellow_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/yellow/title.png").convert_alpha()
+yellow_title_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/yellow/title.png").convert_alpha()
 yellow_title_surface = pygame.transform.scale(surface = yellow_title_surface_raw, size = (user_screen_width, user_screen_height))
 yellow_title_surface.set_alpha(yellow_title_alpha_value)       # Goes from 0 to 255 :3
 
-green_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/green/background.png").convert()
+green_bg_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/green/background.png").convert()
 green_bg_surface = pygame.transform.scale(surface = green_bg_surface_raw, size = (user_screen_height, user_screen_height))
 green_bg_surface.set_alpha(green_alpha_value)       # Goes from 0 to 255 :3
 
-green_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/green/background.png").convert_alpha()
+green_silhouettes_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/green/background.png").convert_alpha()
 green_silhouettes_surface = pygame.transform.scale(surface = green_silhouettes_surface_raw, size = (user_screen_width / silhouette_radio, user_screen_width))
 green_silhouettes_surface.set_alpha(green_alpha_value)       # Goes from 0 to 255 :3
 
-green_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/green/title.png").convert_alpha()
+green_title_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/green/title.png").convert_alpha()
 green_title_surface = pygame.transform.scale(surface = green_title_surface_raw, size = (user_screen_width, user_screen_height))
 green_title_surface.set_alpha(green_title_alpha_value)       # Goes from 0 to 255 :3
 
-blue_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/blue/background.png").convert()
+blue_bg_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/blue/background.png").convert()
 blue_bg_surface = pygame.transform.scale(surface = blue_bg_surface_raw, size = (user_screen_width, user_screen_height))
 blue_bg_surface.set_alpha(blue_alpha_value)       # Goes from 0 to 255 :3
 
-blue_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/blue/silhouettes.png").convert_alpha()
+blue_silhouettes_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/blue/silhouettes.png").convert_alpha()
 blue_silhouettes_surface = pygame.transform.scale(surface = blue_silhouettes_surface_raw, size = (user_screen_width / silhouette_radio, user_screen_width))
 blue_silhouettes_surface.set_alpha(blue_alpha_value)       # Goes from 0 to 255 :3
 
-blue_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/blue/title.png").convert_alpha()
+blue_title_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/blue/title.png").convert_alpha()
 blue_title_surface = pygame.transform.scale(surface = blue_title_surface_raw, size = (user_screen_width, user_screen_height))
 blue_title_surface.set_alpha(blue_title_alpha_value)       # Goes from 0 to 255 :3
 
-purple_bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/purple/background.png").convert()
+purple_bg_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/purple/background.png").convert()
 purple_bg_surface = pygame.transform.scale(surface = purple_bg_surface_raw, size = (user_screen_width, user_screen_height))
 purple_bg_surface.set_alpha(purple_alpha_value)       # Goes from 0 to 255 :3
 
-purple_silhouettes_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/purple/silhouettes.png").convert_alpha()
+purple_silhouettes_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/purple/silhouettes.png").convert_alpha()
 purple_silhouettes_surface = pygame.transform.scale(surface = purple_silhouettes_surface_raw, size = (user_screen_width / silhouette_radio, user_screen_width))
 purple_silhouettes_surface.set_alpha(purple_alpha_value)       # Goes from 0 to 255 :3
 
-purple_title_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/regional_backgrounds/purple/title.png").convert_alpha()
+purple_title_surface_raw = pygame.image.load("graphics/animations/regional_backgrounds/purple/title.png").convert_alpha()
 purple_title_surface = pygame.transform.scale(surface = purple_title_surface_raw, size = (user_screen_width, user_screen_height))
 purple_title_surface.set_alpha(purple_title_alpha_value)       # Goes from 0 to 255 :3
 
 ##### Note: It is intended for bgs and silhouettes to share the same alpha value ---> {colour}_alpha_value.
 
-bg_surface_raw = pygame.image.load(f"{dir_path}/graphics/map_barebone_no_text.png").convert_alpha()
+bg_surface_raw = pygame.image.load("graphics/map_barebone_no_text.png").convert_alpha()
 bg_surface = pygame.transform.scale(surface = bg_surface_raw, size = (user_screen_width, user_screen_height))
 
-stellardefenders_surface_raw = pygame.image.load(f"{dir_path}/graphics/world_map.png").convert_alpha()
+stellardefenders_surface_raw = pygame.image.load("graphics/world_map.png").convert_alpha()
 stellardefenders_surface = pygame.transform.scale(surface = stellardefenders_surface_raw, size = (user_screen_width, user_screen_height))
 
-map_without_names_surface_raw = pygame.image.load(f"{dir_path}/graphics/map_without_region_names.png").convert_alpha()
+map_without_names_surface_raw = pygame.image.load("graphics/map_without_region_names.png").convert_alpha()
 map_without_names_surface = pygame.transform.scale(surface = map_without_names_surface_raw, size = (user_screen_width, user_screen_height))
 
-region_names_surface_raw = pygame.image.load(f"{dir_path}/graphics/region_names_without_map.png").convert_alpha()
+region_names_surface_raw = pygame.image.load("graphics/region_names_without_map.png").convert_alpha()
 region_names_surface = pygame.transform.scale(surface = region_names_surface_raw, size = (user_screen_width, user_screen_height))
 
 
 
 
-title_surface = pygame.image.load(f"{dir_path}/graphics/text.png").convert_alpha()
+title_surface = pygame.image.load("graphics/text.png").convert_alpha()
 
 title_surface.set_alpha(0)      # Goes from 0 to 255 :3
 title_alpha_value = 0           # Goes from 0 to 255 :3
@@ -156,11 +156,11 @@ title_y_pos = user_screen_height / 2
 
 
 
-sfx_0 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/0.wav")
-sfx_1 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/1.wav")
-sfx_2 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/2.wav")
-sfx_3 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/3.wav")
-sfx_4 = pygame.mixer.Sound(f"{dir_path}/audio/SFX/4.wav")
+sfx_0 = pygame.mixer.Sound("audio/SFX/0.wav")
+sfx_1 = pygame.mixer.Sound("audio/SFX/1.wav")
+sfx_2 = pygame.mixer.Sound("audio/SFX/2.wav")
+sfx_3 = pygame.mixer.Sound("audio/SFX/3.wav")
+sfx_4 = pygame.mixer.Sound("audio/SFX/4.wav")
 
 
 
@@ -410,7 +410,7 @@ def draw_animated_seas(screen):
 
 
 
-sea_surface_raw = pygame.image.load(f"{dir_path}/graphics/animations/map_sea_atlas.png").convert_alpha()
+sea_surface_raw = pygame.image.load("graphics/animations/map_sea_atlas.png").convert_alpha()
 sea_surface = pygame.transform.scale(surface = sea_surface_raw, size = (user_screen_width * 3, user_screen_height * 3))
 sea_rect = sea_surface.get_rect(bottomleft = (0, user_screen_height))
 
@@ -804,14 +804,19 @@ black_region_hitbox = scale_rectangle_to_screen_size(black_region_hitbox)
 
 def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick counter to check for game state (whether the player is in the world map or not!).   // needs game state to check for postgame (3 possible scenarios: hasn't unlocked black // has unlocked black // is in postgame)
 
-    red_postgame_is_available    = (not settings.has_completed_red_postgame)    & (settings.has_completed_black_region)
-    orange_postgame_is_available = (not settings.has_completed_orange_postgame) & (settings.has_completed_black_region)
-    yellow_postgame_is_available = (not settings.has_completed_yellow_postgame) & (settings.has_completed_black_region)
-    green_postgame_is_available  = (not settings.has_completed_green_postgame)  & (settings.has_completed_black_region)
-    blue_postgame_is_available   = (not settings.has_completed_blue_postgame)   & (settings.has_completed_black_region)
-    purple_postgame_is_available = (not settings.has_completed_purple_postgame) & (settings.has_completed_black_region)
+    red_postgame_is_available    = ((not (settings.has_completed_red_postgame))    & (settings.has_completed_black_region))
+    orange_postgame_is_available = ((not (settings.has_completed_orange_postgame)) & (settings.has_completed_black_region))
+    yellow_postgame_is_available = ((not (settings.has_completed_yellow_postgame)) & (settings.has_completed_black_region))
+    green_postgame_is_available  = ((not (settings.has_completed_green_postgame))  & (settings.has_completed_black_region))
+    blue_postgame_is_available   = ((not (settings.has_completed_blue_postgame))   & (settings.has_completed_black_region))
+    purple_postgame_is_available = ((not (settings.has_completed_purple_postgame)) & (settings.has_completed_black_region))
 
 
+    # print("Debugging with prints sucks...")
+
+    print("settings.has_completed_yellow_region:", settings.has_completed_yellow_region)
+    print("yellow_postgame_is_available:", yellow_postgame_is_available)
+    # print()
 
 
 # Logic for colours other than black is as follows:
@@ -835,30 +840,31 @@ def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick
         settings.colour_being_hovered_over_by_the_player = "black"
         animation_handler(screen, tick_counter, just_animating_colour = True)
 
-    elif ((colour_collider_handler.red.is_user_on_colour(mouse_pos)) & ((not settings.has_completed_red_region) | (red_postgame_is_available))):        # if red region is unvisited OR postgame has been unlocked but not finished
+    elif ((colour_collider_handler.red.is_user_on_colour(mouse_pos)) & ((not (settings.has_completed_red_region)) | (red_postgame_is_available))):        # if red region is unvisited OR postgame has been unlocked but not finished
         settings.colour_being_hovered_over_by_the_player = "red"
         animation_handler(screen, tick_counter, just_animating_colour = True)
 
-    elif ((colour_collider_handler.orange.is_user_on_colour(mouse_pos)) & ((not settings.has_completed_orange_region) | (orange_postgame_is_available))):
+    elif ((colour_collider_handler.orange.is_user_on_colour(mouse_pos)) & ((not (settings.has_completed_orange_region)) | (orange_postgame_is_available))):
         settings.colour_being_hovered_over_by_the_player = "orange"
         animation_handler(screen, tick_counter, just_animating_colour = True)
 
         # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
         
 
-    elif ((colour_collider_handler.yellow.is_user_on_colour(mouse_pos)) & ((not settings.has_completed_yellow_region) | (yellow_postgame_is_available))):
+    elif ((colour_collider_handler.yellow.is_user_on_colour(mouse_pos)) & ((not (settings.has_completed_yellow_region)) | (yellow_postgame_is_available))):
+        print("Debugging with prints sucks a LOT...")
         settings.colour_being_hovered_over_by_the_player = "yellow"
         animation_handler(screen, tick_counter, just_animating_colour = True)
     
-    elif ((colour_collider_handler.green.is_user_on_colour(mouse_pos)) & ((not settings.has_completed_green_region) | (green_postgame_is_available))):
+    elif ((colour_collider_handler.green.is_user_on_colour(mouse_pos)) & ((not (settings.has_completed_green_region)) | (green_postgame_is_available))):
         settings.colour_being_hovered_over_by_the_player = "green"
         animation_handler(screen, tick_counter, just_animating_colour = True)        
 
-    elif ((colour_collider_handler.blue.is_user_on_colour(mouse_pos)) & ((not settings.has_completed_blue_region) | (blue_postgame_is_available))):
+    elif ((colour_collider_handler.blue.is_user_on_colour(mouse_pos)) & ((not (settings.has_completed_blue_region)) | (blue_postgame_is_available))):
         settings.colour_being_hovered_over_by_the_player = "blue"
         animation_handler(screen, tick_counter, just_animating_colour = True)
     
-    elif ((colour_collider_handler.purple.is_user_on_colour(mouse_pos)) & ((not settings.has_completed_purple_region) | (purple_postgame_is_available))):
+    elif ((colour_collider_handler.purple.is_user_on_colour(mouse_pos)) & ((not (settings.has_completed_purple_region)) | (purple_postgame_is_available))):
         settings.colour_being_hovered_over_by_the_player = "purple"
         animation_handler(screen, tick_counter, just_animating_colour = True) 
         

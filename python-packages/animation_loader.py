@@ -22,7 +22,7 @@ def load_and_rescale_colours(dir_path):
     user_screen_width = get_monitors()[0].width
     user_screen_height = get_monitors()[0].height
 
-    path = f"{dir_path}/graphics/animations/blend modes/flickering/red/0.png"   # Sample element to initialize the array :3
+    path = "graphics/animations/blend modes/flickering/red/0.png"   # Sample element to initialize the array :3
 
     colour_flickering_dummy_surf_raw = pygame.image.load(path).convert_alpha()
     colour_flickering_dummy_surf = pygame.transform.scale(surface = colour_flickering_dummy_surf_raw, size = (user_screen_width, user_screen_height))
@@ -39,7 +39,7 @@ def load_and_rescale_colours(dir_path):
 
         for frame in range(0, 55):
             
-            path = f"{dir_path}/graphics/animations/blend modes/flickering/" + colour + f"/{frame}.png"
+            path = "graphics/animations/blend modes/flickering/" + colour + f"/{frame}.png"
 
             colour_flickering_surface_raw = pygame.image.load(path).convert_alpha()
             colour_flickering_surface = pygame.transform.scale(surface = colour_flickering_surface_raw, size = (user_screen_width, user_screen_height))
