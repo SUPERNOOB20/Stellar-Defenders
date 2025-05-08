@@ -281,10 +281,14 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
                 if settings.player_has_just_clicked == True:
                     # seconds = 727     # <--- whatever number you put in here, it should reset to 0 anyway :3 (debugging strategy lol)
                     
-                    import region_warper
+                    from region_warper import set_warp_to
+                    
+                    postgame = ""
+                    if (settings.has_completed_black_region):      # If black region is completed, we will tell RenPy to trigger postgame :p
+                        postgame = "_postgame"
 
-                    print("COLOUR THAT WILL GET PRINTED TO NEXUS.TXT:", settings.colour_being_hovered_over_by_the_player)
-                    region_warper.set_warp_to(settings.colour_being_hovered_over_by_the_player)
+                    print("COLOUR THAT WILL GET PRINTED TO NEXUS.TXT:", settings.colour_being_hovered_over_by_the_player + postgame)
+                    set_warp_to(settings.colour_being_hovered_over_by_the_player + postgame)
 
                     settings.game_state = 1     # With this implementation there will be a 1-frame delay here between the player clicking a region and the animations playing, but oh well... whatever ":3
                     #print('yay, game_state is 1')
@@ -508,7 +512,7 @@ def worldmap_fadeout(tick_counter):
 
     if is_even(tick_counter):
         black_surface_alpha_value += 5    # Boo, 30fps animation... lmao
-    # black_transition_RGBA = ()
+        
     black_surface.fill((0, 0, 0, black_surface_alpha_value))
     
     return
@@ -525,21 +529,11 @@ def is_even(number):
 
 def play_colour_animation(screen, tick_counter):
 
-
     seconds = tick_counter / 60
-    # seconds = (tick_counter / 60) - 9 
+    # seconds = (tick_counter / 60) - 9     <--- deprecated but might come in handy in the future so I'll be leaving it here just in case lmao sorry x_x
 
-
-    # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
-    # screen.blit(colour_background)
-
-
-    
-
-
-    index = (("red", "orange", "yellow", "green", "blue", "purple", "black").index(settings.colour_being_hovered_over_by_the_player))
-    match index:
-        case 0:
+    match settings.colour_being_hovered_over_by_the_player:
+        case "red":
 
             global red_alpha_value
             global red_title_alpha_value
@@ -573,7 +567,7 @@ def play_colour_animation(screen, tick_counter):
 
 
 
-        case 1:
+        case "orange":
 
             global orange_alpha_value
             global orange_title_alpha_value
@@ -606,7 +600,7 @@ def play_colour_animation(screen, tick_counter):
             screen.blit(orange_title_surface, (0, 0))
 
 
-        case 2:
+        case "yellow":
 
             global yellow_alpha_value
             global yellow_title_alpha_value
@@ -640,7 +634,7 @@ def play_colour_animation(screen, tick_counter):
             screen.blit(yellow_title_surface, (0, 0))
 
 
-        case 3:
+        case "green":
 
             global green_alpha_value
             global green_title_alpha_value
@@ -674,7 +668,7 @@ def play_colour_animation(screen, tick_counter):
 
 
 
-        case 4:
+        case "blue":
 
             global blue_alpha_value
             global blue_title_alpha_value
@@ -708,7 +702,7 @@ def play_colour_animation(screen, tick_counter):
 
 
 
-        case 5:
+        case "purple":
 
             global purple_alpha_value
             global purple_title_alpha_value
