@@ -1,38 +1,47 @@
+from array import array
+
 class Vertex:
-    def __init__(self, x, y):
-        self.x_coord = x
-        self.y_coord = y
+    def __init__(self):
+        self.vertex = array("h", [0, 0])
 
-    def x_coordinate(self):
-        return self.x_coord
+    def get_x_coordinate(self):
+        return self[0]
     
-    def y_coordinate(self):
-        return self.y_coord
-
+    def get_y_coordinate(self):
+        return self[1]
+    
+    def set_coordinates(self, x_coordinate, y_coordinate):
+        self[0] = x_coordinate
+        self[1] = y_coordinate
 
 class Triangle:
-    def __init__(self, v1, v2, v3):
-        self.v1 = v1
-        self.v2 = v2
-        self.v3 = v3
+    def __init__(self):
+        self.triangle = array(Vertex[0, 0], Vertex[0, 0], Vertex[0, 0])
 
-    def vertex_1(self):
-        return self.v1
+    def get_vertex_1(self):
+        return self[0]
     
-    def vertex_2(self):
-        return self.v2
+    def get_vertex_2(self):
+        return self[1]
     
-    def vertex_3(self):
-        return self.v3
-
+    def get_vertex_3(self):
+        return self[2]
+    
+    def set_vertices(self, vertex_1, vertex_2, vertex_3):
+        self[0] = vertex_1
+        self[1] = vertex_2
+        self[2] = vertex_3
 
 class Line:
-    def __init__(self, slope, ordinates):
-        self.slope_parameter = slope
-        self.ordinates_parameter = ordinates
+    def __init__(self):
+        self.line = array("d", [0.0, 0.0])
 
-    def slope(self):
-        return self.slope_parameter
+    def get_slope(self):
+        return self[0]
     
-    def ordinates(self):
-        return self.ordinates_parameter
+    def get_ordinates(self):
+        return self[1]
+    
+    def set_line(self, slope, ordinates):
+        self[0] = slope
+        self[1] = ordinates

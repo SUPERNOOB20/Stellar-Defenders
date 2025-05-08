@@ -44,31 +44,28 @@ set_game_resolution(1920, 1080)
 
 def finds_line_equation(vertex_1: Vertex, vertex_2: Vertex):      # Extends the given line to fit the whole screen by finding its closed formula! So basically finds a and b so that line = a * x + b. Some odd dudes call it mx + b. Pay those no mind :p
 
-    if vertex_1.get_y_coordinate() == vertex_2.get_y_coordinate():
-        line_formula = Line()
-        line_formula.set_line(0, vertex_1.get_y_coordinate())                    # (it's a horizontal line!) :D
+    if vertex_1.y_coordinate() == vertex_2.y_coordinate():
+        line_formula = Line(0, vertex_1.y_coordinate())                    # it's a horizontal line!
 
-    elif vertex_1.get_x_coordinate() == vertex_2.get_x_coordinate():
-        line_formula = Line()
-        line_formula.set_line("vertical", vertex_1.get_x_coordinate())     # it's a vertical line... let's make a flag for it to separate this border case from the rest ":3
+    elif vertex_1.x_coordinate() == vertex_2.x_coordinate():
+        line_formula = Line("vertical", vertex_1.x_coordinate())     # it's a vertical line... let's make a flag for it to separate this border case from the rest ":3
         # in this case line_formula isn't the closed formula, so instead of line(a, b) here we have line("vertical", x_0), but oh well... ":3
 
 
     else:
-        a = (vertex_2.get_y_coordinate() - vertex_1.get_y_coordinate()) / (vertex_2.get_x_coordinate() - vertex_1.get_x_coordinate())
-        b = vertex_2.get_y_coordinate() - a * vertex_2.get_x_coordinate()             # do the math, it checks out :p  ///  vertex_2 and vertex_1 should give the same result here btw              
+        a = (vertex_2.y_coordinate() - vertex_1.y_coordinate()) / (vertex_2.x_coordinate() - vertex_1.x_coordinate())
+        b = vertex_2.y_coordinate() - a * vertex_2.x_coordinate()             # do the math, it checks out :p  ///  vertex_2 and vertex_1 should give the same result here btw              
 
-        line_formula = Line()
-        line_formula.set_line(a, b)
+        line_formula = Line(a, b)
 
     return line_formula                   # It's a line! f(x) = a * x + b
 
 
 def check_colliders_init(triangle: Triangle, vertex_A: Vertex):   # Looks for the (bool, bool, bool) combination for vA
 
-    line_1 = finds_line_equation(triangle.get_vertex_1(), triangle.get_vertex_2())
-    line_2 = finds_line_equation(triangle.get_vertex_2(), triangle.get_vertex_3())
-    line_3 = finds_line_equation(triangle.get_vertex_3(), triangle.get_vertex_1())
+    line_1 = finds_line_equation(triangle.vertex_1(), triangle.vertex_2())
+    line_2 = finds_line_equation(triangle.vertex_2(), triangle.vertex_3())
+    line_3 = finds_line_equation(triangle.vertex_3(), triangle.vertex_1())
 
     lines = [line_1, line_2, line_3]
 
@@ -77,10 +74,10 @@ def check_colliders_init(triangle: Triangle, vertex_A: Vertex):   # Looks for th
     for line in lines:
 
         if type(line.slope()) == str:     # if the line is a vertical one...
-            line = (line.get_ordinates() < vertex_A.get_x_coordinate())    # here, line.get_ordinates() is just the x value of the vertical line (sorry for notation abuse, coding is hard... e.e) 
+            line = (line.ordinates() < vertex_A.x_coordinate())    # here, line.ordinates() is just the x value of the vertical line (sorry for notation abuse, coding is hard... e.e) 
             vertex_AC.append(line)
         else:
-            line = (vertex_A.get_y_coordinate() <= line.slope() * vertex_A.get_x_coordinate() + line.get_ordinates())         # line[0] is a // line [1] is b // vA[0] is x_v // vA[1] is y_v
+            line = (vertex_A.y_coordinate() <= line.slope() * vertex_A.x_coordinate() + line.ordinates())         # line[0] is a // line [1] is b // vA[0] is x_v // vA[1] is y_v
             vertex_AC.append(line)
             
     # print("lines_combination (vertex_AC) is: ", vertex_AC)
@@ -88,11 +85,10 @@ def check_colliders_init(triangle: Triangle, vertex_A: Vertex):   # Looks for th
 
 def check_colliders(triangle: Triangle, vertex_AC: list[bool], vertex_C: Vertex):   # vertex_AC is the [bool, bool, bool] combination for vertex_A
 
-    rescaled_vertex_C_x_coordinate = floor(vertex_C.get_x_coordinate() * game_width / user_screen_width)
-    rescaled_vertex_C_y_coordinate = floor(vertex_C.get_y_coordinate() * game_height / user_screen_height)
+    rescaled_vertex_C_x_coordinate = floor(vertex_C.x_coordinate() * game_width / user_screen_width)
+    rescaled_vertex_C_y_coordinate = floor(vertex_C.y_coordinate() * game_height / user_screen_height)
 
-    rescaled_vertex_C = Vertex()  # We have to rescale user input!!! Because their screen might not be the same as the game resolution!":3
-    rescaled_vertex_C.set_coordinates(rescaled_vertex_C_x_coordinate, rescaled_vertex_C_y_coordinate)
+    rescaled_vertex_C = Vertex(rescaled_vertex_C_x_coordinate, rescaled_vertex_C_y_coordinate)  # We have to rescale user input!!! Because their screen might not be the same as the game resolution!":3
 
     # print("game_width =", game_width)
     # print("game_height =", game_height)
