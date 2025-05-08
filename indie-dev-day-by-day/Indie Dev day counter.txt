@@ -85,3 +85,5 @@ Day #26 (May 5th):		- Fixing game logic...
 			- Fighting with RenPy: IT WORKS WITH RELATIVE PATHS NOW YESSSS (check attached image!!!) <--- Learnt to display "f-strings" in RenPy :3
 Day #27 (May 6th):		- Implemented saving system (just for the first region so far though OOF)
 Day #28 (May 7th):		- My SAVING SYSTEM IS FULLY FLEDGED NOW (* postgame not included tho x_x)
+			- Optimized all collisions manually - from internally being implemented in lists to now only using arrays (took like 2.5 hours I think OOF) (thanks to GamersDecision for supporting me in this massive grind oof x_x)
+Day #29 (May 8th):		- I committed v0.0.7-alpha    <---    Saving system should be fully implemented now (yes, POSTGAME INCLUDED :3). Also tidied up my code in options.rpy a lil "^^ (but not much... e.e)
