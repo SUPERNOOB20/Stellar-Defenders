@@ -87,3 +87,9 @@ Day #27 (May 6th):		- Implemented saving system (just for the first region so fa
 Day #28 (May 7th):		- My SAVING SYSTEM IS FULLY FLEDGED NOW (* postgame not included tho x_x)
 			- Optimized all collisions manually - from internally being implemented in lists to now only using arrays (took like 2.5 hours I think OOF) (thanks to GamersDecision for supporting me in this massive grind oof x_x)
 Day #29 (May 8th):		- I committed v0.0.7-alpha    <---    Saving system should be fully implemented now (yes, POSTGAME INCLUDED :3). Also tidied up my code in options.rpy a lil "^^ (but not much... e.e)
+Day #30 (May 9th):		- Didn't progress on my game today BUT I learnt how to do JSON parsing in Python, and successfully managed to do so! So, in the future, I will change my game's saving system to work with that instead :) 
+			- Started making my own website (making a website - day #1)
+Day #31 (May 10th):	- Finished my own website :3 (making a website - day #2)
+Day #32 (May 11th): 	- Made the mental map for Cybele, and had to learn a fair bit of Inkscape wizardry in the process (though this mental map is a tad rough still and will need a bit of polishing in the future... "^^).
+			- Day #1 of writing the, uh, "conflict dialogues" (done for red, orange, blue, purple)
+Day #33 (May 12nd):	- Day #2 of writing the "conflict dialogues" (did the ones for yellow and green today - they're all finished now! ^-^)
