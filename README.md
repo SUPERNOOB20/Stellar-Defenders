@@ -3,6 +3,7 @@ Indie VN game made in pygame and RenPy <br>
  <br>
  <br>
 Status: Everything is working A-OK so far (:3) <br>
+ <br>
 Right now, I'm developing Stellar Defenders v0.0.8-alpha. These are the features I'm working in at the moment: <br>
 -- Implementing the new JSON saving system. <br>
 -- Making the setup wizard. <br>
