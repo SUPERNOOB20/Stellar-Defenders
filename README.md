@@ -1,18 +1,18 @@
 # Stellar-Defenders
-Indie VN game made in pygame and RenPy
-
-
-Status: Everything is working A-OK so far (:3)
-Right now, I'm developing Stellar Defenders v0.0.8-alpha. These are the features I'm working in at the moment:
--- Implementing the new JSON saving system.
--- Making the setup wizard.
-
-I am also currently sharpening my skills and knowledge of:
--- Krita
--- Inkscape
-
-...both of which will be used for the art of the game :3
-
+Indie VN game made in pygame and RenPy <br>
+ <br>
+ <br>
+Status: Everything is working A-OK so far (:3) <br>
+Right now, I'm developing Stellar Defenders v0.0.8-alpha. These are the features I'm working in at the moment: <br>
+-- Implementing the new JSON saving system. <br>
+-- Making the setup wizard. <br>
+<br>
+I am also currently sharpening my skills and knowledge of: <br>
+-- Krita <br>
+-- Inkscape <br>
+<br>
+...both of which will be used for the art of the game :3 <br>
+<br>
 Don't forget to follow the latest news on the development of Stellar Defenders over at https://supernoob20.pythonanywhere.com/posts !!! :3
 
 
