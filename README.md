@@ -15,10 +15,10 @@ I am also currently sharpening my skills and knowledge of: <br>
 ...both of which will be used for the art of the game :3 <br>
 <br>
 Don't forget to follow the latest news on the development of Stellar Defenders over at https://supernoob20.pythonanywhere.com/posts !!! :3
-
-
-
-
+ <br>
+ <br>
+ <br>
+ <br>
 ### For technical users
 You can download the whole folder and run either **"world_map_handler.py"** in Python +3.11 or **"renpy.exe"** and launch my project to run what little playable stuff I have so far (":3)
 And yes... I've yet to add a lot of the RenPy stuff... soontm e.e
