@@ -29,6 +29,7 @@ And the following Python modules:
 - pygame-ce +2.5.3 (pip install pygame-ce)
 - screeninfo (pip install screeninfo)
 - numpy (pip install numpy)
+- json **(For Stellar Defenders v0.0.8-alpha onwards)**
 
 You will need to have the "python" variable added to your environment path, too (just type "python" in a cmd (without quotation marks) and if it works then you have set it up correctly :D)
 
