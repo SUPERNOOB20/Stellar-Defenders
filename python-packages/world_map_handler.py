@@ -17,6 +17,8 @@ import settings
 
 import settings_loader
 
+settings_loader.load_persistent_data()
+
 #   vv    If the player has completed all regions, unlock the final region.    vv
 if (settings_loader.data["has_completed_red_region"] & settings_loader.data["has_completed_orange_region"] & settings_loader.data["has_completed_yellow_region"] & settings_loader.data["has_completed_green_region"] & settings_loader.data["has_completed_blue_region"] & settings_loader.data["has_completed_purple_region"]):
         settings_loader.data["black_region_is_available"] = True 
@@ -104,6 +106,7 @@ while True:                                                    # EVERYTHING INSI
             settings.player_has_just_clicked = True
 
         if event.type == pygame.QUIT:
+            settings_loader.save_persistent_data()
             pygame.quit()
             exit()
         

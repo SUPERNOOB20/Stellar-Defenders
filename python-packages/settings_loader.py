@@ -6,11 +6,10 @@
 
 
 import json
-# import settings       # <--- I think I should deprecate this...?
 
 import os
 print("CURR_DIR:", os.getcwd())
-os.chdir("f:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/")
+# os.chdir("f:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/")
 os.chdir("python-packages")
 
 data = {}
@@ -233,6 +232,10 @@ if __name__ == "__main__":
     # ---------------------------------------------------------------------------------------------
 
 
+reset()
+
+"""
+
     print("\n \n \n --- TEST 0 - DEFAULT DATA AND SETTINGS ---")
     test_0()
     show_data_and_settings()
@@ -252,3 +255,5 @@ if __name__ == "__main__":
     print("\n \n \n --- TEST 4 ---")
     test_4()
     show_data_and_settings()
+
+"""
