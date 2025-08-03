@@ -9,6 +9,8 @@ import json
 # import settings       # <--- I think I should deprecate this...?
 
 import os
+print("CURR_DIR:", os.getcwd())
+os.chdir("f:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/")
 os.chdir("python-packages")
 
 data = {}
@@ -16,19 +18,29 @@ config = {}
 
 
 def load_persistent_data():     # Loads persistent data from storage ("loads the game")
-    
+
+    load_progress()
+    load_preferences()
+
+    return
+
+def load_progress():
+
     global data
-    global config
 
     with open("data.json") as json_file:
         data = json.load(json_file)
 
+    return
+
+def load_preferences():
+
+    global config
+
     with open("settings.json") as json_file:
         config = json.load(json_file)
 
-
     return
-
 
 def save_persistent_data():     # Saves persistent data to storage ("saves the game")
 
@@ -179,7 +191,7 @@ if __name__ == "__main__":
         global data
         global config
 
-        load_persistent_data()
+        load_progress()
         data["has_completed_yellow_region"] = True
 
         return
@@ -188,12 +200,32 @@ if __name__ == "__main__":
     def test_3():       # Testea save file nuevo
         
         global data
-        global config
 
         load_persistent_data()
+
         data["has_completed_orange_region"] = True
         data["has_completed_green_region"] = True
         data["has_completed_purple_region"] = True
+
+        save_persistent_data()
+
+        return
+    
+
+    def test_4():       # Testea save file nuevo
+        
+        global data
+        global config
+
+        reset()
+
+        data["has_completed_orange_region"] = True
+        data["has_completed_blue_region"] = True
+        config["Show_FPS"] = False
+        config["SFX_volume"] = 0.0727
+        config["BGM_volume"] = 0.069
+
+        save_persistent_data()
 
         return
 
@@ -201,18 +233,22 @@ if __name__ == "__main__":
     # ---------------------------------------------------------------------------------------------
 
 
-    print("--- TEST 0 - DEFAULT DATA AND SETTINGS ---")
+    print("\n \n \n --- TEST 0 - DEFAULT DATA AND SETTINGS ---")
     test_0()
     show_data_and_settings()
 
-    print("--- TEST 1 ---")
+    print("\n \n \n --- TEST 1 ---")
     test_1()
     show_data_and_settings()
 
-    print("--- TEST 2 ---")
+    print("\n \n \n --- TEST 2 ---")
     test_2()
     show_data_and_settings()
 
-    print("--- TEST 3 ---")
+    print("\n \n \n --- TEST 3 ---")
     test_3()
+    show_data_and_settings()
+
+    print("\n \n \n --- TEST 4 ---")
+    test_4()
     show_data_and_settings()
