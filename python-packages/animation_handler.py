@@ -6,6 +6,7 @@ import os
 from screeninfo import get_monitors
 
 import settings
+import settings_loader
 
 animation_timer_1 = 0
 animation_timer_2 = 0
@@ -281,14 +282,14 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
                 if settings.player_has_just_clicked == True:
                     # seconds = 727     # <--- whatever number you put in here, it should reset to 0 anyway :3 (debugging strategy lol)
                     
-                    from region_warper import set_warp_to
+                    # from region_warper import set_warp_to
                     
                     postgame = ""
-                    if (settings.has_completed_black_region):      # If black region is completed, we will tell RenPy to trigger postgame :p
+                    if (settings_loader.data["has_completed_black_region"]):      # If black region is completed, we will tell RenPy to trigger postgame :p
                         postgame = "_postgame"
 
-                    print("COLOUR THAT WILL GET PRINTED TO NEXUS.TXT:", settings.colour_being_hovered_over_by_the_player + postgame)
-                    set_warp_to(settings.colour_being_hovered_over_by_the_player + postgame)
+                    print("COLOUR THAT WILL GET PRINTED TO THE SETTINGS:", settings.colour_being_hovered_over_by_the_player + postgame)
+                    warp_to = settings.colour_being_hovered_over_by_the_player + postgame
 
                     settings.game_state = 1     # With this implementation there will be a 1-frame delay here between the player clicking a region and the animations playing, but oh well... whatever ":3
                     #print('yay, game_state is 1')
@@ -472,7 +473,7 @@ def show_colour_flickering(flickering_animation_counter):
 def play_clicking_SFX():
 
     sfx_3.play()
-    sfx_0.set_volume(settings.sfx_volume)
+    sfx_0.set_volume(settings_loader.config["SFX_volume"])
 
 
     return
@@ -484,21 +485,21 @@ def play_ominous_SFX(tick_counter):
     match tick_counter:
         case 150:    # 102 + 48
             sfx_0.play()
-            sfx_0.set_volume(settings.sfx_volume)
+            sfx_0.set_volume(settings_loader.config["SFX_volume"])
 
         case 391:   # 102 + 341
             sfx_1.play()
-            sfx_1.set_volume(settings.sfx_volume)
+            sfx_1.set_volume(settings_loader.config["SFX_volume"])
 
         case 487:   # 102 + 385
             sfx_2.play()
-            sfx_2.set_volume(settings.sfx_volume)
+            sfx_2.set_volume(settings_loader.config["SFX_volume"])
 
 
 def play_extremely_ominous_SFX():
 
     sfx_4.play()
-    sfx_4.set_volume(settings.sfx_volume)
+    sfx_4.set_volume(settings_loader.config["SFX_volume"])
 
 
     return
@@ -798,17 +799,17 @@ black_region_hitbox = scale_rectangle_to_screen_size(black_region_hitbox)
 
 def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick counter to check for game state (whether the player is in the world map or not!).   // needs game state to check for postgame (3 possible scenarios: hasn't unlocked black // has unlocked black // is in postgame)
 
-    red_postgame_is_available    = ((not (settings.has_completed_red_postgame))    & (settings.has_completed_black_region))
-    orange_postgame_is_available = ((not (settings.has_completed_orange_postgame)) & (settings.has_completed_black_region))
-    yellow_postgame_is_available = ((not (settings.has_completed_yellow_postgame)) & (settings.has_completed_black_region))
-    green_postgame_is_available  = ((not (settings.has_completed_green_postgame))  & (settings.has_completed_black_region))
-    blue_postgame_is_available   = ((not (settings.has_completed_blue_postgame))   & (settings.has_completed_black_region))
-    purple_postgame_is_available = ((not (settings.has_completed_purple_postgame)) & (settings.has_completed_black_region))
+    red_postgame_is_available    = ((not (settings_loader.data["has_completed_red_postgame"]))    & (settings_loader.data["has_completed_black_region"]))
+    orange_postgame_is_available = ((not (settings_loader.data["has_completed_orange_postgame"])) & (settings_loader.data["has_completed_black_region"]))
+    yellow_postgame_is_available = ((not (settings_loader.data["has_completed_yellow_postgame"])) & (settings_loader.data["has_completed_black_region"]))
+    green_postgame_is_available  = ((not (settings_loader.data["has_completed_green_postgame"]))  & (settings_loader.data["has_completed_black_region"]))
+    blue_postgame_is_available   = ((not (settings_loader.data["has_completed_blue_postgame"]))   & (settings_loader.data["has_completed_black_region"]))
+    purple_postgame_is_available = ((not (settings_loader.data["has_completed_purple_postgame"])) & (settings_loader.data["has_completed_black_region"]))
 
 
     # print("Debugging with prints sucks...")
 
-    print("settings.has_completed_yellow_region:", settings.has_completed_yellow_region)
+    print("has_completed_yellow_region:", settings_loader.data["has_completed_yellow_region"])
     print("yellow_postgame_is_available:", yellow_postgame_is_available)
     # print()
 
@@ -827,38 +828,38 @@ def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick
 
     # print("black_region_hitbox.collidepoint(mouse_pos_tuple):", black_region_hitbox.collidepoint(mouse_pos_tuple))
 
-    if ((black_region_hitbox.collidepoint(mouse_pos_tuple)) & (settings.black_region_is_available) & (not (settings.has_completed_black_region))):
+    if ((black_region_hitbox.collidepoint(mouse_pos_tuple)) & (settings_loader.data["black_region_is_available"]) & (not (settings_loader.data["has_completed_black_region"]))):
         # print("mouse_pos:", mouse_pos_tuple)
         # print("black_region_hitbox:", (black_region_hitbox.left, black_region_hitbox.top, black_region_hitbox.width, black_region_hitbox.height))
 
         settings.colour_being_hovered_over_by_the_player = "black"
         animation_handler(screen, tick_counter, just_animating_colour = True)
 
-    elif ((colour_collider_handler.red.is_user_on_colour(mouse_pos)) & ((not (settings.has_completed_red_region)) | (red_postgame_is_available))):        # if red region is unvisited OR postgame has been unlocked but not finished
+    elif ((colour_collider_handler.red.is_user_on_colour(mouse_pos)) & ((not (settings_loader.data["has_completed_red_region"])) | (red_postgame_is_available))):        # if red region is unvisited OR postgame has been unlocked but not finished
         settings.colour_being_hovered_over_by_the_player = "red"
         animation_handler(screen, tick_counter, just_animating_colour = True)
 
-    elif ((colour_collider_handler.orange.is_user_on_colour(mouse_pos)) & ((not (settings.has_completed_orange_region)) | (orange_postgame_is_available))):
+    elif ((colour_collider_handler.orange.is_user_on_colour(mouse_pos)) & ((not (settings_loader.data["has_completed_orange_region"])) | (orange_postgame_is_available))):
         settings.colour_being_hovered_over_by_the_player = "orange"
         animation_handler(screen, tick_counter, just_animating_colour = True)
 
         # play_colour_animation("orange/background", "orange/silhouettes", "orange/title")
         
 
-    elif ((colour_collider_handler.yellow.is_user_on_colour(mouse_pos)) & ((not (settings.has_completed_yellow_region)) | (yellow_postgame_is_available))):
+    elif ((colour_collider_handler.yellow.is_user_on_colour(mouse_pos)) & ((not (settings_loader.data["has_completed_yellow_region"])) | (yellow_postgame_is_available))):
         print("Debugging with prints sucks a LOT...")
         settings.colour_being_hovered_over_by_the_player = "yellow"
         animation_handler(screen, tick_counter, just_animating_colour = True)
     
-    elif ((colour_collider_handler.green.is_user_on_colour(mouse_pos)) & ((not (settings.has_completed_green_region)) | (green_postgame_is_available))):
+    elif ((colour_collider_handler.green.is_user_on_colour(mouse_pos)) & ((not (settings_loader.data["has_completed_green_region"])) | (green_postgame_is_available))):
         settings.colour_being_hovered_over_by_the_player = "green"
         animation_handler(screen, tick_counter, just_animating_colour = True)        
 
-    elif ((colour_collider_handler.blue.is_user_on_colour(mouse_pos)) & ((not (settings.has_completed_blue_region)) | (blue_postgame_is_available))):
+    elif ((colour_collider_handler.blue.is_user_on_colour(mouse_pos)) & ((not (settings_loader.data["has_completed_blue_region"])) | (blue_postgame_is_available))):
         settings.colour_being_hovered_over_by_the_player = "blue"
         animation_handler(screen, tick_counter, just_animating_colour = True)
     
-    elif ((colour_collider_handler.purple.is_user_on_colour(mouse_pos)) & ((not (settings.has_completed_purple_region)) | (purple_postgame_is_available))):
+    elif ((colour_collider_handler.purple.is_user_on_colour(mouse_pos)) & ((not (settings_loader.data["has_completed_purple_region"])) | (purple_postgame_is_available))):
         settings.colour_being_hovered_over_by_the_player = "purple"
         animation_handler(screen, tick_counter, just_animating_colour = True) 
         

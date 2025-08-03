@@ -13,11 +13,17 @@ from animation_handler import animation_handler, colour_handler
 from geometry import Vertex
 
 import settings
-from settings_init import initialize_region_progress
-initialize_region_progress()
+
+
+import settings_loader
+
+#   vv    If the player has completed all regions, unlock the final region.    vv
+if (settings_loader.data["has_completed_red_region"] & settings_loader.data["has_completed_orange_region"] & settings_loader.data["has_completed_yellow_region"] & settings_loader.data["has_completed_green_region"] & settings_loader.data["has_completed_blue_region"] & settings_loader.data["has_completed_purple_region"]):
+        settings_loader.data["black_region_is_available"] = True 
 
 
 
+# ----------------------------------------------------------------------------------------------------------------------------
 
 
 pygame.init()
@@ -32,8 +38,6 @@ is_on_fullscreen = True
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-# clip = moviepy.VideoFileClip(f"{dir_path}/graphics/animations/yellow_flickering.mp4")
-# clip.preview()
 
 icon_surface = pygame.image.load("graphics/icon.png").convert_alpha() 
 pygame.display.set_icon(icon_surface)
@@ -67,7 +71,7 @@ seconds = 0
 
 pygame.mixer.init()
 pygame.mixer.music.load("audio/music/world_map.mp3")
-pygame.mixer.music.set_volume(settings.bgm_volume)
+pygame.mixer.music.set_volume(settings_loader.config["BGM_volume"])
 
 def Render_Text(what, color, where):
     font = pygame.font.SysFont('arial', 30)
@@ -224,10 +228,10 @@ while True:                                                    # EVERYTHING INSI
 
     settings.player_has_just_clicked = False
     
-    if settings.show_fps == True:
+    if settings_loader.data["Show_FPS"] == True:
         Render_Text(str(int(clock.get_fps())), (255,0,0), (0,0))    # Show FPS
         # print("FPS:", int(clock.get_fps()))
 
     pygame.display.flip()
-    #pygame.display.update()
+    # pygame.display.update()
     clock.tick(60)  # Caps the events loop at a 60fps ceiling

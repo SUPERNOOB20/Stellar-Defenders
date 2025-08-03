@@ -1,7 +1,7 @@
-current day of working in my games (indie dev): DAY #28 (May 7th, 2025)
+Current day of working in my games (indie dev): DAY #38 (July 28th, 2025).
 
 
-some milestones:
+Some milestones:
 
 Day #9: 400 lines of code o.o (between main script and collider handler, maybe???)
 Day #28: 1392 lines of code (o  . o!)
@@ -26,70 +26,80 @@ Yet to put under one of the days:
 Days #1 to #4: Putting a LOT of information in the GDD (Game Design Document)
 
 
-Day #1 (February 26th): Trying to get RenPy to run my (empty) game and stop crashing. Reading quite some RenPy documentation.
-Day #2 (February 27th): Reading about subprocesses. Managed to get subprocesses working!! (RenPy ---> tkinter, which would later ultimely become RenPy ---> pygame)
-Day #3 (Feb 28th): Started making the map.
-Day #4 (March 1st): Still making the map. Finishing choosing all the 9-10 tracks for my game!
-Day #5 (March 3rd): Did some dialog for Phoebe and Ariadne! (The "What about Teseo" one... "^^)
-Day #6 (March 4th): Finished map. Also made the "isurus - land of the light" title and the .ico icon for the game!
-		     -  1 hour pygame tutorial ":3 (the first hour of "The ultimate introduction to Pygame" - https://www.youtube.com/watch?v=AY9MnQ4x3zk)
-Day #7 (March 5th):  -  Fullscreen Mode / Windowed Mode
-		     -  Animation system
-Day #8 (March 7th):  -  Intro animations
-		     -  Improved readability of animation system (from measuring with the "frame_counter" variable in frames, to the "seconds" variable in seconds!!!)
-		     -  Literally like 1.5 hours making colliders.py / continents_with_colliders.py!!!
-		     -  Triangular colliders - Algorithm #1
-		     -  collider_handler.py is born!!! :3
-Day #9 (March 8th): Triangular colliders - Algorithm #2
-Day #10 (March 10th): Blend modes attempt #1 (result: "funny glitch transition") (check the "funny" branch of the main script... :3)
-Day #11 (March 11th): numpy generated blend modes SUCCESS (but would weigh 1 GB if I fully implemented blend modes that way...)
-Day #12 (March 12th):	- Optimised blend modes from 1 GB to 40 MB (math/numpy/python generated blend modes ---> Vegas generated blend modes) and from 40 MB to 20 MB
-			  (only using the first half of the frames, then putting them on reverse :3)
-			- Working with Python renaming scripts.
-			- I implemented animation_loader, too.
-Day #13 (March 13rd):	- Learnt about and mastered Vegas' FX Channel Blend to render my animations with a transparent background!
-			- Started writing afterword.txt and some dialogues
-			- Started rendering a few of the final blend mode animations... e.e (a few of the BEFORE postgame ones, that is... "^^)
-			- Wrote the description of all the post endgame collectibles
-Day #14 (March 14th):	- Wrote a few dialogues... and planned more minigames and ideas for future dialogues ":3
-			- Synced with github from vscode!!! Now I'm finally committing to my repo like a pro :DDDD
-			- Rendered EVERYTHING :)
-			- Minor bugfixing (bulk-renamed all the remaining stuff + fixed wrong syntax in the index() string method oof)
-Day #15 (March 15th):	- Implemented matrix (array)!
-			- Green bg :3
-Day #16 (March 16th):	- OOP struggle... @_@
-Daay #17 (April 14th):	- OOP bug cause detected: check_colliders_init() is yielding wrong results!!!! >:(
-Day #18 (April 25th):	- Kept on trying to solve the bug, but to no avail. The previous test was built wrong I think, and that's why it didn't work (instead of it pointing to a flaw in the check_colliders_init function).
+Day #1 (February 26th, 2025):  -  Trying to get RenPy to run my (empty) game and stop crashing. Reading quite some RenPy documentation.
+Day #2 (February 27th, 2025):  -  Reading about subprocesses. Managed to get subprocesses working!! (RenPy ---> tkinter, which would later ultimely become RenPy ---> pygame)
+Day #3 (February 28th, 2025):  -  Started making the map.
+Day #4 (March 1st, 2025): 	-  Still making the map. Finishing choosing all the 9-10 tracks for my game!
+Day #5 (March 3rd, 2025): 	-  Did some dialog for Phoebe and Ariadne! (The "What about Teseo" one... "^^)
+Day #6 (March 4th, 2025): 	-  Finished map. Also made the "isurus - land of the light" title and the .ico icon for the game!
+		     	-  1 hour pygame tutorial ":3 (the first hour of "The ultimate introduction to Pygame" - https://www.youtube.com/watch?v=AY9MnQ4x3zk)
+Day #7 (March 5th, 2025): 	-  Fullscreen Mode / Windowed Mode
+		     	-  Animation system
+Day #8 (March 7th, 2025):  	-  Intro animations
+		                    -  Improved readability of animation system (from measuring with the "frame_counter" variable in frames, to the "seconds" variable in seconds!!!)
+			-  Literally like 1.5 hours making colliders.py / continents_with_colliders.py!!!
+		                    -  Triangular colliders - Algorithm #1
+		                    -  collider_handler.py is born!!! :3
+Day #9 (March 8th, 2025): 		-  Triangular colliders - Algorithm #2
+Day #10 (March 10th, 2025): 	-  Blend modes attempt #1 (result: "funny glitch transition") (check the "funny" branch of the main script... :3)
+Day #11 (March 11th, 2025): 	-  numpy generated blend modes SUCCESS (but would weigh 1 GB if I fully implemented blend modes that way...)
+Day #12 (March 12th, 2025):	-  Optimised blend modes from 1 GB to 40 MB (math/numpy/python generated blend modes ---> Vegas generated blend modes) and from 40 MB to 20 MB
+			   (only using the first half of the frames, then putting them on reverse :3)
+			-  Working with Python renaming scripts.
+			-  I implemented animation_loader, too.
+Day #13 (March 13rd, 2025):	-  Learnt about and mastered Vegas' FX Channel Blend to render my animations with a transparent background!
+			-  Started writing afterword.txt and some dialogues
+			-  Started rendering a few of the final blend mode animations... e.e (a few of the BEFORE postgame ones, that is... "^^)
+			-  Wrote the description of all the post endgame collectibles
+Day #14 (March 14th, 2025):	-  Wrote a few dialogues... and planned more minigames and ideas for future dialogues ":3
+			-  Synced with github from vscode!!! Now I'm finally committing to my repo like a pro :DDDD
+			-  Rendered EVERYTHING :)
+			-  Minor bugfixing (bulk-renamed all the remaining stuff + fixed wrong syntax in the index() string method oof)
+Day #15 (March 15th, 2025):	-  Implemented matrix (array)!
+			-  Green bg :3
+Day #16 (March 16th, 2025):	-  OOP struggle... @_@
+Daay #17 (April 14th, 2025):	-  OOP bug cause detected: check_colliders_init() is yielding wrong results!!!! >:(
+Day #18 (April 25th, 2025):	-  Kept on trying to solve the bug, but to no avail. The previous test was built wrong I think, and that's why it didn't work (instead of it pointing to a flaw in the check_colliders_init function).
 			   I have pending to find a way to debug/test this to find where the error is...
-Day #19 (April 27th): 	- Found the bug (type error: vertex_AC should be data type "list[bool]" as opposed to the abstract data type "Vertex" (remember that it will look like "[bool, bool, bool]")).
-Day #20 (April 28th): 	- It was not that minor bug, it was 3 other bugs :S (fixed them all today :D)
-Day #21 (April 30th): 	- Sea animation and I FIXED THE RENDERING LMAOOOO HUGE FPS BOOST YESSSS (from 7fps to 45fps, and from 15fps to 55fps LOL) (and it's not even compiled yet lmaooo, still interpreted Python) (also started using switch statements in the form of match-case heck yeah :D) (also implemented game_state system but it's too barebone atm qwq)
-Day #22 (May 1st):		- Merry worker's day :3
-			- Implemented all the colliders for green, and started doing the ones for blue (remaining regions: red, purple)
-			- Fixed the colliders for yellow
-			- Fixed jut out by finetuning it.
-			- FINISHED IMPLEMENTED GAME STATES WOOOO
-			- Moved from pygame to pygame-ce :0
-			- All regional titles 100% done <3
-Day #23 (May 2nd):		- Finished all the colliders
-Day #24 (May 3rd):		- Struggling to fix the bug for purple colliders (what's going on here? Why does it detect the WHOLE screen as being inside p_t0...??? @.@)
-			- I came up in my head with a faster collider implementation (with arrays instead of sequence) but I want to fix purple first... @.@
-			- FIXED PURPLE COLLIDERS (IT WAS JUST HUMAN ERRORS WHEN WRITING THE COORDINATES AND VARIABLES, OOF)
-Day #25 (May 4th):		- Implemented game logic for the world map (black colliders are yet to do, so it's commentated for the moment being...) (check the attached image to see what I did today! :3)
-			- Did the intro (in Vegas)
-			- Started learning RenPy GUI
-Day #26 (May 5th):		- Fixing game logic...
-			- Programming the intro!!!
-			- Read a lot of articles on stuff like Python, pygame, alpha compositing, profilers... etc. (reading computer science stuff is important to improve your coding skills through the enrichment of your understanding of computers and coding! ":3)
-			- Fighting with RenPy: trying to get the subprocesses running properly... (made it work BUT only with absolute paths :c)
-			- Fighting with RenPy: IT WORKS WITH RELATIVE PATHS NOW YESSSS (check attached image!!!) <--- Learnt to display "f-strings" in RenPy :3
-Day #27 (May 6th):		- Implemented saving system (just for the first region so far though OOF)
-Day #28 (May 7th):		- My SAVING SYSTEM IS FULLY FLEDGED NOW (* postgame not included tho x_x)
-			- Optimized all collisions manually - from internally being implemented in lists to now only using arrays (took like 2.5 hours I think OOF) (thanks to GamersDecision for supporting me in this massive grind oof x_x)
-Day #29 (May 8th):		- I committed v0.0.7-alpha    <---    Saving system should be fully implemented now (yes, POSTGAME INCLUDED :3). Also tidied up my code in options.rpy a lil "^^ (but not much... e.e)
-Day #30 (May 9th):		- Didn't progress on my game today BUT I learnt how to do JSON parsing in Python, and successfully managed to do so! So, in the future, I will change my game's saving system to work with that instead :) 
-			- Started making my own website (making a website - day #1)
-Day #31 (May 10th):	- Finished my own website :3 (making a website - day #2)
-Day #32 (May 11th): 	- Made the mental map for Cybele, and had to learn a fair bit of Inkscape wizardry in the process (though this mental map is a tad rough still and will need a bit of polishing in the future... "^^).
-			- Day #1 of writing the, uh, "conflict dialogues" (done for red, orange, blue, purple)
-Day #33 (May 12nd):	- Day #2 of writing the "conflict dialogues" (did the ones for yellow and green today - they're all finished now! ^-^)
+Day #19 (April 27th, 2025): 	-  Found the bug (type error: vertex_AC should be data type "list[bool]" as opposed to the abstract data type "Vertex" (remember that it will look like "[bool, bool, bool]")).
+Day #20 (April 28th, 2025): 	-  It was not that minor bug, it was 3 other bugs :S (fixed them all today :D)
+Day #21 (April 30th, 2025): 	-  Sea animation and I FIXED THE RENDERING LMAOOOO HUGE FPS BOOST YESSSS (from 7fps to 45fps, and from 15fps to 55fps LOL) (and it's not even compiled yet lmaooo, still interpreted Python) (also started using switch statements in the form of match-case heck yeah :D) (also implemented game_state system but it's too barebone atm qwq)
+Day #22 (May 1st, 2025):	-  Merry worker's day :3
+			-  Implemented all the colliders for green, and started doing the ones for blue (remaining regions: red, purple)
+			-  Fixed the colliders for yellow
+			-  Fixed jut out by finetuning it.
+			-  FINISHED IMPLEMENTED GAME STATES WOOOO
+			-  Moved from pygame to pygame-ce :0
+			-  All regional titles 100% done <3
+Day #23 (May 2nd, 2025):	-  Finished all the colliders
+Day #24 (May 3rd, 2025):	-  Struggling to fix the bug for purple colliders (what's going on here? Why does it detect the WHOLE screen as being inside p_t0...??? @.@)
+			-  I came up in my head with a faster collider implementation (with arrays instead of sequence) but I want to fix purple first... @.@
+			-  FIXED PURPLE COLLIDERS (IT WAS JUST HUMAN ERRORS WHEN WRITING THE COORDINATES AND VARIABLES, OOF)
+Day #25 (May 4th, 2025):	-  Implemented game logic for the world map (black colliders are yet to do, so it's commentated for the moment being...) (check the attached image to see what I did today! :3)
+			-  Did the intro (in Vegas)
+			-  Started learning RenPy GUI
+Day #26 (May 5th, 2025):	-  Fixing game logic...
+			-  Programming the intro!!!
+			-  Read a lot of articles on stuff like Python, pygame, alpha compositing, profilers... etc. (reading computer science stuff is important to improve your coding skills through the enrichment of your understanding of computers and coding! ":3)
+			-  Fighting with RenPy: trying to get the subprocesses running properly... (made it work BUT only with absolute paths :c)
+			-  Fighting with RenPy: IT WORKS WITH RELATIVE PATHS NOW YESSSS (check attached image!!!) <--- Learnt to display "f-strings" in RenPy :3
+Day #27 (May 6th, 2025):	-  Implemented saving system (just for the first region so far though OOF)
+Day #28 (May 7th, 2025):	-  My SAVING SYSTEM IS FULLY FLEDGED NOW (* postgame not included tho x_x)
+			-  Optimized all collisions manually - from internally being implemented in lists to now only using arrays (took like 2.5 hours I think OOF) (thanks to GamersDecision for supporting me in this massive grind oof x_x)
+Day #29 (May 8th, 2025):	-  I committed v0.0.7-alpha    <---    Saving system should be fully implemented now (yes, POSTGAME INCLUDED :3). Also tidied up my code in options.rpy a lil "^^ (but not much... e.e)
+Day #30 (May 9th, 2025):	-  Didn't progress on my game today BUT I learnt how to do JSON parsing in Python, and successfully managed to do so! So, in the future, I will change my game's saving system to work with that instead :) 
+			-  Started making my own website (making a website - day #1)
+Day #31 (May 10th, 2025):	-  Finished my own website :3 (making a website - day #2)
+Day #32 (May 11th, 2025): 	-  Made the mental map for Cybele, and had to learn a fair bit of Inkscape wizardry in the process (though this mental map is a tad rough still and will need a bit of polishing in the future... "^^).
+			-  Day #1 of writing the, uh, "conflict dialogues" (done for red, orange, blue, purple)
+Day #33 (May 12nd, 2025):	-  Day #2 of writing the "conflict dialogues" (did the ones for yellow and green today - they're all finished now! ^-^)
+Day #34 (July 22nd, 2025): 	-  Finally on Winter Holidays...! I can finally resume work on my game now :D
+			-  Some drafts on paper (chair, some eyes). Drawing characters: chair and Cybele's face.
+			-  Started the gender selection screen (vectorial assets)
+Day #35 (July 23rd, 2025): 	-  Even more drafts on paper (LOTS of eyes, and Cybele's head). Drawing characters: Cybele's headband
+		    	-  Gender selection screen: rasterized details and animations. Not yet finished, though... e.e
+Day #36 (July 24th, 2025): 	-  3 facial expressions with Cybele's head. Also started Ari's face.
+Day #37 (July 25th, 2025): 	-  Ari's face and started her hair.
+			-  Writing: A bit of Noon and also worked on the GDD (changed MC's name from Phoebe to Phoe, did some basic research and wrote down my interpretations on Phoe and Rue).
+Day #38 (July 28th, 2025):	-  Writing: A bit of Amaru, and also research.
+Day #39 (July 29th, 2025): 	-  Moar writing... @.@ (a bit moar of Amaru, and a tiny bit for Hector).
