@@ -376,7 +376,7 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
                 if (tick_counter > (fadeout_finish + some_overhead)):
                     # settings.warp_to_renpy_region = settings.colour_being_hovered_over_by_the_player
                     settings_loader.save_persistent_data()
-                    pygame.exit()
+                    pygame.quit()
             
 
 

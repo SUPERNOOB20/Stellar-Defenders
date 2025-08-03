@@ -231,7 +231,7 @@ while True:                                                    # EVERYTHING INSI
 
     settings.player_has_just_clicked = False
     
-    if settings_loader.data["Show_FPS"] == True:
+    if settings_loader.config["Show_FPS"] == True:
         Render_Text(str(int(clock.get_fps())), (255,0,0), (0,0))    # Show FPS
         # print("FPS:", int(clock.get_fps()))
 
