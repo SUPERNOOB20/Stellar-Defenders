@@ -105,32 +105,18 @@ label start:
 
         renpy_normal_path = os.getcwd()
 
+    p "you have finished the world map... ha"
 
+    python:
+    
+        import settings_loader
 
-        # file = renpy.open_file(fn = "nexus.txt", directory = f"{renpy_boot_path}/Stellar Defenders/game/python-packages/nexus.txt")
-        file = renpy.open_file(fn = 'nexus.txt', encoding = "utf-8", directory = "/python-packages/")
-        
-        # line_0 = file[0]
-        
         colour_picked_by_the_player = "ola"
-
-        dummy_counter = 0
-        for line in file:
-            if (dummy_counter == 0):
-                colour_picked_by_the_player = line
-                dummy_counter += 1
-
-
-        
-        
-        # print(colour_picked_by_the_player)
+        colour_picked_by_the_player = settings_loader.data["current_region"]
         
         colour_picked_by_the_player.replace("\r\n", "")
-        
 
 
-
-    p "you have finished the world map... ha"
     # p "let's see... you picked region [current_colour], is that correct? (^-^)"
     # p "let's see... you picked region [file], is that correct?"
     # p "haha nahhh jk... it's [line_0], isn't it? (^-^)"
