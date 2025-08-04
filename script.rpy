@@ -2,13 +2,20 @@
 
 init python:
 
-    import os
-    renpy_boot_path = os.getcwd()
-
     import settings
     print(settings.game_state)
 
-    from nexus_handler import change_specified_line_in_a_txt_file
+    import settings_loader
+    settings_loader.load_persistent_data()
+
+    import os
+    renpy_boot_path = os.getcwd()
+
+    
+
+
+
+    # from nexus_handler import change_specified_line_in_a_txt_file
 
     # world_map_handler_directory = "/Stellar Defenders/game/pygame/"
     # os.chdir(renpy_boot_path + world_map_handler_directory)
@@ -33,9 +40,10 @@ init python:
 
     # subprocess.run("python.exe animation_init.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-scripts/intro_animation", creationflags = DETACHED_PROCESS)
 
-    os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-scripts/intro_animation")
-    subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-scripts/intro_animation"', creationflags = DETACHED_PROCESS)
-    os.chdir("D:/non_OS/renpy-8.3.7-sdk/")
+    os.chdir(r"D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-scripts/intro_animation")
+    # subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-scripts/intro_animation"', creationflags = DETACHED_PROCESS)
+    subprocess.run(r'python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-scripts/intro_animation"')
+    os.chdir(r"D:/non_OS/renpy-8.3.7-sdk/")
 
 
 
@@ -51,11 +59,11 @@ label splashscreen:
 # Declares characters used by this game. The color argument colorizes the...
 # ...name of the character.
 
-define p = Character("Phoebe")
-define r = Character("Rhea")
-define n = Character("Noon")
+define p  = Character("Phoebe")
+define r  = Character("Rhea")
+define n  = Character("Noon")
 define am = Character("Amaru")
-define h = Character("Hector")
+define h  = Character("Hector")
 define cy = Character("Cybele")
 define ch = Character("Chun Min-min")
 define ar = Character("Ariadne")
@@ -108,7 +116,8 @@ label start:
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
         
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages")
-        subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
+        # subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
+        subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"')
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/")
 
         # renpy_normal_path = os.getcwd()
@@ -154,6 +163,9 @@ label red:
         # change_specified_line_in_a_txt_file("nexus.txt", 1, 1)
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
         
+        settings_loader.data["has_completed_red_region"] = True
+        settings_loader.save_progress()
+
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages")
         subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/")
@@ -169,6 +181,9 @@ label orange:
         # change_specified_line_in_a_txt_file("nexus.txt", 2, 1)
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
         
+        settings_loader.data["has_completed_orange_region"] = True
+        settings_loader.save_progress()
+
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages")
         subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/")
@@ -184,6 +199,9 @@ label yellow:
         # change_specified_line_in_a_txt_file("nexus.txt", 3, 1)
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
         
+        settings_loader.data["has_completed_yellow_region"] = True
+        settings_loader.save_progress()
+
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages")
         subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/")
@@ -199,6 +217,9 @@ label green:
         # change_specified_line_in_a_txt_file("nexus.txt", 4, 1)
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
         
+        settings_loader.data["has_completed_green_region"] = True
+        settings_loader.save_progress()
+
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages")
         subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/")
@@ -214,6 +235,9 @@ label blue:
         # change_specified_line_in_a_txt_file("nexus.txt", 5, 1)
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
         
+        settings_loader.data["has_completed_blue_region"] = True
+        settings_loader.save_progress()
+
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages")
         subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/")
@@ -292,6 +316,9 @@ label purple:
         # change_specified_line_in_a_txt_file("nexus.txt", 6, 1)
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
         
+        settings_loader.data["has_completed_purple_region"] = True
+        settings_loader.save_progress()
+
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages")
         subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/")
@@ -313,6 +340,9 @@ label black:
         # change_specified_line_in_a_txt_file("nexus.txt", 7, 1)
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
         
+        settings_loader.data["has_completed_black_region"] = True
+        settings_loader.save_progress()
+
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages")
         subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/")
@@ -331,6 +361,9 @@ label red_postgame:
         # change_specified_line_in_a_txt_file("nexus.txt", 8, 1)
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
         
+        settings_loader.data["has_completed_red_postgame"] = True
+        settings_loader.save_progress()
+
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages")
         subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/")
@@ -347,6 +380,9 @@ label orange_postgame:
         # change_specified_line_in_a_txt_file("nexus.txt", 9, 1)
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
         
+        settings_loader.data["has_completed_orange_postgame"] = True
+        settings_loader.save_progress()
+
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages")
         subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/")
@@ -363,6 +399,9 @@ label yellow_postgame:
         # change_specified_line_in_a_txt_file("nexus.txt", 10, 1)
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
         
+        settings_loader.data["has_completed_yellow_postgame"] = True
+        settings_loader.save_progress()
+
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages")
         subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/")
@@ -379,6 +418,9 @@ label green_postgame:
         # change_specified_line_in_a_txt_file("nexus.txt", 11, 1)
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
         
+        settings_loader.data["has_completed_green_postgame"] = True
+        settings_loader.save_progress()
+
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages")
         subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/")
@@ -395,6 +437,9 @@ label blue_postgame:
         # change_specified_line_in_a_txt_file("nexus.txt", 12, 1)
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
         
+        settings_loader.data["has_completed_blue_postgame"] = True
+        settings_loader.save_progress()
+
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages")
         subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/")
@@ -411,6 +456,9 @@ label purple_postgame:
     python:
         # change_specified_line_in_a_txt_file("nexus.txt", 13, 1)
         # subprocess.run(f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313/python.exe world_map_handler.py", cwd = f"{renpy_boot_path}/Stellar Defenders/game/python-packages", creationflags = DETACHED_PROCESS)
+
+        settings_loader.data["has_completed_purple_postgame"] = True
+        settings_loader.save_progress()
 
         os.chdir("D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages")
         subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-packages/world_map_handler.py"', creationflags = DETACHED_PROCESS)
