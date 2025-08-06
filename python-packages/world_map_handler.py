@@ -76,7 +76,7 @@ pygame.mixer.music.load("audio/music/world_map.mp3")
 pygame.mixer.music.set_volume(settings_loader.config["BGM_volume"])
 
 def Render_Text(what, color, where):
-    font = pygame.font.SysFont('arial', 30)
+    font = pygame.font.SysFont('Arial', 30)
     text = font.render(what, 1, pygame.Color(color))
     screen.blit(text, where)
 
@@ -108,7 +108,9 @@ while True:                                                    # EVERYTHING INSI
         if event.type == pygame.QUIT:
             settings_loader.save_persistent_data()
             pygame.quit()
-            exit()
+            # exit()
+            import sys
+            sys.exit()
         
         if event.type == pygame.KEYDOWN:        # processes all the Keydown events
             if event.key == pygame.K_ESCAPE:    # processes the Escape event (The event that the key 'ESCAPE' is hit!)
@@ -116,7 +118,10 @@ while True:                                                    # EVERYTHING INSI
 
         if exit_game == True:
             pygame.quit()
-            exit()
+            # exit()
+            import sys
+            sys.exit()
+        
 
         if event.type == pygame.KEYDOWN and event.key == pygame.K_F11:
             if is_on_fullscreen == False:
@@ -232,8 +237,12 @@ while True:                                                    # EVERYTHING INSI
     settings.player_has_just_clicked = False
     
     if settings_loader.config["Show_FPS"] == True:
-        Render_Text(str(int(clock.get_fps())), (255,0,0), (0,0))    # Show FPS
-        # print("FPS:", int(clock.get_fps()))
+        pygame.font.init()
+        try:
+            Render_Text(str(int(clock.get_fps())), (255,0,0), (0,0))    # Show FPS
+            # print("FPS:", int(clock.get_fps()))
+        except:
+            pass
 
     pygame.display.flip()
     # pygame.display.update()

@@ -56,7 +56,7 @@ def render_fadeout(screen = pygame.display.set_mode, frames = int):
         # print("alpha value:", black_screen_alpha_value)
         # print("alpha value floor:", floor(black_screen_alpha_value))
         black_screen_surface.fill((0, 0, 0, floor(black_screen_alpha_value)))
-        screen.blit(black_screen_surface)
+        screen.blit(black_screen_surface, (0, 0))
 
         black_screen_alpha_value += alpha_step 
 

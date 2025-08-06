@@ -7,8 +7,8 @@ from screen_renderer import render_fadeout
 import os
 # print(os.getcwd())
 
-os.chdir("..")
-os.chdir("/python-scripts/")
+# os.chdir("..")
+# os.chdir("/python-scripts/")
 
 current_path = os.getcwd()
 

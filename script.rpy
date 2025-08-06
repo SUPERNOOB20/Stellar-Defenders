@@ -39,6 +39,15 @@ init python:
     os.chdir(r"D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-scripts/intro_animation")
     # subprocess.run('pythonw.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-scripts/intro_animation"', creationflags = DETACHED_PROCESS)
 
+    new_path = os.getcwd()
+
+    new_path_dict = {"path": new_path}
+
+    with open('newpath.json', 'w') as outfile:         
+        json.dump(new_path_dict, outfile)               # SAVES path.json AT "D:\non_OS\renpy-8.3.7-sdk\Stellar Defenders\game\python-scripts\intro_animation"
+                                                    # path.json WILL LOOK LIKE THIS: "D:\non_OS\renpy-8.3.7-sdk\Stellar Defenders\game\python-scripts\intro_animation"
+
+
     try:
         subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-scripts/intro_animation/animation_init.py"', shell = True, capture_output = True)
     except Exception as msg:
