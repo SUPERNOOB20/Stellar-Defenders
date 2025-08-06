@@ -15,7 +15,7 @@ step_acum_1 = 0
 flickering_animation_counter = 0
 is_flickering_ascending = True      # Could alternatively just save the immediately previous value for flickering_animation_counter anyway :p
 
-
+warp_to = '---'
 
 # dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -289,6 +289,8 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
                         postgame = "_postgame"
 
                     print("COLOUR THAT WILL GET PRINTED TO THE SETTINGS:", settings.colour_being_hovered_over_by_the_player + postgame)
+
+                    global warp_to
                     warp_to = settings.colour_being_hovered_over_by_the_player + postgame
 
                     settings.game_state = 1     # With this implementation there will be a 1-frame delay here between the player clicking a region and the animations playing, but oh well... whatever ":3
@@ -375,8 +377,14 @@ def animation_handler(screen, tick_counter: int, just_animating_colour: bool):
 
                 if (tick_counter > (fadeout_finish + some_overhead)):
                     # settings.warp_to_renpy_region = settings.colour_being_hovered_over_by_the_player
+
+                    # global warp_to
+
+                    settings_loader.data["current_region"] = warp_to
                     settings_loader.save_persistent_data()
+                    print("Everything went correctly! Shutting off now~ :3")
                     pygame.quit()
+                    exit()
             
 
 
@@ -812,8 +820,8 @@ def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick
 
     # print("Debugging with prints sucks...")
 
-    print("has_completed_yellow_region:", settings_loader.data["has_completed_yellow_region"])
-    print("yellow_postgame_is_available:", yellow_postgame_is_available)
+    # print("has_completed_yellow_region:", settings_loader.data["has_completed_yellow_region"])
+    # print("yellow_postgame_is_available:", yellow_postgame_is_available)
     # print()
 
 
