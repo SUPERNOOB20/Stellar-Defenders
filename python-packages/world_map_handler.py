@@ -244,6 +244,15 @@ while True:                                                    # EVERYTHING INSI
         except:
             pass
 
-    pygame.display.flip()
-    # pygame.display.update()
-    clock.tick(60)  # Caps the events loop at a 60fps ceiling
+
+    try:
+        pygame.display.flip()
+        # pygame.display.update()
+    except:
+        pass
+
+
+    try:
+        clock.tick(60)  # Caps the events loop at a 60fps ceiling
+    except:
+        pass
