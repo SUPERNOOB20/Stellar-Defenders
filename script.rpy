@@ -160,7 +160,7 @@ label start:
         
         # os.getcwd()       # current path: \renpy-8.3.7-sdk\
 
-        curr_dir = os.chdir("\Stellar Defenders\game\python-packages")
+        curr_dir = os.chdir('/Stellar Defenders/game/python-packages/')
         colour_picked_by_the_player = settings_loader.data["current_region"]
         
         colour_picked_by_the_player.replace("\r\n", "")
