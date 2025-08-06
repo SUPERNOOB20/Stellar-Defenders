@@ -53,7 +53,7 @@ init python:
     # subprocess.run('pythonw.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-scripts/intro_animation"', creationflags = DETACHED_PROCESS)
 
     try:
-        subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-scripts/intro_animation"', shell = True, capture_output = True)
+        subprocess.run('python.exe "D:/non_OS/renpy-8.3.7-sdk/Stellar Defenders/game/python-scripts/intro_animation/animation_init.py"', shell = True, capture_output = True)
     except Exception as msg:
     # except subprocess.CalledProcessError.stderr as msg
         logging.error(msg)     #writes in log file
