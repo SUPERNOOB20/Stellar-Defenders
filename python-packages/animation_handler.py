@@ -858,7 +858,6 @@ def colour_handler(screen, tick_counter, mouse_pos):            # Needs the tick
         
 
     elif ((colour_collider_handler.yellow.is_user_on_colour(mouse_pos)) & ((not (settings_loader.data["has_completed_yellow_region"])) | (yellow_postgame_is_available))):
-        print("Debugging with prints sucks a LOT...")
         settings.colour_being_hovered_over_by_the_player = "yellow"
         animation_handler(screen, tick_counter, just_animating_colour = True)
     

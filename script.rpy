@@ -157,6 +157,10 @@ label start:
         import settings_loader
 
         colour_picked_by_the_player = "ola"
+        
+        # os.getcwd()       # current path: \renpy-8.3.7-sdk\
+
+        curr_dir = os.chdir("\Stellar Defenders\game\python-packages")
         colour_picked_by_the_player = settings_loader.data["current_region"]
         
         colour_picked_by_the_player.replace("\r\n", "")
@@ -166,13 +170,14 @@ label start:
     # p "let's see... you picked region [file], is that correct?"
     # p "haha nahhh jk... it's [line_0], isn't it? (^-^)"
     # p "You have entered the [line_0] region... right? (^-^)"
-    p "You have entered the [colour_picked_by_the_player] region... right? (^-^)"
+    p "You have entered the <<[colour_picked_by_the_player]>> region... right? (^-^)"
     p "if not... weeeeeell... you might wanna warn SUPERNOOB :p"
+    p "tell him that I just looked at <<[curr_dir]>>! >:c"
     p "alright, let's send you there...!"
     # p "alright, end of the demo"
     # p "see you around! Now get outta here :p"
 
-    jump colour_picked_by_the_player
+    jump expression colour_picked_by_the_player
 
     # return
 
