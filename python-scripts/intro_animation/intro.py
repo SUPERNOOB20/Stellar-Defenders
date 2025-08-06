@@ -13,10 +13,18 @@ print("size?", user_screen_width, user_screen_height)
 screen = pygame.display.set_mode((user_screen_width, user_screen_height))
 
 
-
-
 import os
-old_path = os.getcwd()
+# old_path = os.getcwd()
+
+import json
+with open("path.json") as json_file:
+    old_path = json.load(json_file)
+    print(old_path)
+
+os.chdir("..")
+old_path = os.chdir("/python-scripts/")
+
+# old_path = "d:/non_OS/renpy-8.3.7-sdk"        # RenPy's config_gamedir
 new_path = f"{old_path}/images/"
 os.chdir(new_path)
 

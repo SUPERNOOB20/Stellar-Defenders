@@ -2,37 +2,24 @@
 
 init python:
 
+    import os
+    import json
+
+    renpy_boot_path = config.gamedir
+
+    # os.chdir(f"{renpy_boot_path}/Stellar Defenders/game")
+
+    path_dict = {"path": renpy_boot_path}
+
+    with open('path.json', 'w') as outfile:         
+        json.dump(path_dict, outfile)               # SAVES path.json AT "\renpy-8.3.7-sdk\Stellar Defenders\game\python-packages"
+                                                    # path.json WILL LOOK LIKE THIS: "..\\renpy-8.3.7-sdk\\Stellar Defenders\\game"
+
     import settings
     print(settings.game_state)
 
     import settings_loader
     settings_loader.load_persistent_data()
-
-    import os
-    renpy_boot_path = config.gamedir
-
-    
-
-
-
-    # from nexus_handler import change_specified_line_in_a_txt_file
-
-    # world_map_handler_directory = "/Stellar Defenders/game/pygame/"
-    # os.chdir(renpy_boot_path + world_map_handler_directory)
-
-    # main_module_directory = os.getcwd()
-    
-    
-    
-    # from world_map_handler import start_world_map
-    # import world_map_handler
-    
-    
-    
-    
-    # os.chdir(renpy_boot_path)
-
-    python_boot_path = f"{renpy_boot_path}/Stellar Defenders/game/pygame/Python313"
 
     import subprocess
 

@@ -18,6 +18,13 @@ config = {}
 
 def load_persistent_data():     # Loads persistent data from storage ("loads the game")
 
+    curr_path = os.getcwd()
+
+    path_dict = {"path_for_data": curr_path}
+
+    with open('debugging_path_pls_send_help.json', 'w') as outfile:             # <--- for debugging purposes (please send help x-x)
+        json.dump(path_dict, outfile)                                           # Seems to be looking like this: "D:\\non_OS\\renpy-8.3.7-sdk\\Stellar Defenders\\game\\python-packages"
+        
     load_progress()
     load_preferences()
 
