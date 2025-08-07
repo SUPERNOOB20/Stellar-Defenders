@@ -33,7 +33,7 @@ And yes... I've yet to add a lot of the RenPy stuff... soontm e.e
 <br/>
 <br/>
 # COMPATIBLITY
-Right now I have yet to figure out how to compile my python scripts (haven't been able to pull that off successfully yet...). Since we're still in alpha, that's fine. However, keep in mind that as of now to run my game you will need:
+Right now I have yet to make an installer for my game (with InnoSetup) and figure out how to compile (hopefully at least some of) my python scripts to C (haven't gotten to it yet...). Since we're still in alpha, that's fine. However, keep in mind that as of now to run my game you will need:
 
 - Python +3.11
 
@@ -42,9 +42,9 @@ And the following Python modules:
 - pygame-ce +2.5.3 (pip install pygame-ce)
 - screeninfo (pip install screeninfo)
 - numpy (pip install numpy)
-- json **(For Stellar Defenders v0.0.8-alpha onwards)**
+- cython **(For Stellar Defenders v0.0.8-alpha onwards)** (<--- future update x-x)
 
-You will need to have the "python" variable added to your environment path, too (just type "python" in a cmd (without quotation marks) and if it works then you have set it up correctly :D)
+You will need to have the "python" variable added to your environment path, too (just type "python.exe" in a cmd (without quotation marks) and if it works then you have set it up correctly :D)
 
 
 Have fun!
