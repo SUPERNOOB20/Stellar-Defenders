@@ -7,6 +7,9 @@ Status: Everything is working A-OK so far (:3) <br>
 Right now, I'm developing Stellar Defenders v0.0.8-alpha. These are the features I'm working in at the moment: <br>
 -- Implementing the new JSON saving system. <br>
 -- Making the setup wizard. <br>
+-- Making the minigames! <br>
+-- Making various assets with both vector graphics and rasterized graphics... <br>
+-- I also keep on writing the story from time to time, but I haven't copypasted that into the code yet e.e <br>
 <br>
 I am also currently sharpening my skills and knowledge of: <br>
 -- Krita <br>
