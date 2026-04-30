@@ -108,9 +108,7 @@ while True:                                                    # EVERYTHING INSI
         if event.type == pygame.QUIT:
             settings_loader.save_persistent_data()
             pygame.quit()
-            # exit()
-            import sys
-            sys.exit()
+            exit()
         
         if event.type == pygame.KEYDOWN:        # processes all the Keydown events
             if event.key == pygame.K_ESCAPE:    # processes the Escape event (The event that the key 'ESCAPE' is hit!)
@@ -118,9 +116,7 @@ while True:                                                    # EVERYTHING INSI
 
         if exit_game == True:
             pygame.quit()
-            # exit()
-            import sys
-            sys.exit()
+            exit()
         
 
         if event.type == pygame.KEYDOWN and event.key == pygame.K_F11:
